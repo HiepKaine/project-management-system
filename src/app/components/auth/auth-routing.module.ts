@@ -1,0 +1,28 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthComponent } from './auth.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { LoginComponent } from './login/login.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: AuthComponent,
+    // children: [
+    //   {
+    //     path: 'login',
+    //     component: LoginComponent,
+    //   },
+    //   {
+    //     path: 'forgot',
+    //     component: ForgotPasswordComponent,
+    //   },
+    // ],
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AuthRoutingModule {}
