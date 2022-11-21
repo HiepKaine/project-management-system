@@ -7,7 +7,8 @@
     "postinstall": "node ./decorate-angular-cli.js",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "dev": "nx run-many --target=serve --all --configuration=serve"
   },
   "private": true,
   "dependencies": {
@@ -22,10 +23,10 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^6.1.3",
     "@nrwl/angular": "15.2.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
-    "swagger-jsdoc": "^6.2.5",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
