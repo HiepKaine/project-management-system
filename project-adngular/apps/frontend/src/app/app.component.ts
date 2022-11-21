@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Todo } from '../model/todo.model';
 
 @Component({
   selector: 'project-adngular-root',
@@ -6,5 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'frontend';
+  todos: Todo[] = [];
+  
+  constructor(private http: HttpClient) {
+    this.fetch();
+  }
+
+  fetch() {
+    this.http
+      .get<Todo[]>('/api/todos')
+      .subscribe((data) => (this.todos = data));
+  }
+
+  addTodo() {
+    this.http.post('/api/addTodo', {}).subscribe(() => {
+      this.fetch();
+    });
+  }
 }
