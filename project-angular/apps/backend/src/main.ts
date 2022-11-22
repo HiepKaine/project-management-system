@@ -14,6 +14,7 @@ async function bootstrap() {
 
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
+  // cấp phép tài nguyên
   app.enableCors();
 
   const port = process.env.PORT || 3000;

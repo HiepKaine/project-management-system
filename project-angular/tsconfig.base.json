@@ -15,7 +15,24 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@project-adngular/data": ["libs/data/src/index.ts"]
+      "@project-adngular/data": ["libs/data/src/index.ts"],
+      "@project-adngular/shared": ["libs/shared/src/index.ts"],
+      "@project-adngular/shared/backend": ["libs/shared/backend/src/index.ts"],
+      "@project-adngular/shared/backend/common": [
+        "libs/shared/backend/common/src/index.ts"
+      ],
+      "@project-adngular/shared/frontend": [
+        "libs/shared/frontend/src/index.ts"
+      ],
+      "@project-adngular/shared/frontend/common": [
+        "libs/shared/frontend/common/src/index.ts"
+      ],
+      "@project-adngular/shared/frontend/form": [
+        "libs/shared/frontend/form/src/index.ts"
+      ],
+      "@project-adngular/shared/frontend/theme": [
+        "libs/shared/frontend/theme/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

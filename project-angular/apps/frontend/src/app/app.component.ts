@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { environment } from '../environment/environment';
 import { Todo } from '../model/todo.model';
 
 @Component({
@@ -16,12 +17,12 @@ export class AppComponent {
 
   fetch() {
     this.http
-      .get<Todo[]>('localhost:3000/api/todos')
+      .get<Todo[]>(`${environment.apiUrl}/todos`)
       .subscribe((data) => (this.todos = data));
   }
 
   addTodo() {
-    this.http.post('localhost:3000/api/addTodo', {}).subscribe(() => {
+    this.http.post(`${environment.apiUrl}/addTodo`, {}).subscribe(() => {
       this.fetch();
     });
   }

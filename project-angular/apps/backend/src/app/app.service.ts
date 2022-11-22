@@ -3,22 +3,17 @@ import { Injectable } from '@nestjs/common';
 interface Todo {
   title: string;
 }
-
 @Injectable()
 export class AppService {
-  todos: Todo[] = [
-    { title: 'title 1' },
-    { title: 'title 2' },
-    { title: 'title 3' },
-  ];
+  todos: Todo[] = [{ title: 'Todo 1' }, { title: 'Todo 2' }];
 
   getData(): Todo[] {
     return this.todos;
   }
 
   addTodo() {
-    return this.todos.push({
-      title: `new todo ${Math.random() * 1000}`,
+    this.todos.push({
+      title: `New todo ${Math.floor(Math.random() * 1000)}`,
     });
   }
 }
