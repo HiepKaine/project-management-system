@@ -1,1 +1,1 @@
-export * from './lib/shared-frontend-common';
+export * from './lib/shared-frontend-common.module';

@@ -21,6 +21,12 @@
       "@project-adngular/shared/backend/common": [
         "libs/shared/backend/common/src/index.ts"
       ],
+      "@project-adngular/shared/backend/database": [
+        "libs/shared/backend/database/src/index.ts"
+      ],
+      "@project-adngular/shared/database": [
+        "libs/shared/database/src/index.ts"
+      ],
       "@project-adngular/shared/frontend": [
         "libs/shared/frontend/src/index.ts"
       ],
