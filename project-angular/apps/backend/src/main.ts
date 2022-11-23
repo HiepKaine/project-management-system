@@ -7,7 +7,7 @@ import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+import { environment } from 'libs/shared/backend/common/src/environments/environment';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {

@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="main">
+    <div class="row">
+      <h1 class="text-center heading text-uppercase">Đăng nhập</h1>
+    </div>
+
+    <div class="row">
+      <div class="login-form">
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="onSubmit()"
+          nz-form
+          nzLayout="vertical"
+        >
+          <div nz-row nzGutter="16">
+            <ngx-form-anchor #login></ngx-form-anchor>
+          </div>
+
+          <div class="login-form__forgot d-flex justify-content-between">
+            <label nz-radio>Ghi nhớ</label>
+            <a routerLink="/auth/forgot">Quên mật khẩu</a>
+          </div>
+
+          <div class="form-group d-flex justify-content-center">
+            <button
+              type="submit"
+              nz-button
+              nzType="primary"
+              class="btn btn--info d-flex justify-content-center align-items-center text-uppercase"
+            >
+              Đăng nhập
+            </button>
+          </div>
+          <!-- <div class="login-form__register d-flex justify-content-center">
+                <p class="m-0 text-center">
+                  Bạn chưa có tài khoản?
+                  <a routerLink="/auth/register">Đăng ký</a>
+                </p>
+              </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
