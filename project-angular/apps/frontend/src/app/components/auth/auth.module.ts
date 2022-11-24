@@ -10,6 +10,7 @@ import { NgxFormModule } from '@ngxform/platform';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NotificationModule } from 'libs/shared/frontend/component/src/lib/notification/index';
 import {
   EyeInvisibleOutline,
   EyeOutline,
@@ -36,6 +37,7 @@ const icons: IconDefinition[] = [
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
+    NotificationModule,
     FormsModule,
     NgxFormModule,
     TranslateModule,

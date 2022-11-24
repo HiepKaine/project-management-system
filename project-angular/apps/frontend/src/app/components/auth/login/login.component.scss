@@ -20,14 +20,15 @@
     font-family: $font-bold;
   }
 
-  // ::ng-deep nz-input-group {
-  //   border-radius: 20px;
-  //   background-color: $backgroundFooterColor;
-  //   // border: 1px solid $color-border;
-  //   input {
-  //     background-color: $backgroundFooterColor;
-  //   }
-  // }
+  ::ng-deep nz-input-group {
+    border-radius: 20px;
+    background-color: $backgroundFooterColor;
+    border: 1px solid $color-border;
+    height: 44px;
+    input {
+      background-color: $backgroundFooterColor;
+    }
+  }
 
   ::ng-deep nz-form-label label {
     font-size: $font-medium !important;

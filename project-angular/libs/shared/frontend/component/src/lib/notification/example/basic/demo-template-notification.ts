@@ -1,0 +1,46 @@
+import {
+  Component,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
+
+import { NotificationService } from '../../notification.service';
+
+@Component({
+  selector: 'nz-demo-notification-template',
+  template: `
+    <button (click)="ninja()">Open the notification box</button>
+    <ng-template let-fruit="data">
+      It's a
+      <button (click)="show(fruit.name)">Cut It!</button>
+    </ng-template>
+  `,
+  styles: [
+    `
+      button {
+        margin-top: 8px;
+      }
+    `
+  ]
+})
+export class DemoTemplateNotificationComponent {
+  @ViewChild(TemplateRef, { static: false }) template!: TemplateRef<any>;
+
+  show(fruit: string): void {
+    alert(fruit);
+  }
+
+  ninja(): void {
+    const fruits = [
+      { name: 'Apple', color: 'red' },
+      { name: 'Orange', color: 'orange' },
+      { name: 'Watermelon', color: 'green' }
+    ];
+
+    fruits.forEach(fruit => {
+      this.notificationService.template(this.template, { nzData: fruit });
+    });
+  }
+
+  constructor(private notificationService: NotificationService) { }
+}

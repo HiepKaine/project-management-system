@@ -16,6 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@project-adngular/data": ["libs/data/src/index.ts"],
+      "@project-adngular/liba": ["libs/liba/src/index.ts"],
+      "@project-adngular/libs/shared/frontend/component": [
+        "libs/libs/shared/frontend/component/src/index.ts"
+      ],
       "@project-adngular/shared": ["libs/shared/src/index.ts"],
       "@project-adngular/shared/backend": ["libs/shared/backend/src/index.ts"],
       "@project-adngular/shared/backend/common": [
@@ -32,6 +36,9 @@
       ],
       "@project-adngular/shared/frontend/common": [
         "libs/shared/frontend/common/src/index.ts"
+      ],
+      "@project-adngular/shared/frontend/component": [
+        "libs/shared/frontend/component/src/index.ts"
       ],
       "@project-adngular/shared/frontend/form": [
         "libs/shared/frontend/form/src/index.ts"
