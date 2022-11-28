@@ -57,10 +57,10 @@ export class LoginComponent implements OnInit {
       },
     });
 
-    this.ngxFormManager.render(ngxform, this.loginFormAnchor.viewContainerRef)
+    this.ngxFormManager.render(ngxform, this.loginFormAnchor.viewContainerRef);
   }
 
   onSubmit(): void {
-    console.log(this.loginForm.value)
+    console.log(this.loginForm.value);
   }
 }

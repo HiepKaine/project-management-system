@@ -14,9 +14,9 @@ const routes: Routes = [
         component: LoginComponent,
       },
       {
-        path:'forgot',
+        path: 'forgot',
         component: ForgotPasswordComponent,
-      }
+      },
     ],
   },
 ];

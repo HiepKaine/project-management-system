@@ -27,9 +27,9 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private ngxFormManager: NgxFormManager,
-    private notificationService: NotificationService,
-    private translate: TranslateService,
-    private authService: AuthService
+    // private notificationService: NotificationService,
+    // private translate: TranslateService,
+    // private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -47,20 +47,21 @@ export class ForgotPasswordComponent implements OnInit {
     this.ngxFormManager.render(ngxform, this.forgotFormAnchor.viewContainerRef);
   }
   onSubmit() {
-    if (this.forgotPassForm.invalid) {
-      this.ngxFormManager.markAllAsDirty(this.forgotPassForm);
-    } else {
-      this.authService
-        .forgotPassword(this.forgotPassForm.value.email)
-        .subscribe(() => {
-          this.notificationService.success(
-            this.translate.instant('success.title'),
-            this.translate.instant(
-              'Chúng tôi đã gửi email cho bạn, vui lòng kiểm tra và làm theo hướng dẫn trong email'
-            ),
-            { nzDuration: 3000 }
-          );
-        });
-    }
+  //   if (this.forgotPassForm.invalid) {
+  //     this.ngxFormManager.markAllAsDirty(this.forgotPassForm);
+  //   } else {
+  //     this.authService
+  //       .forgotPassword(this.forgotPassForm.value.email)
+  //       .subscribe(() => {
+  //         this.notificationService.success(
+  //           this.translate.instant('success.title'),
+  //           this.translate.instant(
+  //             'Chúng tôi đã gửi email cho bạn, vui lòng kiểm tra và làm theo hướng dẫn trong email'
+  //           ),
+  //           { nzDuration: 3000 }
+  //         );
+  //       });
+  //   }
+  console.log(this.forgotPassForm.value)
   }
 }

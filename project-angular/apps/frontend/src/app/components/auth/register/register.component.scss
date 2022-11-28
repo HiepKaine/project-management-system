@@ -1,0 +1,112 @@
+@import 'apps/frontend/src/styles/_variables.scss';
+@import 'apps/frontend/src/styles/_mixin.scss';
+@import 'node_modules/bootstrap/scss/_functions.scss';
+@import 'node_modules/bootstrap/scss/_variables.scss';
+@import 'node_modules/bootstrap/scss/mixins/_breakpoints.scss';
+
+.main {
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  padding: 30px;
+  margin: 0 auto;
+  @include media-breakpoint-up(md) {
+    width: 410px;
+  }
+  .heading {
+    color: $color-title;
+    font-size: 24px;
+    font-family: $font-bold;
+  }
+
+  ::ng-deep nz-input-group {
+    border-radius: 20px;
+    background-color: $backgroundFooterColor;
+    border: 1px solid $color-border;
+    input {
+      background-color: $backgroundFooterColor;
+    }
+  }
+
+  ::ng-deep nz-form-label label {
+    font-size: $font-medium !important;
+    font-family: $font-italic;
+    color: $primaryLightColor;
+  }
+  .register-form {
+    .input {
+      display: flex;
+      align-items: center;
+      margin-top: 14px;
+
+      label {
+        font-size: 15px;
+        color: #181a18;
+        text-align: center;
+      }
+    }
+
+    .mg {
+      margin-top: 40px !important;
+    }
+
+    .login-form__register {
+      p {
+        font-family: $font-italic;
+        font-size: $font-smallest;
+        color: $color-result;
+        a {
+          color: $color-correct;
+          font-size: $font-smallest;
+          text-decoration: underline;
+          &:hover {
+            color: #ff8200;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+:host ::ng-deep {
+  .ant-form-item-label {
+    padding-bottom: 3px;
+    label {
+      font-size: 14px;
+    }
+  }
+
+  .ant-input-affix-wrapper-lg {
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid #47126b;
+  }
+  .ant-input-affix-wrapper > input.ant-input {
+    background: transparent !important;
+  }
+  .ant-form-item {
+    margin-bottom: 3px;
+  }
+  .btn-login {
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 22px;
+    color: $white;
+    font-family: $font-bold;
+    font-size: $font-medium;
+    background-color: $color-button;
+    &:hover {
+      transition-duration: 0.1s;
+      background-color: $white;
+      color: $color-button;
+      border: 1px solid $color-button;
+    }
+  }
+}
+
+::ng-deep {
+  .anticon-eye svg {
+    color: $lightColor !important;
+  }
+}
