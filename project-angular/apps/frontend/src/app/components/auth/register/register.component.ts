@@ -11,6 +11,7 @@ import {
   PasswordControlComponent,
   TextControlComponent,
 } from '@project-adngular/shared/frontend/form';
+import * as ShellActions from 'apps/frontend/src/app/components/+state/shell/shell.actions';
 import { NotificationService } from 'libs/shared/frontend/component/src/lib/notification/notification.service';
 import { Store } from '@ngrx/store';
 
@@ -19,7 +20,7 @@ import { Store } from '@ngrx/store';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterAccountComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   @ViewChild('anchor', { static: true }) anchor!: NgxFormrAnchorComponent;
 
   public registerForm: FormGroup = this.fb.group({
