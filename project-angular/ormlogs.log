@@ -1,0 +1,578 @@
+[2022-11-29T07:20:44.496Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'webdoan' AND `TABLE_NAME` = 'migrations'
+[2022-11-29T07:20:44.521Z][QUERY]: CREATE TABLE `migrations` (`id` int NOT NULL AUTO_INCREMENT, `timestamp` bigint NOT NULL, `name` varchar(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-11-29T07:20:44.584Z][QUERY]: SELECT * FROM `webdoan`.`migrations` `migrations` ORDER BY `id` DESC
+[2022-11-29T07:20:44.590Z]0 migrations are already loaded in the database.
+[2022-11-29T07:20:44.590Z]5 migrations were found in the source code.
+[2022-11-29T07:20:44.591Z]5 migrations are new migrations that needs to be executed.
+[2022-11-29T07:20:44.592Z][QUERY]: START TRANSACTION
+[2022-11-29T07:20:44.593Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'webdoan' AND `TABLE_NAME` = 'role'
+[2022-11-29T07:20:44.599Z][QUERY]: CREATE TABLE `role` (`id` int NOT NULL AUTO_INCREMENT, `name` varchar(255) NOT NULL, `slug` varchar(255) NOT NULL, `level` int NOT NULL DEFAULT 0, `deletedAt` datetime NULL, `createdAt` timestamp NOT NULL DEFAULT NOW(), `updatedAt` timestamp NOT NULL DEFAULT NOW(), PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-11-29T07:20:44.628Z][QUERY]: INSERT INTO `webdoan`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1649663570256,"CreateRoleTable1649663570256"]
+[2022-11-29T07:20:44.633Z]Migration CreateRoleTable1649663570256 has been executed successfully.
+[2022-11-29T07:20:44.634Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'webdoan' AND `TABLE_NAME` = 'userRole'
+[2022-11-29T07:20:44.640Z][QUERY]: CREATE TABLE `userRole` (`id` int NOT NULL AUTO_INCREMENT, `userId` int NOT NULL, `roleId` int NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-11-29T07:20:44.663Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2022-11-29T07:20:44.666Z][QUERY]: 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'webdoan'
+                          AND `TABLE_NAME` = 'userRole'
+                    
+[2022-11-29T07:20:44.668Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'userrole'
+                
+[2022-11-29T07:20:44.669Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'userrole'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2022-11-29T07:20:44.670Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2022-11-29T07:20:44.670Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'userrole'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'userrole'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2022-11-29T07:20:44.670Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'userrole'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'userrole'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2022-11-29T07:20:45.045Z][QUERY]: SELECT VERSION() AS `version`
+[2022-11-29T07:20:45.048Z][QUERY]: CREATE INDEX `IDX_USER_ROLE_USER_ID` ON `userrole` (`userId`)
+[2022-11-29T07:20:45.332Z][QUERY]: CREATE INDEX `IDX_USER_ROLE_ROLE_ID` ON `userrole` (`roleId`)
+[2022-11-29T07:20:45.344Z][QUERY]: INSERT INTO `webdoan`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1649663681859,"CreateUserRoleTable1649663681859"]
+[2022-11-29T07:20:45.349Z]Migration CreateUserRoleTable1649663681859 has been executed successfully.
+[2022-11-29T07:20:45.350Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'webdoan' AND `TABLE_NAME` = 'permission'
+[2022-11-29T07:20:45.361Z][QUERY]: CREATE TABLE `permission` (`id` int NOT NULL AUTO_INCREMENT, `name` varchar(255) NOT NULL, `slug` varchar(255) NOT NULL, `deletedAt` datetime NULL, `createdAt` timestamp NOT NULL DEFAULT NOW(), `updatedAt` timestamp NOT NULL DEFAULT NOW(), PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-11-29T07:20:45.383Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2022-11-29T07:20:45.384Z][QUERY]: 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'webdoan'
+                          AND `TABLE_NAME` = 'permission'
+                    
+[2022-11-29T07:20:45.385Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'permission'
+                
+[2022-11-29T07:20:45.386Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'permission'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2022-11-29T07:20:45.386Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2022-11-29T07:20:45.387Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'permission'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'permission'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2022-11-29T07:20:45.387Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'permission'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'permission'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2022-11-29T07:20:45.525Z][QUERY]: SELECT VERSION() AS `version`
+[2022-11-29T07:20:45.527Z][QUERY]: CREATE INDEX `IDX_PERMISSON_SLUG` ON `permission` (`slug`)
+[2022-11-29T07:20:45.540Z][QUERY]: INSERT INTO `webdoan`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1649663783122,"CreatePermissionTable1649663783122"]
+[2022-11-29T07:20:45.543Z]Migration CreatePermissionTable1649663783122 has been executed successfully.
+[2022-11-29T07:20:45.544Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'webdoan' AND `TABLE_NAME` = 'rolePermission'
+[2022-11-29T07:20:45.549Z][QUERY]: CREATE TABLE `rolePermission` (`id` int NOT NULL AUTO_INCREMENT, `roleId` int NOT NULL, `permissionId` int NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-11-29T07:20:45.568Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2022-11-29T07:20:45.569Z][QUERY]: 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'webdoan'
+                          AND `TABLE_NAME` = 'rolePermission'
+                    
+[2022-11-29T07:20:45.570Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'rolepermission'
+                
+[2022-11-29T07:20:45.571Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'rolepermission'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2022-11-29T07:20:45.571Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2022-11-29T07:20:45.571Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'rolepermission'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'rolepermission'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2022-11-29T07:20:45.572Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'rolepermission'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'rolepermission'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2022-11-29T07:20:45.671Z][QUERY]: SELECT VERSION() AS `version`
+[2022-11-29T07:20:45.673Z][QUERY]: CREATE INDEX `IDX_P_ROLE_ID` ON `rolepermission` (`roleId`)
+[2022-11-29T07:20:45.689Z][QUERY]: CREATE INDEX `IDX_P_PERMISSION_Id` ON `rolepermission` (`permissionId`)
+[2022-11-29T07:20:45.699Z][QUERY]: INSERT INTO `webdoan`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1649663943280,"CreateRolePermissionTable1649663943280"]
+[2022-11-29T07:20:45.702Z]Migration CreateRolePermissionTable1649663943280 has been executed successfully.
+[2022-11-29T07:20:45.703Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'webdoan' AND `TABLE_NAME` = 'passwordReset'
+[2022-11-29T07:20:45.708Z][QUERY]: CREATE TABLE `passwordReset` (`id` int NOT NULL AUTO_INCREMENT, `user` varchar(255) NOT NULL, `type` int NOT NULL DEFAULT 1, `token` varchar(255) NOT NULL, `expire` datetime NULL DEFAULT (DATE_ADD(NOW(), INTERVAL 2 DAY)), `createdAt` timestamp NOT NULL DEFAULT NOW(), `updatedAt` timestamp NOT NULL DEFAULT NOW(), PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-11-29T07:20:45.732Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2022-11-29T07:20:45.733Z][QUERY]: 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'webdoan'
+                          AND `TABLE_NAME` = 'passwordReset'
+                    
+[2022-11-29T07:20:45.735Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'passwordreset'
+                
+[2022-11-29T07:20:45.736Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'passwordreset'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2022-11-29T07:20:45.736Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2022-11-29T07:20:45.737Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'passwordreset'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'passwordreset'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2022-11-29T07:20:45.737Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'passwordreset'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'passwordreset'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2022-11-29T07:20:45.845Z][QUERY]: SELECT VERSION() AS `version`
+[2022-11-29T07:20:45.847Z][QUERY]: CREATE INDEX `IDX_PWD_TOKEN` ON `passwordreset` (`token`)
+[2022-11-29T07:20:45.861Z][QUERY]: INSERT INTO `webdoan`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1649664073714,"CreatePasswordResetTable1649664073714"]
+[2022-11-29T07:20:45.863Z]Migration CreatePasswordResetTable1649664073714 has been executed successfully.
+[2022-11-29T07:20:45.864Z][QUERY]: COMMIT
+[2022-11-29T07:33:14.646Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'webdoan' AND `TABLE_NAME` = 'migrations'
+[2022-11-29T07:33:14.675Z][QUERY]: SELECT * FROM `webdoan`.`migrations` `migrations` ORDER BY `id` DESC
+[2022-11-29T07:33:14.678Z]5 migrations are already loaded in the database.
+[2022-11-29T07:33:14.679Z]6 migrations were found in the source code.
+[2022-11-29T07:33:14.680Z]CreatePasswordResetTable1649664073714 is the last executed migration. It was executed on Mon Apr 11 2022 15:01:13 GMT+0700 (Indochina Time).
+[2022-11-29T07:33:14.681Z]1 migrations are new migrations that needs to be executed.
+[2022-11-29T07:33:14.682Z][QUERY]: START TRANSACTION
+[2022-11-29T07:33:14.686Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'webdoan' AND `TABLE_NAME` = 'user'
+[2022-11-29T07:33:14.696Z][QUERY]: CREATE TABLE `user` (`id` int NOT NULL AUTO_INCREMENT, `email` varchar(255) NULL, `code` varchar(255) NULL, `username` varchar(255) NULL, `password` varchar(255) NULL, `firstName` varchar(255) NULL, `lastName` varchar(255) NULL, `position` varchar(255) NULL, `organization` varchar(255) NULL, `status` int NOT NULL DEFAULT 1, `image` varchar(255) NULL, `phoneNumber` varchar(255) NOT NULL DEFAULT '', `verifyToken` varchar(255) NULL, `verified` boolean NOT NULL DEFAULT 0, `verifiedAt` datetime NULL, `loginFailed` int NOT NULL DEFAULT 0, `deletedAt` datetime NULL, `createdAt` timestamp NOT NULL DEFAULT NOW(), `updatedAt` timestamp NOT NULL DEFAULT NOW(), PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-11-29T07:33:14.729Z][QUERY]: SELECT DATABASE() AS `db_name`
+[2022-11-29T07:33:14.731Z][QUERY]: 
+                        SELECT `TABLE_SCHEMA`,
+                               `TABLE_NAME`
+                        FROM `INFORMATION_SCHEMA`.`TABLES`
+                        WHERE `TABLE_SCHEMA` = 'webdoan'
+                          AND `TABLE_NAME` = 'user'
+                    
+[2022-11-29T07:33:14.735Z][QUERY]: 
+                SELECT
+                    *
+                FROM
+                    `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE
+                    `TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'user'
+                
+[2022-11-29T07:33:14.736Z][QUERY]: SELECT * FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'user'
+            ) `kcu` WHERE `CONSTRAINT_NAME` = 'PRIMARY'
+[2022-11-29T07:33:14.736Z][QUERY]: 
+            SELECT
+                `SCHEMA_NAME`,
+                `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`,
+                `DEFAULT_COLLATION_NAME` AS `COLLATION`
+            FROM `INFORMATION_SCHEMA`.`SCHEMATA`
+            
+[2022-11-29T07:33:14.737Z][QUERY]: 
+            SELECT
+                `s`.*
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`STATISTICS`
+                WHERE
+                    `TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'user'
+            ) `s`
+            LEFT JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'user'
+            ) `rc`
+                ON
+                    `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME`
+                    AND
+                    `s`.`TABLE_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA`
+            WHERE
+                `s`.`INDEX_NAME` != 'PRIMARY'
+                AND
+                `rc`.`CONSTRAINT_NAME` IS NULL
+            
+[2022-11-29T07:33:14.737Z][QUERY]: 
+            SELECT
+                `kcu`.`TABLE_SCHEMA`,
+                `kcu`.`TABLE_NAME`,
+                `kcu`.`CONSTRAINT_NAME`,
+                `kcu`.`COLUMN_NAME`,
+                `kcu`.`REFERENCED_TABLE_SCHEMA`,
+                `kcu`.`REFERENCED_TABLE_NAME`,
+                `kcu`.`REFERENCED_COLUMN_NAME`,
+                `rc`.`DELETE_RULE` `ON_DELETE`,
+                `rc`.`UPDATE_RULE` `ON_UPDATE`
+            FROM (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` `kcu`
+                WHERE
+                    `kcu`.`TABLE_SCHEMA` = 'webdoan'
+                    AND
+                    `kcu`.`TABLE_NAME` = 'user'
+            ) `kcu`
+            INNER JOIN (
+                SELECT
+                    *
+                FROM `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS`
+                WHERE
+                    `CONSTRAINT_SCHEMA` = 'webdoan'
+                    AND
+                    `TABLE_NAME` = 'user'
+            ) `rc`
+                ON
+                    `rc`.`CONSTRAINT_SCHEMA` = `kcu`.`CONSTRAINT_SCHEMA`
+                    AND
+                    `rc`.`TABLE_NAME` = `kcu`.`TABLE_NAME`
+                    AND
+                    `rc`.`CONSTRAINT_NAME` = `kcu`.`CONSTRAINT_NAME`
+            
+[2022-11-29T07:33:14.934Z][QUERY]: SELECT VERSION() AS `version`
+[2022-11-29T07:33:14.938Z][QUERY]: CREATE INDEX `IDX_USER_EMAIL` ON `user` (`email`)
+[2022-11-29T07:33:14.953Z][QUERY]: CREATE INDEX `IDX_USER_USERNAME` ON `user` (`username`)
+[2022-11-29T07:33:14.965Z][QUERY]: CREATE INDEX `IDX_USER_FIRST_NAME` ON `user` (`firstName`)
+[2022-11-29T07:33:14.980Z][QUERY]: CREATE INDEX `IDX_USER_LAST_NAME` ON `user` (`lastName`)
+[2022-11-29T07:33:15.035Z][QUERY]: INSERT INTO `webdoan`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1649663074449,"CreateUserTable1649663074449"]
+[2022-11-29T07:33:15.039Z]Migration CreateUserTable1649663074449 has been executed successfully.
+[2022-11-29T07:33:15.039Z][QUERY]: COMMIT
+[2022-11-29T07:44:14.662Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'webdoan' AND `TABLE_NAME` = 'seeds'
+[2022-11-29T07:44:14.687Z][QUERY]: CREATE TABLE `seeds` (`id` int NOT NULL AUTO_INCREMENT, `timestamp` bigint NOT NULL, `name` varchar(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2022-11-29T07:44:14.725Z][QUERY]: SELECT * FROM `webdoan`.`seeds` `seeds` ORDER BY `id` DESC
+[2022-11-29T07:44:14.729Z]0 migrations are already loaded in the database.
+[2022-11-29T07:44:14.729Z]2 migrations were found in the source code.
+[2022-11-29T07:44:14.729Z]2 migrations are new migrations that needs to be executed.
+[2022-11-29T07:44:14.731Z][QUERY]: START TRANSACTION
+[2022-11-29T07:44:14.738Z][QUERY]: INSERT INTO `role`(`name`, `slug`) VALUES (?, ?) -- PARAMETERS: ["Super Admin","superadmin"]
+[2022-11-29T07:44:14.743Z][QUERY]: INSERT INTO `role`(`name`, `slug`) VALUES (?, ?) -- PARAMETERS: ["Admin","admin"]
+[2022-11-29T07:44:14.746Z][QUERY]: INSERT INTO `role`(`name`, `slug`) VALUES (?, ?) -- PARAMETERS: ["User","user"]
+[2022-11-29T07:44:14.748Z][QUERY]: INSERT INTO `role`(`name`, `slug`) VALUES (?, ?) -- PARAMETERS: ["Manager","manager"]
+[2022-11-29T07:44:14.752Z][QUERY]: INSERT INTO `webdoan`.`seeds`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1649669445031,"RoleTableSeeder1649669445031"]
+[2022-11-29T07:44:14.754Z]Migration RoleTableSeeder1649669445031 has been executed successfully.
+[2022-11-29T07:44:15.008Z][QUERY]: SELECT * from role
+[2022-11-29T07:44:15.020Z][QUERY]: INSERT INTO `user`(`username`, `email`, `password`, `status`, `phoneNumber`) VALUES (?, ?, ?, ?, ?) -- PARAMETERS: ["superadmin","superadmin@gmail.com","$2b$10$2GpjwuVxj.NN0zL25szbveIYKzcSmO/FnPfDJP5lgxNk/2vIXqO1e",1,"0123456789"]
+[2022-11-29T07:44:15.024Z][QUERY]: INSERT INTO `userRole`(`userId`, `roleId`) VALUES (?, ?) -- PARAMETERS: [1,1]
+[2022-11-29T07:44:15.028Z][QUERY]: INSERT INTO `user`(`username`, `email`, `password`, `status`, `phoneNumber`) VALUES (?, ?, ?, ?, ?) -- PARAMETERS: ["admin","admin@gmail.com","$2b$10$q/tALn3rDR2QBqyztA2e9OrnUj0z.pwIqgP4rOfHr2qSA/aRRVCPW",1,"0123456788"]
+[2022-11-29T07:44:15.030Z][QUERY]: INSERT INTO `userRole`(`userId`, `roleId`) VALUES (?, ?) -- PARAMETERS: [2,2]
+[2022-11-29T07:44:15.033Z][QUERY]: INSERT INTO `user`(`username`, `email`, `password`, `status`, `phoneNumber`) VALUES (?, ?, ?, ?, ?) -- PARAMETERS: ["user","user@gmail.com","$2b$10$oyPT/OPWk3l7QjfRW.tQIeJOC3iXO4J7jXd5g2VCvU7IEVwS7EPL.",1,"0123456787"]
+[2022-11-29T07:44:15.036Z][QUERY]: INSERT INTO `userRole`(`userId`, `roleId`) VALUES (?, ?) -- PARAMETERS: [3,3]
+[2022-11-29T07:44:15.038Z][QUERY]: INSERT INTO `webdoan`.`seeds`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1649669979240,"UserTableSeeder1649669979240"]
+[2022-11-29T07:44:15.040Z]Migration UserTableSeeder1649669979240 has been executed successfully.
+[2022-11-29T07:44:15.041Z][QUERY]: COMMIT
