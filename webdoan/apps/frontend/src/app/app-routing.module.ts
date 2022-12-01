@@ -7,6 +7,7 @@ import { AuthOrGuestGuard } from './@core/guard/AuthOrGuest.guard';
 
 import { MasterComponent } from './master.component';
 
+
 const routes: Routes =
   [
     {
