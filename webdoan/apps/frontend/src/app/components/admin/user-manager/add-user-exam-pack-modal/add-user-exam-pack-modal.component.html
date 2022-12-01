@@ -1,0 +1,61 @@
+<form [formGroup]="form" nz-form nzLayout="vertical">
+  <div class="search">
+    <div class="search__btn">
+      <button nz-button nzType="primary" nzSize="large" (click)="search()">
+        <i nz-icon nzType="search" nzTheme="outline"></i>Tìm
+      </button>
+    </div>
+    <div class="search__input">
+      <div class="row">
+        <ngx-form-anchor #formInputs></ngx-form-anchor>
+      </div>
+    </div>
+  </div>
+</form>
+<nz-table #basicTable [nzData]="examPacks" nzFrontPagination="false">
+  <thead>
+    <tr>
+      <th>Tên gói trắc nghiệm</th>
+      <th class="text-center">Học phí</th>
+      <th class="text-center">Trạng thái</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let examPack of examPacks">
+      <td>
+        <p>{{ examPack.name }}</p>
+        <p>Giảng viên: {{ examPack.lecturer }}</p>
+      </td>
+      <td class="text-center">
+        <p>
+          <del>{{ examPack.getOriginalPriceText() }}</del>
+        </p>
+        <p>{{ examPack.getPriceText() }}</p>
+      </td>
+      <td>
+        <ng-container *ngIf="examPack.status; else disabledCourse">
+          <nz-alert nzType="success" nzMessage="Mở bán"></nz-alert>
+        </ng-container>
+        <ng-template #disabledCourse>
+          <nz-alert nzType="error" nzMessage="Ngừng bán"></nz-alert>
+        </ng-template>
+      </td>
+      <td>
+        <div class="text-center">
+          <button nz-button nzType="primary" (click)="select(examPack)">
+            <i nz-icon nzType="plus"></i> Thêm
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<ng-container *ngIf="pagination">
+  <nz-pagination
+    [nzPageIndex]="pagination.currentPage"
+    [nzPageSize]="pagination.itemsPerPage"
+    [nzTotal]="pagination.totalItems"
+    (nzPageIndexChange)="gotoPage($event)"
+  ></nz-pagination>
+</ng-container>

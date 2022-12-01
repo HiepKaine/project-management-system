@@ -1,0 +1,123 @@
+@import 'apps/frontend/src/styles/_variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+.wrapper {
+  .main-content {
+    padding-bottom: 40px;
+    .registered-course {
+      .heading-text {
+        font-family: $font-bold;
+        font-size: 24px;
+        color: $color-title;
+        text-transform: uppercase;
+        line-height: 24px;
+        padding-bottom: 10px;
+        margin-bottom: 18px;
+        border-bottom: 2px solid $lightColor;
+      }
+    }
+    
+    ::ng-deep nz-pagination {
+      text-align: center;
+      .ant-pagination-item-link {
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .ant-pagination-item {
+        border-radius: 5px;
+        border-color: $primary-color;
+        a {
+          line-height: 32px;
+        }
+      }
+
+      .ant-pagination-item-active {
+        a {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive */
+
+@include media-breakpoint-down(md) {
+  .registered-course {
+    margin-top: 40px;
+    .heading-text {
+      line-height: 14px;
+      text-align: center;
+    }
+    .courses {
+      margin-bottom: 20px;
+      .courses__name__heading {
+        font-size: $font-small;
+      }
+      .courses__rating {
+        position: relative;
+        .courses__rating__star {
+          span {
+            display: block;
+          }
+        }
+        .courses__rating__price {
+          position: absolute;
+          top: 2px;
+          right: 0;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-between(md, xxl) {
+  .registered-course {
+    .heading-text {
+      font-size: 20px !important;
+    }
+    .courses {
+      margin-bottom: 20px;
+      .courses__name__heading {
+        font-size: $font-small !important;
+        line-height: 20px !important;
+        height: 40px !important;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      .courses__rating {
+        position: relative;
+        .courses__rating__star {
+          span {
+            display: block;
+          }
+        }
+        .courses__rating__price {
+          position: absolute;
+          top: 2px;
+          right: 0;
+        }
+      }
+      ::ng-deep {
+        .ant-rate-star {
+          font-size: $font-smallest;
+          line-height: 20px;
+          margin-right: 3px !important;
+        }
+      }
+    }
+  }
+}

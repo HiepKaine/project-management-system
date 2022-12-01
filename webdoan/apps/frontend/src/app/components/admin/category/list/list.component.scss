@@ -1,0 +1,37 @@
+@import 'apps/frontend/src/styles/_mixin.scss';
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+.category {
+  @include e('item') {
+    &.deleted {
+      .category__item__name {
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  .sub-nav {
+    @include media-breakpoint-down(md) {
+      flex-direction: column-reverse;
+    }
+    .sub-nav-search {
+      width: 40%;
+      @include media-breakpoint-down(lg) {
+        width: 60%;
+        flex-direction: column;
+      }
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
+
+      button {
+        margin-left: 16px;
+        @include media-breakpoint-down(lg) {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+@import 'apps/frontend/src/styles/_variables.scss';
+@import 'apps/frontend/src/styles/_mixin.scss';
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+
+::ng-deep {
+  .faq-modal {
+    overflow-y: scroll;
+    .ant-modal {
+      top: 0;
+      float: right;
+      padding: 0;
+      bottom: 0;
+      .ant-modal-content {
+        min-height: 100vh;
+      }
+    }
+    .ant-modal-close {
+      .ant-modal-close-icon {
+        color: #fff;
+        font-size: 20px;
+      }
+    }
+    .ant-modal-header {
+      background-color: #cf002a;
+      .ant-modal-title {
+        font-family: $font-regular;
+        font-size: 20px;
+        font-weight: bold;
+        color: #fff;
+      }
+    }
+  }
+  .ant-collapse-borderless {
+    background-color: transparent;
+    .ant-collapse-item {
+      border: none;
+    }
+  }
+  .ant-collapse {
+    .ant-collapse-item {
+      .ant-collapse-header {
+        color: $color-title;
+        font-size: $font-medium;
+        font-family: $font-semiBold;
+        &:hover {
+          color: $backgroundMenuActive;
+        }
+      }
+    }
+
+    .ant-collapse-content-box {
+      padding-left: 46px;
+      p {
+        font-size: $font-medium;
+        color: $primaryLightColor;
+        font-family: $font-regular;
+        a {
+          color: $color-correct;
+        }
+      }
+    }
+
+    .ant-collapse-header {
+      .ng-star-inserted {
+        margin-right: 6px;
+        border-radius: 4px;
+        background-color: #efefef;
+        i {
+          margin: 0;
+          padding: 4px;
+          vertical-align: 3px;
+          font-size: $font-small;
+        }
+      }
+    }
+  }
+}

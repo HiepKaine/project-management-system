@@ -1,0 +1,14 @@
+import { IsString } from 'class-validator';
+
+import { ApiProperty } from '@nestjs/swagger';
+
+export class UpdateCategoryDto {
+  @ApiProperty()
+  @IsString()
+  name: string;
+}
+export class CreateCategoryDto {
+  @ApiProperty()
+  @IsString()
+  name: string;
+}

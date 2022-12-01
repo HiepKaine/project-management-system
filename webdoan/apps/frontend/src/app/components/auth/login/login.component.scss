@@ -1,0 +1,86 @@
+@import 'apps/frontend/src/styles/_variables.scss';
+@import 'apps/frontend/src/styles/_mixin.scss';
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+.main {
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  padding: 30px;
+  margin: 0 auto;
+  @include media-breakpoint-up(md) {
+    width: 410px;
+  }
+
+  .heading {
+    color: $color-title;
+    font-size: 24px;
+    font-family: $font-bold;
+  }
+
+  ::ng-deep nz-input-group {
+    border-radius: 20px;
+    background-color: $backgroundFooterColor;
+    border: 1px solid $color-border;
+    input {
+      background-color: $backgroundFooterColor;
+    }
+  }
+
+  ::ng-deep nz-form-label label {
+    font-size: $font-medium !important;
+    font-family: $font-italic;
+    color: $primaryLightColor;
+  }
+
+  .login-form {
+    &__forgot {
+      margin-bottom: 35px;
+      label {
+        font-family: $font-regular;
+        color: $primaryLightColor;
+        font-size: $font-small;
+      }
+
+      a {
+        font-family: $font-italic;
+        color: $primaryLightColor;
+        font-size: $font-small;
+        text-decoration: underline;
+      }
+    }
+
+    &__register {
+      p {
+        font-size: $font-small;
+        font-family: $font-italic;
+        color: $color-result;
+
+        a {
+          color: $color-correct;
+        }
+      }
+    }
+
+    .btn {
+      @include m('info') {
+        margin-bottom: 20px;
+        width: 100%;
+        padding: 20px;
+        border-radius: 22px;
+        color: $white;
+        font-family: $font-semiBold;
+        font-size: $font-medium;
+        background-color: $color-button;
+        &:hover {
+          transition-duration: 0.1s;
+          background-color: $white;
+          color: $color-button;
+          border: 1px solid $color-button;
+        }
+      }
+    }
+  }
+}

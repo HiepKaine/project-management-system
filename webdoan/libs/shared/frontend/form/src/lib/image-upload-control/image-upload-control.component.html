@@ -1,0 +1,74 @@
+<nz-form-item>
+  <ng-container *ngIf="option.label">
+    <ng-container *ngIf="hasRequiredValidator(); else noRequiredLabel">
+      <nz-form-label nzRequired>{{ option.label }}</nz-form-label>
+    </ng-container>
+    <ng-template #noRequiredLabel>
+      <nz-form-label>{{ option.label }}</nz-form-label>
+    </ng-template>
+  </ng-container>
+  <nz-form-control [nzValidateStatus]="control" [nzErrorTip]="combineTpl">
+    <div class="clearfix">
+      <nz-upload
+        nzListType="picture-card"
+        [(nzFileList)]="fileList"
+        [nzPreview]="handlePreview"
+        [nzCustomRequest]="handleUpload()"
+        (nzChange)="handleChange($event)"
+        [nzRemove]="handleRemove()"
+        [nzMultiple]="option.nzMultiple ?? false"
+      >
+        <div>
+          <i nz-icon nzType="plus"></i>
+          <div style="margin-top: 8px">Upload</div>
+        </div>
+      </nz-upload>
+      <nz-modal
+        [nzVisible]="previewVisible"
+        [nzContent]="modalContent"
+        [nzFooter]="null"
+        (nzOnCancel)="previewVisible = false"
+      >
+        <ng-template #modalContent>
+          <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+        </ng-template>
+      </nz-modal>
+    </div>
+
+    <ng-template #combineTpl let-control>
+      <ng-container *ngIf="control.hasError('minlength')">
+        <span
+          translate="form.validators.minlength"
+          [translateParams]="{
+            length: control.errors.minlength.requiredLength
+          }"
+        ></span>
+      </ng-container>
+
+      <ng-container *ngIf="control.hasError('maxlength')">
+        <span
+          translate="form.validators.maxlength"
+          [translateParams]="{
+            length: control.errors.maxlength.requiredLength
+          }"
+        ></span>
+      </ng-container>
+
+      <ng-container *ngIf="control.hasError('required')"
+        ><span translate="form.validators.required"></span>
+      </ng-container>
+
+      <ng-container *ngIf="control.hasError('email')"
+        ><span translate="form.validators.email"></span
+      ></ng-container>
+
+      <ng-container *ngIf="control.hasError('requiredtrue')"
+        ><span translate="form.validators.requiredtrue"></span
+      ></ng-container>
+
+      <ng-container *ngIf="control.hasError('pattern')"
+        ><span translate="form.validators.pattern"></span
+      ></ng-container>
+    </ng-template>
+  </nz-form-control>
+</nz-form-item>

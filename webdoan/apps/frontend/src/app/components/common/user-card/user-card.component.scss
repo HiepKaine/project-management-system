@@ -1,0 +1,20 @@
+@import 'apps/frontend/src/styles/_variables.scss';
+@import 'apps/frontend/src/styles/_mixin.scss';
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  span {
+    @include media-breakpoint-down(xl){
+      display: none;
+    }
+  }
+}
+
+nz-card {
+  max-width: 1200px;
+}

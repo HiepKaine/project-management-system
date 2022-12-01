@@ -1,0 +1,80 @@
+<div class="user-ip component">
+  <nz-breadcrumb class="mb-3">
+    <nz-breadcrumb-item>
+      <a [routerLink]="['/', 'admin', 'user']">
+        <img src="/assets/images/previous.svg" /> Danh sách học viên</a
+      >
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>Danh sách Ip</nz-breadcrumb-item>
+  </nz-breadcrumb>
+  <div class="row">
+    <div class="col">
+      <h1 class="title">Danh sách IP</h1>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col">
+      <div class="d-flex justify-content-between">
+        <div class="mb-3">
+          <app-user-card *ngIf="user" [user]="user"></app-user-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col user-ip">
+      <nz-table
+        #basicTable
+        [nzData]="userIps"
+        [nzFrontPagination]="false"
+        class="mb-2"
+      >
+        <thead>
+          <tr>
+            <th class="fw-bold">#</th>
+            <th class="fw-bold">IP</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            class="userIp__item"
+            *ngFor="let item of userIps; let i = index"
+            [ngClass]="{
+              deleted: item.deletedAt !== null && item.deletedAt !== undefined
+            }"
+          >
+            <td>{{ i + 1 }}</td>
+
+            <td class="userIp__item__name">
+              {{ item.ip }}
+            </td>
+            <td>
+              <div class="text-center">
+                <ng-container
+                  *ngIf="
+                    !(item.deletedAt !== null && item.deletedAt !== undefined)
+                  "
+                >
+                  <button nz-button nzType="link" (click)="deleteItem(item)">
+                    <i nz-icon nzType="delete" style="color: #cf002a"></i>
+                  </button>
+                </ng-container>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+      <ng-container *ngIf="pagination">
+        <nz-pagination
+          [nzPageIndex]="pagination.currentPage"
+          [nzPageSize]="pagination.itemsPerPage"
+          [nzTotal]="pagination.totalItems"
+          (nzPageIndexChange)="gotoPage($event)"
+        ></nz-pagination>
+      </ng-container>
+    </div>
+  </div>
+</div>

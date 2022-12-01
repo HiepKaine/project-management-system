@@ -1,0 +1,207 @@
+@mixin e($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+@mixin m($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+@mixin font-size($font-size, $line-height: normal, $letter-spacing: normal) {
+  font-size: $font-size * 1rem;
+  @if $line-height!=normal {
+    line-height: $line-height * 1rem;
+  }
+
+  @if $letter-spacing!=normal {
+    letter-spacing: $letter-spacing * 1px;
+  }
+}
+@mixin font($font-size, $line-height: normal, $font-weight: normal) {
+  font-size: $font-size * 1rem;
+
+  @if $line-height!=normal {
+    line-height: $line-height * 1rem;
+  }
+
+  @if $font-weight!=normal {
+    font-weight: $font-weight;
+  }
+}
+@mixin line-clamp($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $line;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+@mixin section-title {
+  margin-bottom: 3rem;
+  @include font(3, 4.1, 600);
+  color: $secondary-color;
+  @include media-breakpoint-down(xl) {
+    @include font(2, 2.7);
+    margin-bottom: 2rem;
+  }
+}
+@mixin section-heading {
+  @include font-size(3.6, 4.9);
+  font-weight: 700;
+  color: $primary-color;
+  text-transform: uppercase;
+  position: relative;
+  margin-bottom: 3rem;
+  @include media-breakpoint-down(sm){
+    @include font-size(2, 2.7);
+  }
+}
+@mixin flex($align: normal, $content: normal) {
+  display: flex;
+  @if $align!=normal {
+    align-items: $align;
+  }
+  @if $content!=normal {
+    justify-content: $content;
+  }
+}
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin color-placeholder($color) {
+  &::placeholder {
+    color: $color;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+
+  &::-ms-input-placeholder {
+    color: $color;
+  }
+}
+@mixin box-product($height) {
+  .box-product {
+    background: #fff;
+    border-radius: 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0px 3px 6px #00000038;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    @include media-breakpoint-down(sm) {
+      padding: 0;
+    }
+    .box-image {
+      position: relative;
+      height: 0;
+      margin: 0 auto;
+      overflow: hidden;
+      padding-top: $height;
+      border-radius: 0.6rem;
+      cursor: pointer;
+      img {
+        right: 0;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        top: 0;
+        position: absolute;
+        -o-object-position: 50% 50%;
+        object-position: 50% 50%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        font-family: 'object-fit: cover;';
+        transition: all 0.3s ease;
+      }
+    }
+    .box-content {
+      padding: 1.5rem;
+      position: relative;
+      @include media-breakpoint-down(sm) {
+        padding: 1rem;
+      }
+    }
+    .btn-addcart {
+      background-color: $primary-color;
+      @include box(100%, 0rem);
+      @include flex(center, center);
+      color: #fff;
+      border-radius: 9rem;
+      @include font(1.4, 1.8);
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+    &__name a {
+      @include font-size(1.4, 1.8);
+      margin-bottom: 1rem;
+      color: $black;
+      display: block;
+      @include line-clamp(2);
+    }
+    &__price {
+      @include flex(center);
+      .price-current {
+        @include font(1.6, 2.2, 600);
+        color: $primary-color;
+        margin-right: 1rem;
+      }
+    }
+    &-sale-off {
+      @include font(1, 1.4);
+      background: $green;
+      color: #fff;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.2rem;
+    }
+    &__status {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 0.2rem;
+      font-style: italic;
+      @include font(1.2, 1.6);
+      &--freeship {
+        background: $green;
+      }
+      &--out-stock {
+        background: $black;
+      }
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+      .box-content .btn-addcart {
+        margin-top: 1rem;
+        height: 4rem;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}

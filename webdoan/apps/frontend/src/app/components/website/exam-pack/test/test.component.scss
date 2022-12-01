@@ -1,0 +1,134 @@
+@import 'apps/frontend/src/styles/_variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+.wrapper {
+  padding-top: 20px;
+  background-color: $backgroundColor2;
+  .content {
+    @include media-breakpoint-down(sm) {
+      flex-direction: column-reverse;
+    }
+    .box {
+      background-color: $white;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .information {
+      @include media-breakpoint-up(xl) {
+        width: 28%;
+      }
+      &__avatar {
+        background-color: $white;
+        img {
+          margin: 0 auto;
+        }
+      }
+
+      &__student {
+        background-color: $white;
+        .signs {
+          color: $primaryLightColor;
+          font-family: $font-regular;
+        }
+        p {
+          font-size: $font-medium;
+          color: $color-title;
+          font-family: $font-semiBold;
+        }
+        &__name {
+          font-size: $mediumTitleSize;
+          color: $color-title;
+          font-family: $font-bold;
+        }
+        &__id {
+          margin-left: 6px;
+        }
+        &__subject {
+          margin-left: 2px;
+        }
+        &__date {
+          margin-left: 21px;
+        }
+      }
+      &__time {
+        p {
+          font-size: $font-medium;
+          color: $primaryLightColor;
+          font-family: $font-regular;
+        }
+        ::ng-deep {
+          .count-down {
+            span {
+              font-size: $largeTitleSize;
+              color: $green;
+              font-family: $font-semiBold;
+            }
+          }
+        }
+      }
+      [nz-button] {
+        height: 54px;
+        font-size: $font-large;
+        background-color: $green;
+        font-family: $font-bold;
+        border-radius: 6px;
+      }
+    }
+    .navigation {
+      &__move {
+        width: 132px;
+        height: 34px;
+        color: $green;
+        font-size: $font-small;
+        border: 1px solid $green;
+        border-radius: 6px;
+        text-align: center;
+        font-family: $font-semiBold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .isFirstQuestion {
+        border: 1px solid $lightColor;
+        color: $lightColor;
+      }
+      .limitQuestion {
+        border: 1px solid $lightColor;
+        color: $lightColor;
+      }
+      &__question {
+        border: 1px solid $lightColor;
+        border-radius: 10px;
+        font-size: $font-small;
+        padding: 15px;
+        &__item {
+          width: 16.6%;
+          min-width: 80px;
+          padding: 5px;
+          button {
+            background-color: $backgroundColor2;
+            border: none;
+            border-radius: 6px;
+            color: $primaryLightColor;
+          }
+          .selected {
+            background-color: $green !important;
+            color: $white !important;
+          }
+          .answerred {
+            background-color: $blue-button;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}

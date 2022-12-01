@@ -1,0 +1,51 @@
+@import 'apps/frontend/src/styles/_mixin.scss';
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+.category {
+  @include e('item') {
+    &.deleted {
+      .contact__item {
+        &__name,
+        &__email,
+        &__phone,
+        &__status {
+          text-decoration: line-through;
+        }
+      }
+    }
+    .contact__item {
+      &__status,
+      &__email {
+        @include media-breakpoint-down(md) {
+          max-width: 100px;
+        }
+      }
+      &__edit {
+        @include media-breakpoint-down(md) {
+          max-width: 50px;
+        }
+      }
+    }
+  }
+
+  .sub-nav {
+    @include media-breakpoint-down(md) {
+      flex-direction: column-reverse;
+    }
+    .sub-nav-search {
+      width: 40%;
+      @include media-breakpoint-down(md) {
+        width: 100%;
+        flex-direction: column;
+      }
+      button {
+        margin-left: 16px;
+        @include media-breakpoint-down(md) {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

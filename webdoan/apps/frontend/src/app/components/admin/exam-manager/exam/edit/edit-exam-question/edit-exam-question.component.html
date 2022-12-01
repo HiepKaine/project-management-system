@@ -1,0 +1,168 @@
+<div class="mt-4">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <div class="row">
+        <div class="col-12">
+          <h3 class="title">Danh sách tự động (Tự động chọn theo danh mục)</h3>
+          <div class="search-question">
+            <div class="search-question__btn">
+              <button nz-button nzType="primary" nzSize="large" (click)="addQuestionByCategory()">
+                <i nz-icon nzType="search" nzTheme="outline"></i> Thêm câu hỏi
+              </button>
+            </div>
+            <div class="search-question__input">
+              <div class="row">
+                <ngx-form-anchor #formAddQuestionByCategoryInputs></ngx-form-anchor>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h3 class="title">Tự chọn câu hỏi</h3>
+          <div class="search-question">
+            <div class="search-question__btn">
+              <button nz-button nzType="primary" nzSize="large" (click)="searchQuestion()">
+                <i nz-icon nzType="search" nzTheme="outline"></i>Tìm
+              </button>
+            </div>
+            <div class="search-question__input">
+              <div class="row">
+                <ngx-form-anchor #formInputsSearchQuestion></ngx-form-anchor>
+              </div>
+            </div>
+          </div>
+
+          <div class="question mb-4">
+            <nz-table [nzData]="questions" nzFrontPagination="false">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Câu hỏi</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let question of questions" class="course__item">
+                  <td>{{ question.id }}</td>
+                  <td>
+                    <div [innerHTML]="question.question"></div>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      <button nz-button nzType="dashed" (click)="addQuestion(question)">
+                        Thêm
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </nz-table>
+          </div>
+          <ng-container *ngIf="pagination">
+            <nz-pagination [nzPageIndex]="pagination.currentPage" [nzPageSize]="pagination.itemsPerPage"
+              [nzTotal]="pagination.totalItems" (nzPageIndexChange)="gotoPage($event)"></nz-pagination>
+          </ng-container>
+
+          <h3 class="title">Câu hỏi bài đọc</h3>
+          <div class="search-question">
+            <div class="search-question__btn">
+              <button nz-button nzType="primary" nzSize="large" (click)="searchReadingContent()">
+                <i nz-icon nzType="search" nzTheme="outline"></i>Tìm
+              </button>
+            </div>
+            <div class="search-question__input">
+              <div class="row">
+                <ngx-form-anchor #formInputsSearchreadingContent></ngx-form-anchor>
+              </div>
+            </div>
+          </div>
+          <div class="reading-question mb-4">
+            <nz-table [nzData]="readingContents" nzFrontPagination="false">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Câu hỏi bài đọc</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let r of readingContents" class="course__item">
+                  <td>{{ r.id }}</td>
+                  <td>
+                    <div [innerHTML]="r.title"></div>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      <button nz-button nzType="dashed" (click)="addReadingContent(r)">
+                        Thêm
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </nz-table>
+          </div>
+          <ng-container *ngIf="readingContentPagination">
+            <nz-pagination [nzPageIndex]="readingContentPagination.currentPage"
+              [nzPageSize]="readingContentPagination.itemsPerPage" [nzTotal]="readingContentPagination.totalItems"
+              (nzPageIndexChange)="gotoPage($event)"></nz-pagination>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6">
+      <h3 class="title">
+        Danh sách câu hỏi đã chọn
+        <span *ngIf="exam && exam.questions">
+          (<strong>{{ exam.questions.length }}</strong> câu hỏi)
+        </span>
+      </h3>
+      <ng-container *ngIf="exam">
+        <nz-table #basicTable [nzData]="exam.questions" nzFrontPagination="false">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Câu hỏi</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="
+                let question of filterReadingContentQuestion(exam.questions)
+              ">
+              <td>{{ question.id }}</td>
+              <td>
+                <div [innerHTML]="question.question"></div>
+              </td>
+              <td>
+                <div class="text-center">
+                  <button nz-button nzType="dashed" (click)="remove(question)">
+                    <i nz-icon nzType="delete"></i>
+                    Xoá
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr *ngFor="let readingContent of examReadingContents">
+              <td>{{ readingContent.id }} ( {{ readingContent.getTypeName() }} )
+              </td>
+              <td>
+                {{ readingContent.title }}
+              </td>
+              <td>
+                <div class="text-center">
+                  <button nz-button nzType="dashed" (click)="removeReadingContent(readingContent)">
+                    <i nz-icon nzType="delete"></i>
+                    Xoá
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </ng-container>
+    </div>
+  </div>
+</div>

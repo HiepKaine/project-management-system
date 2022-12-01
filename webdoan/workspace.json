@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "projects": {
+    "frontend": "apps/frontend",
+    "frontend-e2e": "apps/frontend-e2e",
+    "server": "apps/server",
+    "shared-frontend-common": "libs/shared/frontend/common",
+    "shared-frontend-components": "libs/shared/frontend/components",
+    "shared-frontend-form": "libs/shared/frontend/form",
+    "shared-frontend-theme": "libs/shared/frontend/theme",
+    "shared-server-common": "libs/shared/server/common",
+    "shared-server-database": "libs/shared/server/database"
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
+}

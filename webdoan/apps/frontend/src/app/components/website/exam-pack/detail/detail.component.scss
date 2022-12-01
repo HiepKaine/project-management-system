@@ -1,0 +1,431 @@
+@import 'apps/frontend/src/styles/_variables.scss';
+@import 'apps/frontend/src/styles/_mixin.scss';
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+h1,
+h3,
+h4,
+h5 {
+  font-family: $font-bold;
+}
+h2 {
+  font-family: $font-semiBold;
+}
+p {
+  font-family: $font-regular;
+}
+h3 {
+  font-size: $mediumTitleSize;
+  color: $color-title;
+  margin-bottom: 20px;
+}
+[nz-button] {
+  font-family: $font-semiBold;
+  border-radius: 6px;
+}
+::ng-deep {
+  .ant-rate {
+    font-size: $font-small !important;
+  }
+  .ant-rate-star {
+    color: $yellow !important;
+    margin-right: 2px !important;
+  }
+}
+.btn-review {
+  font-size: $font-medium;
+  font-family: $font-bold;
+  background-color: $primary-color;
+  color: $white;
+  border-radius: 6px;
+  padding: 0 20px;
+  min-width: 170px;
+  height: 44px;
+  border: none;
+  &:hover {
+    background-color: $white;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+  }
+}
+.page-header {
+  background: linear-gradient(rgba(20, 27, 55, 0.92), rgba(4, 13, 46, 0.92)),
+    url(/assets/images/page-course-header-background.png);
+  background-size: cover;
+  margin-top: 90px;
+  padding: 0 38px 30px;
+  @include media-breakpoint-down(sm) {
+    padding: 0 12px 30px;
+  }
+  &__breadcrumb {
+    font-size: 12px;
+    color: $lightColor;
+    font-family: $font-semibold-italic;
+    padding-top: 20px;
+    margin-bottom: 60px;
+    ::ng-deep .ng-star-inserted {
+      color: $lightColor;
+    }
+  }
+  &__content {
+    padding: 0;
+    &__title {
+      font-size: $largeTitleSize;
+      color: $white;
+    }
+    &__subtitle {
+      width: 65%;
+      justify-content: space-between;
+      &__content {
+        .small-content {
+          color: $lightColor;
+          font-family: $font-semibold-italic;
+          font-size: $font-small;
+          &__icons {
+            margin: auto;
+            color: $yellow;
+            &:first-child {
+              margin-left: 10px;
+            }
+          }
+          &__comment {
+            font-family: $font-italic;
+          }
+        }
+        .whiteFont {
+          color: $white;
+          font-style: normal;
+          font-family: $font-bold;
+        }
+      }
+    }
+  }
+  &__button {
+    ::ng-deep .ant-btn {
+      width: 100%;
+      border: none;
+    }
+    h3 {
+      color: $white;
+      font-family: $font-semiBold;
+    }
+    &__cost {
+      &__o-price {
+        width: 100%;
+        color: $primaryLightColor !important;
+        text-decoration: line-through;
+      }
+      &__price {
+        width: 60%;
+      }
+      span {
+        width: 12% !important;
+        height: 19px !important;
+        background-color: $color-orange !important;
+        font-size: 10px;
+        color: $white;
+        border-radius: 4px;
+        margin-left: 5px;
+      }
+    }
+    span {
+      display: inline-block;
+      width: 100%;
+      height: 1px;
+      background-color: $lightColor;
+    }
+    [nz-button] {
+      width: 100%;
+      height: 48px;
+      font-size: 16px;
+      background-color: $primary-color;
+      font-family: $font-bold;
+    }
+  }
+}
+.content {
+  padding: 0 38px;
+  @include media-breakpoint-down(sm) {
+    padding: 0 12px;
+  }
+  background-color: $white;
+  ::ng-deep {
+    .ant-anchor-wrapper {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .ant-anchor-link-title:hover {
+      color: $white;
+    }
+    .ant-anchor-ink {
+      position: unset;
+    }
+  }
+
+  &__header-navigation {
+    [nz-button] {
+      color: $primary-color;
+      padding: 8px;
+      margin-bottom: 15px;
+      font-size: $font-small;
+      border: 1px solid $primary-color;
+      &:hover {
+        color: $white;
+        background-color: $primary-color;
+        cursor: pointer;
+      }
+    }
+  }
+  &__exams {
+    margin-bottom: 80px;
+    .exam {
+      padding: 16px 20px;
+      border-radius: 10px;
+      border: 1px solid $backgroundCourseChapter;
+      background-color: $backgroundFooterColor;
+      &__title {
+        font-size: $font-medium;
+        font-family: $font-bold;
+        color: $color-title;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        padding: 0 20px 0 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+      }
+
+      &__timeLeft {
+        font-size: $font-small;
+        font-family: $font-regular;
+        color: $color-title;
+      }
+    }
+  }
+  &__description {
+    margin-bottom: 80px;
+    p {
+      color: $color-title;
+      font-size: $font-small;
+      font-family: $font-regular;
+    }
+  }
+  &__introduce {
+    margin-bottom: 80px;
+    ::ng-deep iframe {
+      width: 100%;
+      height: 480px;
+    }
+  }
+  &__voting {
+    .user {
+      position: relative;
+      background-color: $backgroundFooterColor;
+      border-radius: 10px;
+      border: 1px solid $backgroundCourseChapter;
+      display: flex;
+      &__img {
+        width: 60px;
+        height: 40px;
+        img {
+          border-radius: 50%;
+        }
+      }
+      &__comment {
+        width: 80%;
+        &__icon {
+          color: $yellow;
+        }
+        h5 {
+          font-size: $font-medium;
+          color: $primaryLightColor;
+        }
+        p {
+          font-size: $font-small;
+          color: $color-title;
+        }
+      }
+    }
+    [nz-button] {
+      color: $primary-color;
+      width: 170px;
+      height: 44px;
+      border-radius: 6px;
+      font-family: $font-bold;
+      display: block;
+      margin: auto;
+      border: solid 1px $primary-color;
+      margin-bottom: 80px;
+      &:hover {
+        color: $white;
+        background-color: $primary-color;
+      }
+    }
+  }
+
+  .sidebar {
+    a {
+      &:hover {
+        color: $primaryLightColor;
+      }
+    }
+  }
+}
+.related-pack {
+  padding: 70px 38px;
+
+  @include media-breakpoint-down(sm) {
+    padding: 50px 12px;
+  }
+  background-color: $white;
+  &__title {
+    font-size: $largeTitleSize;
+    color: $color-title;
+  }
+  &__desc {
+    color: $color-title;
+    font-size: $font-small;
+  }
+}
+@include media-breakpoint-up(xxl) {
+  .content {
+    &__header-navigation {
+      [nz-button] {
+        width: 200px;
+      }
+    }
+  }
+}
+/* =============================== MEDIA QUERIES(BIG DEVICES) ============================= */
+@include media-breakpoint-between(xl, xxl) {
+  .page-header {
+    &__content {
+      &__subtitle {
+        width: 85%;
+      }
+    }
+  }
+  .content {
+    &__header-navigation {
+      [nz-button] {
+        width: 250px;
+      }
+    }
+  }
+}
+/* =============================== MEDIA QUERIES(MEDIUM DEVICES) ============================= */
+@include media-breakpoint-between(sm, xl) {
+  .page-header {
+    padding-left: 30px;
+    &__content {
+      &__title {
+        font-size: $mediumTitleSize;
+      }
+      &__subtitle {
+        width: 90%;
+      }
+    }
+    &__button {
+      padding: 0;
+      &__cost {
+        &__o-price {
+          font-size: $font-large;
+        }
+        &__price {
+          font-size: $font-large;
+        }
+      }
+    }
+  }
+  .content {
+    &__header-navigation {
+      [nz-button] {
+        width: 250px;
+      }
+    }
+    &__listExams {
+      .oneExam {
+        padding-left: 20px !important;
+      }
+    }
+    &__introduce {
+      ::ng-deep iframe {
+        height: 300px;
+      }
+    }
+
+    h3 {
+      font-size: $responTitleSize;
+    }
+  }
+}
+/* =============================== MEDIA QUERIES(SMALL DEVICES) ============================= */
+@include media-breakpoint-down(sm) {
+  .page-header {
+    &__breadcrumb {
+      font-size: $mobile-p-Size;
+      margin-bottom: 20px;
+    }
+    &__content {
+      &__title {
+        font-size: $font-large;
+        line-height: 2;
+      }
+      &__subtitle {
+        width: 80%;
+        .small-content {
+          &__comment {
+            display: none;
+          }
+        }
+      }
+    }
+    &__button {
+      padding: 0;
+      &__cost {
+        &__o-price {
+          font-size: $font-large;
+        }
+
+        &__price {
+          font-size: $font-large;
+        }
+      }
+      span {
+        width: 100%;
+      }
+      [nz-button] {
+        width: 100%;
+      }
+    }
+  }
+  .content {
+    &__header-navigation {
+      margin-right: 0;
+      [nz-button] {
+        margin-bottom: 15px;
+        width: 200px;
+        font-size: $font-small;
+      }
+    }
+    &__listExams {
+      .oneExam {
+        padding-left: 15px !important;
+      }
+    }
+    &__introduce {
+      ::ng-deep iframe {
+        height: 200px;
+      }
+    }
+    &__voting {
+      .user {
+        &__img {
+          width: 60px;
+        }
+      }
+    }
+  }
+}
