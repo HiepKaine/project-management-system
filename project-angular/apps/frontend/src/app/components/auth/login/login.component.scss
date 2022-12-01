@@ -6,29 +6,34 @@
 
 .main {
   background-color: $white;
-  border-radius: 10px;
+  border-radius: 50px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   padding: 30px;
   margin: 0 auto;
   @include media-breakpoint-up(md) {
     width: 410px;
   }
+  .logo {
+    height: 150px;
+    width: 200px;
+    margin: 0 auto;
+  }
 
   .heading {
-    color: $color-title;
+    color: $color-button;
     font-size: 24px;
     font-family: $font-bold;
   }
 
-  ::ng-deep nz-input-group {
-    border-radius: 20px;
-    background-color: $backgroundFooterColor;
-    border: 1px solid $color-border;
-    height: 44px;
-    input {
-      background-color: $backgroundFooterColor;
-    }
-  }
+  // ::ng-deep nz-input-group {
+  //   border-radius: 20px;
+  //   background-color: $backgroundFooterColor;
+  //   border: 1px solid $color-border;
+  //   height: 44px;
+  //   input {
+  //     background-color: $backgroundFooterColor;
+  //   }
+  // }
 
   ::ng-deep nz-form-label label {
     font-size: $font-medium !important;
@@ -75,7 +80,6 @@
         font-family: $font-semiBold;
         font-size: $font-medium;
         background-color: $color-button;
-        border: none;
         &:hover {
           transition-duration: 0.1s;
           background-color: $white;

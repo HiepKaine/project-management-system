@@ -16,4 +16,8 @@ export class AppService {
       title: `New todo ${Math.floor(Math.random() * 1000)}`,
     });
   }
+
+  deleteTodo(index: any) {
+    this.todos.splice(this.todos.indexOf(index, 1))
+  }
 }
