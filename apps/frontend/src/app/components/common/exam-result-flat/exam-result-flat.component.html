@@ -1,0 +1,178 @@
+<div class="testSession" *ngIf="testSession">
+  <div class="exam">
+    <ul class="exam__result d-flex p-0">
+      <li class="d-flex align-items-center p-0">
+        <img src="/assets/images/MaskGroup356.png" alt="" />
+        <p class="m-0">
+          Đúng:
+          <span>{{ testSession.correctQuestion }}</span>
+        </p>
+      </li>
+      <li class="d-flex align-items-center p-0">
+        <img src="/assets/images/MaskGroup357.png" alt="" />
+        <p class="m-0">
+          Sai:
+          <span>{{ testSession.inCorrectQuestion }}</span>
+        </p>
+      </li>
+      <li class="d-flex align-items-center p-0">
+        <img src="/assets/images/MaskGroup358.png" alt="" />
+        <p class="m-0">
+          Bỏ qua:
+          <span>{{ testSession.skipQuestion }}</span>
+        </p>
+      </li>
+    </ul>
+    <div class="exam__title">
+      <p><span>Bài thi: </span>{{ testSession.examCode.exam.name }}</p>
+    </div>
+  </div>
+  <div class="exam-detail" *ngFor="let item of testSession.examCode.questions; let i = index">
+    <div
+      class="content"
+      *ngIf="!item.readingContentId; else isReadingContentId"
+    >
+      <ng-container>
+        <h2 class="content__heading text-uppercase">Câu hỏi {{ i + 1 }}</h2>
+        <div class="content__desc" [innerHTML]="item.question"></div>
+
+        <ul class="content__question p-0">
+          <li
+            class="d-flex align-items-start"
+            [class.correct]="
+              item.answers[0].isCorrect ||
+              (checkChoseAnswer(item.answers[0].id) &&
+                isCorrect(item.id) === 'correctQuestion')
+            "
+            [class.incorrect]="
+              checkChoseAnswer(item.answers[0].id) &&
+              isCorrect(item.id) === 'inCorrectQuestion'
+            "
+          >
+            <span>A</span>
+            <div [innerHTML]="item.answers[0].answer"></div>
+          </li>
+          <li
+            class="d-flex align-items-start"
+            [class.correct]="
+              item.answers[1].isCorrect ||
+              (checkChoseAnswer(item.answers[1].id) &&
+                isCorrect(item.id) === 'correctQuestion')
+            "
+            [class.incorrect]="
+              checkChoseAnswer(item.answers[1].id) &&
+              isCorrect(item.id) === 'inCorrectQuestion'
+            "
+          >
+            <span>B</span>
+            <div [innerHTML]="item.answers[1].answer"></div>
+          </li>
+          <li
+            class="d-flex align-items-start"
+            [class.correct]="
+              item.answers[2].isCorrect ||
+              (checkChoseAnswer(item.answers[2].id) &&
+                isCorrect(item.id) === 'correctQuestion')
+            "
+            [class.incorrect]="
+              checkChoseAnswer(item.answers[2].id) &&
+              isCorrect(item.id) === 'inCorrectQuestion'
+            "
+          >
+            <span>C</span>
+            <div [innerHTML]="item.answers[2].answer"></div>
+          </li>
+          <li
+            class="d-flex align-items-start"
+            [class.correct]="
+              item.answers[3].isCorrect ||
+              (checkChoseAnswer(item.answers[3].id) &&
+                isCorrect(item.id) === 'correctQuestion')
+            "
+            [class.incorrect]="
+              checkChoseAnswer(item.answers[3].id) &&
+              isCorrect(item.id) === 'inCorrectQuestion'
+            "
+          >
+            <span>D</span>
+            <div [innerHTML]="item.answers[3].answer"></div>
+          </li>
+        </ul>
+
+        <div class="content__answer">
+          <p
+            [class.correct]="isCorrect(item.id) === 'correctQuestion'"
+            [class.incorrect]="isCorrect(item.id) === 'inCorrectQuestion'"
+            [class.warning]="isCorrect(item.id) === 'skipQuestion'"
+          >
+            {{ handleCheckAnswer(isCorrect(item.id)) }}
+          </p>
+        </div>
+
+        <div class="suggestion d-flex align-items-center">
+          <div class="suggestion__header">
+            <i nz-icon nzType="warning" nzTheme="outline"></i>
+            <span>Gợi ý đáp án:</span>
+          </div>
+          <div class="m-0">
+            <div class="suggestion__note ms-2" [innerHTML]="item.note"></div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <ng-template #isReadingContentId>
+      <!-- <div class="reading-questions">
+              <div class="row">
+                <h2 class="reading-questions__heading text-uppercase">
+                  câu hỏi Bài đọc
+                </h2>
+                <div class="col-lg-6 information">
+                  <p>
+                    {{ item.question }}
+                  </p>
+                </div>
+                <div class="col-lg-6 question-list">
+                  <div class="content">
+                    <h2 class="content__heading text-uppercase m-0">
+                      Câu {{ i + 1 }}:
+                    </h2>
+    
+                    <ul class="content__question p-0">
+                      <li class="d-flex align-items-start">
+                        <span>A</span>
+                        <p>{{ item.answers[0].answer }}</p>
+                      </li>
+                      <li class="d-flex align-items-start">
+                        <span>B</span>
+                        <p>{{ item.answers[1].answer }}</p>
+                      </li>
+                      <li class="d-flex align-items-start">
+                        <span>C</span>
+                        <p>{{ item.answers[2].answer }}</p>
+                      </li>
+                      <li class="d-flex align-items-start">
+                        <span>D</span>
+                        <p>{{ item.answers[3].answer }}</p>
+                      </li>
+                    </ul>
+    
+                    <div class="content__answer">
+                      <p class="waring">
+                        Bạn đã không chọn đáp án. Đáp án đúng là C
+                      </p>
+                    </div>
+    
+                    <div class="suggestion d-flex align-items-center">
+                      <img src="/assets/images/MaskGroup696.png" alt="" />
+                      <p class="m-0">
+                        <span>Gợi ý đáp án:</span>
+                        {{ item.note }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+    </ng-template>
+  </div>
+</div>

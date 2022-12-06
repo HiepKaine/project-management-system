@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <div class="container-fluid">
+    <div class="main-content">
+      <nz-breadcrumb nzSeparator=">>" activeClass="" class="breadcrumb">
+        <nz-breadcrumb-item>
+          <a href="">TRANG CHỦ</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+          <a class="text-uppercase">Tài Khoản</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>Thông tin tài Khoản </nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-12 col-12">
+          <div class="sidebar">
+            <div class="student">
+              <h3 class="student__name text-center text-uppercase">
+                {{ profile.getFullName() ? profile.getFullName() : 'User' }}
+              </h3>
+              <p class="student__id text-center">
+                BNV{{ profile.code ?? profile.id }}
+              </p>
+            </div>
+            <ul class="menu-list p-0">
+              <li class="menu-list__item d-flex align-items-center" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <img src="/assets/images/icon_khoahoc.svg" alt="" />
+                <a routerLink="/dashboard/course">Khoá học đã đăng ký</a>
+              </li>
+              <li class="menu-list__item d-flex align-items-center" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <img src="/assets/images/icon_tracnghiem.svg" alt="" />
+                <a routerLink="/dashboard/exam">Gói trắc nghiệm đã đăng ký</a>
+              </li>
+              <li class="menu-list__item d-flex align-items-center" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <img src="/assets/images/icon_tracnghiem.svg" alt="" />
+                <a routerLink="/dashboard/result">Kết quả bài thi</a>
+              </li>
+              <li class="menu-list__item d-flex align-items-center" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <img src="/assets/images/icon_doimatkhau.svg" alt="" />
+                <a routerLink="/dashboard/change-password">Đổi mật khẩu</a>
+              </li>
+              <li class="menu-list__item d-flex align-items-center" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <img src="/assets/images/icon_dangxuat.svg" alt="" />
+
+                <a routerLink="/" (click)="logout()">Đăng xuất</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-8 col-lg-9">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

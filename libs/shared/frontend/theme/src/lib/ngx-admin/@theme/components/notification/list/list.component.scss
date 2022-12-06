@@ -1,0 +1,30 @@
+.notify {
+  .notify__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h2 {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+  }
+  .notify__content {
+    &-list {
+      &-item {
+        display: flex;
+        // .icon-avt {
+
+        // }
+        .content-comment {
+          p {
+            .name-cmt,
+            .title-cmt {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+.nav-sub {
+  width: 40%;
+  @include media-breakpoint-down(md) {
+    flex-direction: column;
+    width: 100%;
+  }
+  input {
+    min-width: 50%;
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+  }
+
+  button {
+    margin-left: 16px;
+    @include media-breakpoint-down(md) {
+      margin: 0;
+    }
+  }
+}

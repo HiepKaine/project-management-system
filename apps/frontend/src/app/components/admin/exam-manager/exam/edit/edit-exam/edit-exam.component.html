@@ -1,0 +1,30 @@
+<div class="create-course">
+  <div class="row mt-3">
+    <div class="col">
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        nz-form
+        nzLayout="vertical"
+      >
+        <div class="row">
+          <ngx-form-anchor #formInputs></ngx-form-anchor>
+        </div>
+
+        <div class="form-actions">
+          <button nz-button nzType="primary" nzSize="large" class="me-2">
+            Lưu
+          </button>
+          <button
+            type="button"
+            nzSize="large"
+            nz-button
+            routerLink="/admin/exam-manager/exam"
+          >
+            Huỷ
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

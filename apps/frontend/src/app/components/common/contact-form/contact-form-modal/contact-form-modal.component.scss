@@ -1,0 +1,48 @@
+@import 'apps/frontend/src/styles/_variables.scss';
+::ng-deep {
+  .contact-form-modal {
+    .ant-modal {
+      border-radius: 20px;
+      overflow: hidden;
+      .ant-modal-close {
+        .ant-modal-close-icon {
+          font-size: 20px;
+        }
+      }
+      .ant-modal-header {
+        .ant-modal-title {
+          font-family: $font-regular;
+          font-size: 18px;
+          font-weight: bold;
+          color: #000826;
+          text-align: center;
+          line-height: 25px;
+          > div {
+            padding: 5px 20px;
+          }
+        }
+      }
+      .ant-modal-content {
+        border-radius: 20px;
+      }
+      .btn--register {
+        font-weight: bold;
+        background-color: $primary-color;
+        height: 44px;
+        min-width: 150px;
+        border-radius: 6px;
+        border: none;
+        color: $white;
+        &:hover {
+          border: 1px solid $primary-color;
+          background-color: $white;
+          color: $primary-color;
+        }
+      }
+
+      .ant-input {
+        border-radius: 5px;
+      }
+    }
+  }
+}

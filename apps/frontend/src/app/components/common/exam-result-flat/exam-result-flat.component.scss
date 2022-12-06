@@ -1,0 +1,228 @@
+@import 'apps/frontend/src/styles/_variables.scss';
+@import 'apps/frontend/src/styles/_mixin.scss';
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+.testSession {
+  background-color: $white;
+  padding: 20px 30px;
+  margin-top: 30px;
+  border-radius: 5px;
+
+  .exam {
+    list-style: none;
+    @include e('result') {
+      @include media-breakpoint-down(sm) {
+        flex-direction: column;
+      }
+      li {
+        padding-right: 16px !important;
+        @include media-breakpoint-down(sm) {
+          margin-bottom: 10px;
+        }
+        img {
+          height: 16px;
+          width: 16px;
+          margin-right: 8px;
+        }
+        p {
+          color: $color-result;
+          font-size: $font-medium;
+          font-family: $font-regular;
+          @include media-breakpoint-down(sm) {
+            font-size: $font-small;
+          }
+        }
+        span {
+          color: $color-span;
+          font-size: $font-medium;
+          font-weight: bold;
+          @include media-breakpoint-down(sm) {
+            font-size: $font-small;
+          }
+        }
+      }
+    }
+    @include e('title') {
+      border-bottom: 1px solid $color-border;
+      p {
+        color: $color-result;
+        font-size: $font-medium;
+        letter-spacing: 0.5px;
+        line-height: 1.5;
+        letter-spacing: 0.5px;
+        @include media-breakpoint-down(sm) {
+          font-size: $font-small;
+        }
+        span {
+          color: $color-span;
+          font-size: $font-medium;
+          font-family: $font-semiBold;
+          font-weight: 600;
+          @include media-breakpoint-down(sm) {
+            font-size: $font-small;
+          }
+        }
+      }
+    }
+  }
+
+  .exam-detail {
+    .content {
+      @include e('heading') {
+        font-size: 24px;
+        font-family: $font-semiBold;
+        color: $primaryLightColor;
+        margin: 20px 0;
+        @include media-breakpoint-down(sm) {
+          font-size: 18px;
+          margin: 16px 0;
+        }
+      }
+
+      @include e('desc') {
+        font-size: $font-medium;
+        font-family: $font-regular;
+        color: $color-title;
+        line-height: 1.5;
+        letter-spacing: 0.5px;
+        margin: 20px 0 ;
+        @include media-breakpoint-down(sm) {
+          font-size: $font-small;
+        }
+      }
+
+      @include e('question') {
+        list-style: none;
+        li {
+          background-color: $backgroundFooterColor;
+          border-radius: 6px;
+          margin-bottom: 10px;
+          padding: 10px;
+          div {
+            margin: 0;
+            font-family: $font-regular;
+            font-size: $font-medium;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+            @include media-breakpoint-down(sm) {
+              font-size: $font-small;
+            }
+          }
+          span {
+            background-color: $color-question;
+            border-radius: 4px;
+            margin-right: 10px;
+            padding: 4px 8px;
+            font-weight: bold;
+          }
+          &.correct {
+            border: 1px solid $color-correct;
+            background-color: $white;
+            p {
+              color: $color-correct;
+            }
+            span {
+              color: $white;
+              background-color: $color-correct;
+            }
+          }
+          &.incorrect {
+            border: 1px solid $backgroundMenuActive;
+            background-color: $white;
+            p {
+              color: $backgroundMenuActive;
+            }
+            span {
+              color: $white;
+              background-color: $backgroundMenuActive;
+            }
+          }
+        }
+      }
+
+      @include e('answer') {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        p {
+          font-size: $font-medium;
+          font-family: $font-semiBold;
+          font-weight: bold;
+          @include media-breakpoint-down(sm) {
+            font-size: $font-small;
+          }
+          &.correct {
+            color: $color-correct;
+          }
+
+          &.incorrect {
+            color: $backgroundMenuActive;
+          }
+
+          &.warning {
+            color: $color-warning;
+          }
+        }
+      }
+
+      .suggestion {
+        border-radius: 10px;
+        background-color: $backgroundColorSuggest;
+        padding: 20px;
+        &__header {
+          .anticon {
+            vertical-align: 0.1rem;
+            color: #e67e22;
+          }
+          span {
+            display: inline-block;
+            margin-left: 5px;
+            font-family: $font-semibold-italic;
+            font-size: $font-small;
+            color: $primaryLightColor;
+          }
+        }
+
+        &__note {
+          font-size: $font-small;
+          font-family: $font-semiBold;
+          color: $color-title;
+        }
+      }
+    }
+
+    .reading-questions {
+      @include e('heading') {
+        font-size: 24px;
+        font-family: $font-semiBold;
+        color: $primaryLightColor;
+        margin: 30px 0 20px;
+        @include media-breakpoint-down(sm) {
+          font-size: 22px;
+        }
+      }
+      .information {
+        p {
+          font-size: $font-medium;
+          font-family: $font-regular;
+          color: $color-title;
+          line-height: 1.5;
+          letter-spacing: 0.5px;
+          @include media-breakpoint-down(sm) {
+            font-size: $font-small;
+          }
+        }
+      }
+
+      .question-list {
+        .content {
+          @include e('heading') {
+            font-size: $font-medium;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="main-content">
+    <div class="row">
+      <div class="registered-course">
+        <h2 class="heading-text">Khoá học đã đăng ký</h2>
+        <div class="wrapper-list">
+          <div class="row">
+            <div
+              class="col-12 col-sm-6 col-md-6 col-lg-4 mb-3"
+              *ngFor="let item of courses"
+            >
+              <a [routerLink]="['/', 'khoa-hoc', item.id]">
+                <app-course-item [item]="item"></app-course-item>
+              </a>
+            </div>
+            <div *ngIf="pagination" class="d-flex justify-content-end pt-3">
+              <nz-pagination
+                [nzPageIndex]="pagination.currentPage"
+                [nzPageSize]="pagination.itemsPerPage"
+                [nzTotal]="pagination.totalItems"
+                (nzPageIndexChange)="gotoPage($event)"
+              ></nz-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

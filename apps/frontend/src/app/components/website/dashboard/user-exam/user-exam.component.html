@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="main-content">
+    <div class="row">
+      <div class="registered-test">
+        <h2 class="heading-text">Gói trắc nghiệm đã đăng ký</h2>
+        <div class="wrapper-list">
+          <div class="row">
+            <div
+              class="col-12 col-sm-6 col-md-6 col-lg-4 mb-3"
+              *ngFor="let item of examPacks"
+            >
+              <a [routerLink]="['/', 'de-thi', item.id]">
+                <app-exam-pack-item [item]="item"></app-exam-pack-item>
+              </a>
+            </div>
+            <div *ngIf="pagination" class="d-flex justify-content-end">
+              <nz-pagination
+                [nzPageIndex]="pagination.currentPage"
+                [nzPageSize]="pagination.itemsPerPage"
+                [nzTotal]="pagination.totalItems"
+                (nzPageIndexChange)="gotoPage($event)"
+              ></nz-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

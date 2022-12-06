@@ -1,0 +1,42 @@
+<div class="component">
+  <div class="row">
+    <nz-breadcrumb class="mb-3">
+      <nz-breadcrumb-item>
+        <a [routerLink]="['/', 'admin', 'option']">
+          <img src="/assets/images/previous.svg" /> Danh sách cấu hình</a
+        >
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>Chỉnh sửa cấu hình</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <div class="col">
+      <h1>Chỉnh sửa giá trị</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <form
+        [formGroup]="editOptionForm"
+        (ngSubmit)="onSubmit()"
+        nz-form
+        nzLayout="vertical"
+      >
+        <ngx-form-anchor #formInputs></ngx-form-anchor>
+
+        <div class="form-actions">
+          <button nz-button nzSize="large" nzType="primary" class="me-2">
+            Chỉnh sửa
+          </button>
+
+          <button
+            type="button"
+            routerLink="/admin/option"
+            nzSize="large"
+            nz-button
+          >
+            Huỷ
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

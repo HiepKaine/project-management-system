@@ -1,0 +1,33 @@
+<div class="row">
+  <nz-breadcrumb class="mb-3">
+    <nz-breadcrumb-item>
+      <a [routerLink]="['/', 'admin', 'exam-manager', 'question']">
+        <img src="/assets/images/previous.svg" /> Danh sách câu hỏi</a
+      >
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>Thêm câu hỏi</nz-breadcrumb-item>
+  </nz-breadcrumb>
+  <div class="col">
+    <h1>Thêm câu hỏi</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <form
+      [formGroup]="form"
+      nz-form
+      nzLayout="vertical"
+      (ngSubmit)="onSubmit()"
+    >
+      <ngx-form-anchor #formInputs></ngx-form-anchor>
+      <div class="actions">
+        <button nz-button nzSize="large" nzType="primary" class="me-2">
+          Xuất bản
+        </button>
+        <a routerLink="/admin/exam-manager/question">
+          <button type="button" nzSize="large" nz-button>Huỷ</button>
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

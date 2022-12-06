@@ -1,0 +1,75 @@
+<div class="user-ip component">
+  <nz-breadcrumb class="mb-3">
+    <nz-breadcrumb-item>
+      <a [routerLink]="['/', 'admin', 'user']">
+        <img src="/assets/images/previous.svg" /> Danh sách học viên</a
+      >
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>Lịch sử đăng nhập</nz-breadcrumb-item>
+  </nz-breadcrumb>
+  <div class="row">
+    <div class="col">
+      <h1 class="title">Lịch sử đăng nhập</h1>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col">
+      <div class="d-flex justify-content-between">
+        <div class="mb-3">
+          <app-user-card *ngIf="user" [user]="user"></app-user-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col user-ip">
+      <nz-table
+        #basicTable
+        [nzData]="userActivitys"
+        [nzFrontPagination]="false"
+        class="mb-2"
+      >
+        <thead>
+          <tr>
+            <th class="fw-bold">#</th>
+            <th class="fw-bold">Hành động</th>
+            <th class="fw-bold">Thời gian</th>
+            <th class="fw-bold">IP</th>
+            <th class="fw-bold">Thiết bị</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of userActivitys; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>
+              {{ item.type }}
+            </td>
+            <td>
+              {{ item.createdAt | date: 'h:mm:ss, dd/MM/yyyy' }}
+            </td>
+            <td>
+              <ng-container *ngIf="item.ip; else ipWasRemoved">
+                {{ item.ip.ip }}
+              </ng-container>
+              <ng-template #ipWasRemoved> IP đã bị xóa </ng-template>
+            </td>
+            <td>
+              {{ item.agent }}
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+      <ng-container *ngIf="pagination">
+        <nz-pagination
+          [nzPageIndex]="pagination.currentPage"
+          [nzPageSize]="pagination.itemsPerPage"
+          nzTotal]="pagination.totalItems"
+          (nzPageIndexChange)="gotoPage($event)"
+        >
+        </nz-pagination>
+      </ng-container>
+    </div>
+  </div>
+</div>

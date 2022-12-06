@@ -1,0 +1,36 @@
+@import 'apps/frontend/src/styles/_variables.scss';
+@import 'apps/frontend/src/styles/_mixin.scss';
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+.exam-result {
+  .heading {
+    color: $color-title;
+    font-size: 24px;
+    font-family: $font-bold;
+    border-bottom: 2px solid $color-border;
+    margin: 20px 0;
+    @include media-breakpoint-down(sm) {
+      font-size: 18px;
+    }
+  }
+
+  .btn {
+    @include m('info') {
+      margin: 40px auto;
+      padding: 8px 60px;
+      border-radius: 6px;
+      border: 1px solid $primary-color;
+      color: $primary-color;
+      font-family: $font-semiBold;
+      font-size: $font-medium;
+      background-color: $white;
+      &:hover {
+        transition-duration: 0.1s;
+        background-color: $primary-color;
+        color: $white;
+      }
+    }
+  }
+}

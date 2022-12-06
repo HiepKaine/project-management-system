@@ -1,0 +1,85 @@
+<div class="review component">
+  <div class="row mb-4">
+    <div class="col">
+      <div class="sub-nav d-flex justify-content-between">
+        <div class="sub-nav-search d-flex">
+          <input class="mb-2" nz-input placeholder="Tìm kiếm..." />
+          <button nz-button nzType="primary" class="btn-success" nzSize="large">
+            <i nz-icon nzType="search"></i>
+            Tìm
+          </button>
+        </div>
+
+        <button
+          nz-button
+          nzType="primary"
+          class="mb-2"
+          nzSize="large"
+          (click)="openAddReviewModal()"
+        >
+          <i nz-icon nzType="plus"></i>
+          Thêm
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col review">
+      <nz-table
+        #basicTable
+        [nzData]="reviews"
+        [nzFrontPagination]="false"
+        class="mb-2"
+      >
+        <thead>
+          <tr>
+            <th class="fw-bold">#</th>
+            <th class="fw-bold">Số sao</th>
+            <th class="fw-bold">Học viên</th>
+            <th class="fw-bold">Đánh giá</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="review__item"
+            *ngFor="let item of reviews; let i = index"
+            [ngClass]="{
+              deleted: item.deletedAt !== null && item.deletedAt !== undefined
+            }"
+          >
+            <td>{{ i + 1 }}</td>
+            <td class="review__item__name">
+              <nz-rate [(ngModel)]="item.rateCount" nzDisabled></nz-rate>
+            </td>
+            <td class="review__item__name">
+              {{ item.user }}
+            </td>
+            <td class="review__item__name" [innerHTML]="item.review">
+            </td>
+            <td>
+              <div class="text-center">
+                <ng-container
+                  *ngIf="
+                    !(item.deletedAt !== null && item.deletedAt !== undefined)
+                  "
+                >
+                  <button
+                    nz-button
+                    nzType="link"
+                    (click)="openEditReviewModal(item)"
+                  >
+                    <i nz-icon nzType="form" style="color: #1452d7"></i>
+                  </button>
+                  <button nz-button nzType="link" (click)="deleteItem(item)">
+                    <i nz-icon nzType="delete" style="color: #cf002a"></i>
+                  </button>
+                </ng-container>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</div>

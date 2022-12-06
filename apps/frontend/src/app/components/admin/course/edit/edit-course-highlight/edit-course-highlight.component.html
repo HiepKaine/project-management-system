@@ -1,0 +1,40 @@
+<div class="mt-4">
+  <div class="highlight">
+    <div class="d-flex flex-column">
+      <div
+        class="highlight__item p-2 mb-1"
+        *ngFor="let item of highlighExamPacks"
+      >
+        <button
+          nzSize="large"
+          nz-button
+          nzType="dashed"
+          (click)="removeHighlight(item)"
+        >
+          <i nz-icon nzType="delete" nzTheme="outline"></i>
+        </button>
+        <p class="mb-0">{{ item.name }}</p>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="form" nz-form nzLayout="vertical">
+    <div class="row mb-4">
+      <div class="col-12">
+        <button
+          type="button"
+          nz-button
+          nzSize="large"
+          nzType="primary"
+          class="add-btn me-2"
+          (click)="addHighlight()"
+        >
+          <i nz-icon nzType="plus"></i>
+          Thêm
+        </button>
+        <div class="form-input">
+          <ngx-form-anchor #formHighlightExamPackInputs></ngx-form-anchor>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

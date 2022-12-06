@@ -1,0 +1,77 @@
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+@import 'apps/frontend/src/styles/_variables.scss';
+
+.result {
+  @include media-breakpoint-down(md) {
+    margin-top: 40px;
+  }
+  .result__heading-text {
+    margin-bottom: 20px;
+    color: $color-title;
+    font-family: $font-bold;
+    font-size: $mediumTitleSize;
+    border-bottom: 1px solid $lightColor;
+    @include media-breakpoint-down(sm) {
+      text-align: center;
+    }
+  }
+
+  .table {
+    padding: 20px;
+    border-radius: 4px;
+    border-collapse: unset;
+    background-color: $white;
+    .testScore {
+      width: 50px;
+      height: 24px;
+      border-radius: 4px;
+      font-size: $font-small;
+      &.success {
+        color: $color-success;
+        background-color: $backgroundColorSuccess;
+      }
+
+      &.fail {
+        color: $backgroundMenuActive;
+        background-color: $backgroundColorFail;
+      }
+    }
+    th {
+      padding: 10px 20px;
+      color: $color-span;
+      font-size: $font-small;
+      font-family: $font-semiBold;
+    }
+    td {
+      padding: 10px 20px;
+      color: $color-span;
+      font-size: $font-small;
+      font-family: $font-regular;
+    }
+    .title {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+
+    .testDate,
+    .testTime {
+      color: $color-result;
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+    .btn-view {
+      width: 60px;
+      height: 24px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: $color-correct;
+      border-color: transparent;
+      font-size: $font-smallest;
+      background-color: $backgroundBtnView;
+    }
+  }
+}

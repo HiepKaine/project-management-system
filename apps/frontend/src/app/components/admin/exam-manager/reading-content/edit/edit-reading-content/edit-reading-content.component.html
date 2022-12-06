@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col">
+    <form
+      [formGroup]="form"
+      nz-form
+      nzLayout="vertical"
+      (ngSubmit)="onSubmit()"
+    >
+      <ngx-form-anchor #formInputs></ngx-form-anchor>
+      <div class="actions">
+        <button nz-button nzType="primary" class="me-2">Xuất bản</button>
+        <a routerLink="/admin/exam-manager/reading-content">
+          <button type="button" nz-button>Huỷ</button>
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

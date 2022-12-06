@@ -1,0 +1,59 @@
+<h1 class="mb-3" *ngIf="data">{{ data.label }}</h1>
+<ng-container *ngIf="data.readingContentId; else singleQuestion">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <div
+        class="reading-content"
+        [innerHTML]="question.readingContent?.content"
+      ></div>
+    </div>
+    <div class="col-12 col-sm-6 scrollable">
+      <div class="question" *ngFor="let q of readingContentQuestions">
+        <div class="question__title">
+          <div
+            class="mb-3"
+            oncopy="return false"
+            oncut="return false"
+            onpaste="return false"
+            [innerHTML]="q.question"
+          ></div>
+        </div>
+        <div class="question__answer">
+          <div
+            class="question__answer__item d-flex"
+            *ngFor="let answer of q.answers; let index = index"
+            (click)="choseAnswer(q, answer)"
+            [ngClass]="{ selected: isSelected(q, answer) }"
+          >
+            <p class="symbol">{{ answerCharacters[index] }}</p>
+            <div class="answer" [innerHTML]="answer.answer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #singleQuestion>
+  <div class="question">
+    <div class="question__title">
+      <div
+        class="mb-3"
+        oncopy="return false"
+        oncut="return false"
+        onpaste="return false"
+        [innerHTML]="question.question"
+      ></div>
+    </div>
+    <div class="question__answer">
+      <div
+        class="question__answer__item d-flex"
+        *ngFor="let answer of question.answers; let index = index"
+        (click)="choseAnswer(question, answer)"
+        [ngClass]="{ selected: isSelected(question, answer) }"
+      >
+        <p class="symbol">{{ answerCharacters[index] }}</p>
+        <div class="answer" [innerHTML]="answer.answer"></div>
+      </div>
+    </div>
+  </div>
+</ng-template>

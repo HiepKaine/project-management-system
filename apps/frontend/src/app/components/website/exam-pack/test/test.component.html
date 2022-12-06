@@ -1,0 +1,104 @@
+<div class="wrapper">
+  <div class="container pb-5">
+    <div class="row content">
+      <div class="col-12 col-sm-8">
+        <div class="box p-4" *ngIf="testSession">
+          <div class="current-question mb-4" *ngIf="currentQuestion">
+            <app-question
+              [data]="currentQuestion"
+              (answer)="answerQuestion($event)"
+              [selectedAnswers]="selectedAnswers"
+            ></app-question>
+          </div>
+          <div class="navigation">
+            <div class="d-flex justify-content-between mb-4">
+              <button
+                nz-button
+                nzType="default"
+                class="navigation__move"
+                (click)="selectPrevQuestion()"
+                [ngClass]="{ isFirstQuestion: isFirstQuestion() }"
+              >
+                <i nz-icon nzType="left" nzTheme="outline"></i>
+                Câu hỏi trước
+              </button>
+
+              <button
+                nz-button
+                nzType="default"
+                class="navigation__move"
+                (click)="selectNextQuestion()"
+                [ngClass]="{ isFirstQuestion: isLastQuestion() }"
+              >
+                Câu hỏi sau
+                <i nz-icon nzType="right" nzTheme="outline"></i>
+              </button>
+            </div>
+
+            <div
+              class="navigation__question d-flex flex-wrap"
+              *ngIf="testSession"
+            >
+              <div
+                class="navigation__question__item"
+                *ngFor="let item of questionItems; let i = index"
+              >
+                <button
+                  nz-button
+                  nzType="primary"
+                  class="w-100"
+                  (click)="select(item, i)"
+                  [ngClass]="{
+                    selected: item.label === currentQuestion.label,
+                    answerred: isAnswerred(item)
+                  }"
+                >
+                  {{ item.label }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="information col-12 col-sm-4 mb-3">
+        <ng-container *ngIf="profile">
+          <div class="information__avatar box text-center pb-2 pt-2">
+            <nz-avatar
+              [nzSize]="150"
+              [nzSrc]="profile.image"
+              nzIcon="user"
+              nzShape="square"
+            ></nz-avatar>
+          </div>
+          <div class="information__student box">
+            <h2 class="information__student__name ps-3 pe-3 text-center">
+              {{ profile.getFullName() }}
+            </h2>
+            <div class="information__student__id d-flex ps-3 pe-3">
+              <p class="signs me-3">SBD/Mã HV:</p>
+              <p>BNV{{ profile.code ?? profile.id }}</p>
+            </div>
+            <ng-container *ngIf="testSession">
+              <div class="information__student__subject d-flex ps-5 pe-3">
+                <p class="signs me-3">Môn thi:</p>
+                <p>{{ testSession.examCode.exam.name }}</p>
+              </div>
+              <div class="information__student__date d-flex ps-4 pe-3">
+                <p class="signs me-3">Ngày thi:</p>
+                <p>{{ testSession.examCode.createdAt | date: 'MM/dd/yyyy' }}</p>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+        <div class="information__time box text-center pt-3 pb-3">
+          <p>Thời gian còn lại:</p>
+          <countdown #cd [config]="timmerConfig"></countdown>
+        </div>
+
+        <button nz-button nzType="primary" nzBlock (click)="submit()">
+          Nộp bài thi
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

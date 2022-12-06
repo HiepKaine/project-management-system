@@ -1,0 +1,45 @@
+{
+  "error": {
+    "title": "Error",
+    "tryagain": "Please try again later"
+  },
+  "success": {
+    "title": "Successed",
+    "update": "Data is updated successfully",
+    "create": "Data is created successfully",
+    "delete": "Data is removed successfully"
+  },
+  "permission": {
+    "deny": "Permission denied"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "tagline": "Please login to use the system",
+      "emailLabel": "Email",
+      "emailErrorMessageRequired": "Email is required",
+      "emailErrorMessageInvalidType": "Email is invalid",
+      "passwordLabel": "Password",
+      "passwordErrorMessageRequired": "Password is required",
+      "passwordErrorMessageMinLength": "Passwod must be at least 6 characters long",
+      "loginBtn": "Login",
+      "forgotPasswordLabel": "Forgot password",
+      "loginUserLabel": "Email",
+      "rePasswordLabel": "Re-enter your password",
+      "referralCode": "Referral Code"
+    }
+  },
+  "form": {
+    "validators": {
+      "minlength": "The minimum length for this field is {{length}} characters",
+      "maxlength": "The maximum length for this field is {{length}} characters",
+      "required": "The field is required",
+      "email": "Please enter an valid email",
+      "requiredtrue": "The field is required",
+      "pattern": "Please enter an valid data"
+    }
+  },
+  "course": {
+    "lectuere": "Lectuere"
+  }
+}

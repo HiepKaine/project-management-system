@@ -1,0 +1,65 @@
+<div class="create-course">
+  <div class="row">
+    <h1>Thêm khóa học</h1>
+  </div>
+  <div class="row">
+    <div class="col">
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        nz-form
+        nzLayout="vertical"
+      >
+        <div class="row">
+          <div class="col-6 col-xs-12">
+            <ngx-form-anchor #formInputsFistGroup></ngx-form-anchor>
+          </div>
+          <div class="col-6 col-xs-12">
+            <ngx-form-anchor #formUploadInput></ngx-form-anchor>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <ngx-form-anchor #formInputsSecondGroup></ngx-form-anchor>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-12">
+            <h6>Học phí</h6>
+            <div class="bg-white p-4">
+              <div class="row">
+                <ngx-form-anchor #formPriceInputs></ngx-form-anchor>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-12">
+            <h6>Trạng thái</h6>
+            <div class="bg-white p-4">
+              <div class="row">
+                <ngx-form-anchor #formStatusInputs></ngx-form-anchor>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button nz-button nzType="primary" nzSize="large" class="me-2">
+            Tiếp tục
+          </button>
+          <button
+            type="button"
+            nz-button
+            nzSize="large"
+            routerLink="/admin/course"
+          >
+            Huỷ
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

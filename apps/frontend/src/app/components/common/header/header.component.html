@@ -1,0 +1,73 @@
+<header>
+  <div class="header-content">
+    <div class="container">
+      <div class="wapper-menu-header d-flex align-items-center">
+        <button class="btn btn-toggler-mobi p-0" (click)="showMenuMobile = !showMenuMobile" #toggleBtn>
+          <i nz-icon nzType="bars" nzTheme="outline"></i>
+        </button>
+        <div class="header__logo d-flex align-items-center">
+          <a routerLink="/">
+            <img src="/assets/images/logoweb.png" class="w-100" />
+          </a>
+        </div>
+        <div class="navbar" [class.d-flex]="showMenuMobile" #menu>
+          <ul class="navbar__nav d-flex justify-content-center p-0 mb-0">
+            <li class="navbar__nav--item" routerLinkActive="active">
+              <a [routerLink]="['/', 'search', 'khoa-on-cong-chuc']" (click)="
+                  showMenuMobile = !showMenuMobile
+                ">Khóa ôn công chức</a>
+            </li>
+            <li class="navbar__nav--item" routerLinkActive="active">
+              <a [routerLink]="['/','search','khoa-on-vien-chuc']" (click)="
+                  showMenuMobile = !showMenuMobile
+                ">Khóa ôn viên chức</a>
+            </li>
+            <li class="navbar__nav--item" routerLinkActive="active">
+              <a [routerLink]="['/','search', 'phong-thi-trac-nghiem-online']" (click)="
+                  showMenuMobile = !showMenuMobile
+                ">Phòng thi trắc nghiệm online</a>
+            </li>
+          </ul>
+          <ul class="navbar__user d-flex mb-0 ps-0">
+            <div class="user d-flex justify-content-center align-items-center">
+              <ng-container *ngIf="!isLoggedIn; else authenticatedUser">
+                <div class="user__image">
+                  <nz-avatar nzIcon="user" nzSize="large"></nz-avatar>
+                </div>
+                <ul class="user__nav d-flex flex-column align-items-start ps-0 mb-0">
+                  <li>
+                    <a href="/auth/login">Đăng nhập</a>
+                  </li>
+                </ul>
+              </ng-container>
+              <ng-template #authenticatedUser>
+                <ng-container *ngIf="profile">
+                  
+                  <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'">
+                    <div class="user__username text-uppercase">
+                      {{
+                      profile.getFullName()
+                      ? profile.getFullName()
+                      : 'trang cá nhân'
+                      }}
+                    </div>
+                  </a>
+                </ng-container>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                  <ul nz-menu nzSelectable>
+                    <li nz-menu-item>
+                      <a href="/dashboard/course">Tài khoản của tôi</a>
+                    </li>
+                    <li nz-menu-item>
+                      <span (click)="logout()">Đăng xuất</span>
+                    </li>
+                  </ul>
+                </nz-dropdown-menu>
+              </ng-template>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

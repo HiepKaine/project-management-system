@@ -1,0 +1,20 @@
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+@import 'apps/frontend/src/styles/_variables.scss';
+@import 'apps/frontend/src/styles/_mixin.scss';
+
+.container {
+  margin-top: 90px;
+  .title {
+    p {
+      color: $color-button;
+      font-size: 20px;
+      font-family: $font-bold;
+    }
+  }
+
+  .image {
+    margin-bottom: 20px;
+  }
+}

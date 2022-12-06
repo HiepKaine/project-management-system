@@ -1,0 +1,10 @@
+.search {
+  min-width: 60%;
+  &__btn {
+    padding-left: 15px;
+    float: right;
+  }
+  &__input {
+    overflow: hidden;
+  }
+}

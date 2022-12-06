@@ -1,0 +1,27 @@
+{
+  "name": "shared-frontend-components",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/shared/frontend/components/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/shared/frontend/components"],
+      "options": {
+        "jestConfig": "libs/shared/frontend/components/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/frontend/components/src/**/*.ts",
+          "libs/shared/frontend/components/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
