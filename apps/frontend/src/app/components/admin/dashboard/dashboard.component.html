@@ -52,7 +52,6 @@
           [nzAutoClearSearchValue]="false"
           nzPlaceHolder="Tuần này"
           ngModel
-          (ngModelChange)="change($event)"
         >
           <nz-option nzLabel="Tuần này" nzValue="week"></nz-option>
           <nz-option nzLabel="Tháng này" nzValue="month"></nz-option>
@@ -73,7 +72,6 @@
           [data]="barChartData"
           [options]="barChartOptions"
           [type]="barChartType"
-          (chartHover)="chartHovered($event)"
         ></canvas>
       </div>
     </div>

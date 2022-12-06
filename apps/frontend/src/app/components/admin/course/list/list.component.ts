@@ -77,7 +77,6 @@ export class ListComponent implements OnInit {
             plainToInstance(Course, item)
           );
           this.pagination = result.meta.pagination;
-          this.fetchCourseUserCount();
         }
       });
 
@@ -131,13 +130,6 @@ export class ListComponent implements OnInit {
         );
       }
     });
-  }
-
-  private fetchCourseUserCount(): void {
-    this.courseService.fetchCourseUserCount(this.courses.map(item => item.id))
-      .subscribe((result: ApiCollectionResponse<{ courseId: number, userCount: number }>) => {
-        this.courseUserCount = result.data;
-      })
   }
 
   getUserCount(courseId: number): number {

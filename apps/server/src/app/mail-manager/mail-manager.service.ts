@@ -4,7 +4,6 @@ import { Email } from './email.entity';
 import { BaseService } from '@server/common';
 import { Connection, EntityTarget, Repository } from 'typeorm';
 import { Cron } from '@nestjs/schedule';
-import { Option } from '../option/option.entity';
 import { CreateAdminEmailNotificationDto } from './types';
 
 @Injectable()

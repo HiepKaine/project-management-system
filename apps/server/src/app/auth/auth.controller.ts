@@ -92,11 +92,11 @@ export class AuthController {
       throw new ForbiddenException('Tài khoản của bạn đã bị khóa, vui lòng liên hệ để được mở khóa tài khoản');
     }
 
-    const isValidActivity = await this.userActivityManagerService.checkValidActivityAndSaveIp(user.id, ip, headers);
+    // const isValidActivity = await this.userActivityManagerService.checkValidActivityAndSaveIp(user.id, ip, headers);
 
-    if (!isValidActivity && user.isRole('user')) {
-      throw new ForbiddenException('Tài khoản của bạn đã bị khóa do truy cập trên quá nhiều thiết bị, vui lòng liên hệ để được mở khóa tài khoản');
-    }
+    // if (!isValidActivity && user.isRole('user')) {
+    //   throw new ForbiddenException('Tài khoản của bạn đã bị khóa do truy cập trên quá nhiều thiết bị, vui lòng liên hệ để được mở khóa tài khoản');
+    // }
 
     await this.authService.resetLoginFailed(user.id);
 

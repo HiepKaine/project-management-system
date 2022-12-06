@@ -12,11 +12,6 @@ const routes: Routes = [
         path: '',
         children: [
           {
-            path: 'slider',
-            loadChildren: () =>
-              import('./slider/slider.module').then((m) => m.SliderModule),
-          },
-          {
             path: 'profile',
             loadChildren: () =>
               import('./profile/profile.module').then((m) => m.ProfileModule),

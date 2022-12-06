@@ -7,5 +7,4 @@ import { Category } from '@frontend/models/category.model';
   providedIn: 'root'
 })
 export class CategoryService extends BaseService<Category>{
-  public override url = '/category';
 }

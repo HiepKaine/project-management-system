@@ -9,7 +9,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { CompletedLesson } from '../completed-lesson/completed-lesson.entity';
 import { Lesson } from '../lesson/lesson.entity';
 import { CourseChapterLesson } from './course-chapter-lesson.entity';
 import { Course } from './course.entity';
@@ -58,8 +57,4 @@ export class CourseChapter {
     },
   })
   lessons: Lesson[];
-
-  @OneToMany(() => CompletedLesson, (completedLessonChapter) => completedLessonChapter.courseChapter)
-  completedLessons: CompletedLesson[];
-
 }

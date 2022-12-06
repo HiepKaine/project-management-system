@@ -55,41 +55,12 @@ export class User {
   @Column()
   password: string;
 
-  @Column({ type: 'varchar', default: '' })
-  firstName: string;
-
-  @Column({ type: 'varchar', default: '' })
-  lastName: string;
-
-  @Column()
-  image: string;
-
-  @Column()
-  position: string;
-
-  @Column()
-  organization: string;
 
   @Column({
     type: 'int',
     default: 1,
   })
   status: number;
-
-  @Column({
-    type: 'varchar',
-  })
-  verifyToken: string;
-
-  @Column({
-    type: 'boolean',
-    default: false,
-  })
-  verified: boolean;
-
-
-  @Column({ type: 'timestamp' })
-  public verifiedAt: Date;
 
   @Column({
     type: 'int',
@@ -162,12 +133,6 @@ export class User {
 
   getEmail(): string {
     return this.email;
-  }
-
-  generateVerifyEmailLink(base_url: string): string {
-    const path = `/auth/verify?token=${this.verifyToken}`;
-    const url = new URL(path, base_url);
-    return url.href;
   }
 
   isRole(role: string): boolean {

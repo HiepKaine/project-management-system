@@ -14,8 +14,6 @@ import { RolePermission } from './auth/entity/role-permission.entity';
 import { Role } from './auth/entity/role.entity';
 import { UserRole } from './auth/entity/user-role.entity';
 import { User } from './auth/entity/user.entity';
-import { Category } from './category/category.entity';
-import { CategoryModule } from './category/category.module';
 import { Contact } from './contact/contact.entity';
 import { ContactModule } from './contact/contact.module';
 import { CourseChapterLesson } from './course/course-chapter-lesson.entity';
@@ -43,15 +41,11 @@ import { HighlightService } from './highlight/highlight.service';
 import { Lesson } from './lesson/lesson.entity';
 import { LessonModule } from './lesson/lesson.module';
 import { MailManagerModule } from './mail-manager/mail-manager.module';
-import { Option } from './option/option.entity';
-import { OptionModule } from './option/option.module';
 import { ProfileModule } from './profile/profile.module';
 import { RelatedCourse } from './relatedCourse/relatedCourse.entity';
 import { RelatedExamPack } from './relatedExamPack/relatedExamPack.entity';
 import { Review } from './review/review.entity';
 import { ReviewModule } from './review/review.module';
-import { Slider } from './slider/slider.entity';
-import { SliderModule } from './slider/slider.module';
 import { Channel } from './systemNotification/channel.entity';
 import { SystemNotification } from './systemNotification/systemNotification.entity';
 import { SystemNotificationModule } from './systemNotification/systemNotification.module';
@@ -70,8 +64,6 @@ import { Ip } from './user-activity-manager/ip.entity';
 import { UserIp } from './user-activity-manager/user-ip.entity';
 import { AnalyticModule } from './analytic/analytic.module';
 import { StaticServerModule } from './static-server/static-server.module';
-import { CompletedLesson } from './completed-lesson/completed-lesson.entity';
-import { CompletedLessonModule } from './completed-lesson/completed-lesson.module';
 
 @Module({
   imports: [
@@ -84,14 +76,11 @@ import { CompletedLessonModule } from './completed-lesson/completed-lesson.modul
         RolePermission,
         PasswordReset,
         Course,
-        Category,
         Contact,
         ExamPack,
         Lesson,
         Question,
         Answer,
-        Slider,
-        Option,
         Channel,
         SystemNotification,
         UserChannel,
@@ -118,7 +107,6 @@ import { CompletedLessonModule } from './completed-lesson/completed-lesson.modul
         Ip,
         UserIp,
         UserActivity,
-        CompletedLesson
       ],
     }),
     AuthModule,
@@ -126,14 +114,11 @@ import { CompletedLessonModule } from './completed-lesson/completed-lesson.modul
     ProfileModule,
     CourseModule,
     FileModule,
-    CategoryModule,
     DictionaryModule,
     ContactModule,
     ExamPackModule,
     LessonModule,
     ExamModule,
-    SliderModule,
-    OptionModule,
     SystemNotificationModule,
     TestSessionModule,
     ReviewModule,
@@ -142,7 +127,6 @@ import { CompletedLessonModule } from './completed-lesson/completed-lesson.modul
     ScheduleModule.forRoot(),
     UserActivityManagerModule,
     AnalyticModule,
-    CompletedLessonModule,
     StaticServerModule,
   ],
 

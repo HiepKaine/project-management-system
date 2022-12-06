@@ -16,7 +16,6 @@ import { Exam } from './exam.entity';
 import { ExamCode } from './exam-code.entity';
 import { ExamQuestion } from './exam-question.entity';
 import { ReadingContent } from './reading-content.entity';
-import { Category } from '../category/category.entity';
 
 @Entity({ name: 'question' })
 export class Question {
@@ -90,6 +89,4 @@ export class Question {
   @ManyToOne(() => ReadingContent, (readingContent) => readingContent.questions)
   readingContent: ReadingContent;
 
-  @ManyToOne(() => Category, (category) => category.lessons)
-  category: Category;
 }
