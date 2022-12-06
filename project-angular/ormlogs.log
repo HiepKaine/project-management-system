@@ -576,3 +576,6 @@
 [2022-11-29T07:44:15.038Z][QUERY]: INSERT INTO `webdoan`.`seeds`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1649669979240,"UserTableSeeder1649669979240"]
 [2022-11-29T07:44:15.040Z]Migration UserTableSeeder1649669979240 has been executed successfully.
 [2022-11-29T07:44:15.041Z][QUERY]: COMMIT
+[2022-12-01T08:16:36.681Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'webdoan' AND `TABLE_NAME` = 'migrations'
+[2022-12-01T08:16:36.705Z][QUERY]: SELECT * FROM `webdoan`.`migrations` `migrations` ORDER BY `id` DESC
+[2022-12-01T08:16:36.710Z]No migrations are pending
