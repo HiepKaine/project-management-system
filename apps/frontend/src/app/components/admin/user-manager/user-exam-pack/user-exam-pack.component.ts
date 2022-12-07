@@ -95,7 +95,7 @@ export class UserExamPackComponent {
 
   openAddExamPackModal(): void {
     const modal = this.modal.create({
-      nzTitle: `Thêm gói trắc nghiệm cho ${this.user.getFullName()}`,
+      nzTitle: `Thêm gói trắc nghiệm cho`,
       nzContent: AddUserExamPackModalComponent,
       nzViewContainerRef: this.viewContainerRef,
       nzComponentParams: {},

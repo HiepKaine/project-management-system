@@ -91,12 +91,7 @@ export class ListComponent {
           const data = {
             email: form.get('email')?.value,
             password: form.get('password')?.value,
-            lastName: form.get('lastName')?.value,
-            firstName: form.get('firstName')?.value,
             phoneNumber: form.get('phoneNumber')?.value,
-            position: form.get('position')?.value,
-            organization: form.get('organization')?.value,
-            image: imageUrl,
           };
 
           this.userService.create(data).subscribe(() => {
@@ -117,7 +112,7 @@ export class ListComponent {
   deleteUser(user: User) {
     this.modal.warning({
       nzTitle: 'Xoá học viên',
-      nzContent: `Bạn đang xoá học viên ${user.getFullName()}`,
+      nzContent: `Bạn đang xoá học viên`,
       nzOnOk: () => {
         this.userService.delete(user.id).subscribe(() => {
           this.getUser();

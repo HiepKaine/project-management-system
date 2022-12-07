@@ -9,13 +9,11 @@
   ]"
 >
   <nz-card-meta
-    [nzTitle]="user.getFullName()"
     [nzDescription]="user.email"
     [nzAvatar]="avatarTemplate"
   ></nz-card-meta>
 </nz-card>
 <ng-template #avatarTemplate>
-  <nz-avatar [nzSrc]="user.image"></nz-avatar>
 </ng-template>
 <ng-template #actionEdit>
   <a

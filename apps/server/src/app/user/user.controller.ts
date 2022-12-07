@@ -55,8 +55,6 @@ export class UserController {
         sqb.where('user.email LIKE :searchString', { searchString })
           .orWhere('user.phoneNumber LIKE :searchString', { searchString })
           .orWhere('user.username LIKE :searchString', { searchString })
-          .orWhere('user.firstName LIKE :searchString', { searchString })
-          .orWhere('user.lastName LIKE :searchString', { searchString })
       }))
     }
 
@@ -83,7 +81,7 @@ export class UserController {
   @Put(':id')
   @Auth('admin')
   async update(@Param('id', ParseIntPipe) userId: number, @Body() updateUserDto: UpdateUserDto): Promise<ApiItemResponse<User>> {
-    const result = await this.userService.update(userId, pick(updateUserDto, ['email', 'firstName', 'lastName', 'phoneNumber', 'image', 'organization', 'position']));
+    const result = await this.userService.update(userId, pick(updateUserDto, ['email', 'phoneNumber']));
     return this.response.item(result, UserTransformer);
   }
 
@@ -196,12 +194,7 @@ export class UserController {
       password: this.hashService.hash(data.password),
       code,
       email: emailLowerCase,
-      image: data.image,
       phoneNumber: data.phoneNumber,
-      firstName: data.firstName,
-      lastName: data.lastName,
-      position: data.position,
-      organization: data.organization,
       status: UserStatus.active,
     });
     await this.authService.attachDefaultRole(user);

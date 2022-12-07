@@ -151,7 +151,7 @@ export class ListComponent implements OnInit {
   remove(item: TestSession): void {
     this.modal.warning({
       nzTitle: 'Xoá kết quả thi',
-      nzContent: `Bạn đang xoá kết quả thi của học viên ${item.user.getFullName()}`,
+      nzContent: `Bạn đang xoá kết quả thi của học viên`,
       nzOnOk: () => {
         this.testSessionManagerService.delete(item.id).subscribe(() => {
           const page = pageParser(

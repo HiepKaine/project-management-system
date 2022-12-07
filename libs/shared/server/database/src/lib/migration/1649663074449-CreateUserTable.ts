@@ -89,22 +89,6 @@ export class CreateUserTable1649663074449 implements MigrationInterface {
         columnNames: ['username'],
       }),
     );
-
-    await queryRunner.createIndex(
-      'user',
-      new TableIndex({
-        name: 'IDX_USER_FIRST_NAME',
-        columnNames: ['firstName'],
-      }),
-    );
-
-    await queryRunner.createIndex(
-      'user',
-      new TableIndex({
-        name: 'IDX_USER_LAST_NAME',
-        columnNames: ['lastName'],
-      }),
-    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
