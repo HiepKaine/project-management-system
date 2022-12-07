@@ -37,10 +37,10 @@ export class FacultyController {
   @Auth('admin')
   async index(
     @Query() param: FindManyQueryParam
-  ): Promise<ApiPaginateResponse<FacultyService>> {
+  ): Promise<ApiPaginateResponse<Faculty>> {
     const page =
       param.page && Number(param.page) > 0
-        ? Math.floor(Number(param.limit))
+        ? Math.floor(Number(param.page))
         : 1;
 
     const limit =

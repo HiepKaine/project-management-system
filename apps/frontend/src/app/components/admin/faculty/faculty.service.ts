@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { BaseService } from '@frontend/common';
+import { Faculty } from '@frontend/models/faculty.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class FacultyService {
-
-  constructor() { }
+export class FacultyService extends BaseService<Faculty> {
+  public override url = 'faculty';
 }

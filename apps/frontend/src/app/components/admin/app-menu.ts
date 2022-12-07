@@ -9,7 +9,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Khoa',
     icon: { icon: 'book-outline' },
-    link: '/admin/course',
+    link: '/admin/faculty',
   },
   {
     title: 'Lớp',
@@ -18,12 +18,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Sinh viên',
-    icon: { icon: 'npm-outline' },
+    icon: { icon: 'people-outline' },
     link: '/admin/exam-pack-manager',
   },
   {
     title: 'Quản lí giảng viên',
-    icon: { icon: 'file-remove-outline' },
+    icon: { icon: 'people-outline' },
     children: [
       {
         title: 'Đề trắc nghiệm',
