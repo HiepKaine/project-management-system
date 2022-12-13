@@ -39,9 +39,7 @@ export class FacultyController {
     @Query() param: FindManyQueryParam
   ): Promise<ApiPaginateResponse<Faculty>> {
     const page =
-      param.page && Number(param.page) > 0
-        ? Math.floor(Number(param.page))
-        : 1;
+      param.page && Number(param.page) > 0 ? Math.floor(Number(param.page)) : 1;
 
     const limit =
       param.limit && Number(param.limit) > 0

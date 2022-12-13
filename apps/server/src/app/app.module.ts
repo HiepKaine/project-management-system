@@ -66,6 +66,8 @@ import { AnalyticModule } from './analytic/analytic.module';
 import { StaticServerModule } from './static-server/static-server.module';
 import { FacultyModule } from './faculty/faculty.module';
 import { Faculty } from './faculty/faculty.entity';
+import { ClassModule } from './class/class.module';
+import { Class } from './class/class.entity';
 
 @Module({
   imports: [
@@ -109,7 +111,8 @@ import { Faculty } from './faculty/faculty.entity';
         Ip,
         UserIp,
         UserActivity,
-        Faculty
+        Faculty,
+        Class,
       ],
     }),
     AuthModule,
@@ -132,6 +135,7 @@ import { Faculty } from './faculty/faculty.entity';
     AnalyticModule,
     StaticServerModule,
     FacultyModule,
+    ClassModule,
   ],
 
   controllers: [AppController],
