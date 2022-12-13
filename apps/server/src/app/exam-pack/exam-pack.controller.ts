@@ -32,13 +32,6 @@ import { ExamService } from '../exam/service/exam/exam.service';
 import { Highlight } from '../highlight/highlight.entity';
 import { HighlightService } from '../highlight/highlight.service';
 import { HighlightTransformer } from '../highlight/highlight.transformer';
-import { RelatedExamPack } from '../relatedExamPack/relatedExamPack.entity';
-import { RelatedExamPackService } from '../relatedExamPack/relatedExamPack.service';
-import { RelatedExamPackTransformer } from '../relatedExamPack/relatedExamPack.transformer';
-import { AddRelatedExamPackToExamPackDto } from '../relatedExamPack/types';
-import { Review } from '../review/review.entity';
-import { ReviewService } from '../review/review.service';
-import { ReviewTransformer } from '../review/review.transformer';
 import {
   FindManyQueryParam,
   FindManyQueryParamWithCategory,
@@ -63,10 +56,8 @@ export class ExamPackController {
     private examPackService: ExamPackService,
     private examPackExamService: ExamPackExamService,
     private examService: ExamService,
-    private reviewService: ReviewService,
     private courseService: CourseService,
     private highlightService: HighlightService,
-    private relatedExamPackService: RelatedExamPackService
   ) {}
   @Get()
   @Auth('admin')
@@ -172,55 +163,6 @@ export class ExamPackController {
     return this.response.success();
   }
 
-  @Get(':id/related')
-  async getRelatedCourse(
-    @Param('id', ParseIntPipe) id: number
-  ): Promise<ApiCollectionResponse<ExamPack>> {
-    const relatedExamPacks = await this.relatedExamPackService.repository.find({
-      where: {
-        relatedId: id,
-        relatedType: 'exam-pack',
-      },
-    });
-
-    let result = [];
-
-    if (relatedExamPacks.length) {
-      result = await this.examPackService.repository
-        .createQueryBuilder('examPack')
-        .leftJoinAndSelect('examPack.exams', 'exam')
-        .where(
-          `examPack.id IN (${relatedExamPacks
-            .map((item) => item.examPackId)
-            .join(',')})`
-        )
-        .getMany();
-    }
-
-    return this.response.collection(result, CourseTransformer);
-  }
-
-  @Post(':id/related')
-  async addRelatedCourse(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() data: AddRelatedExamPackToExamPackDto
-  ): Promise<ApiItemResponse<RelatedExamPack>> {
-    if (
-      await this.relatedExamPackService.isExamPackRelateToExamPack(
-        data.examPackId,
-        id
-      )
-    ) {
-      throw new ConflictException('Đã thêm bản ghi trước đó');
-    }
-
-    const result = await this.relatedExamPackService.create({
-      examPackId: data.examPackId,
-      relatedId: id,
-      relatedType: 'exam-pack',
-    });
-    return this.response.item(result, RelatedExamPackTransformer);
-  }
 
   @Get(':id/exam')
   async getExamOfExamPack(
@@ -322,27 +264,6 @@ export class ExamPackController {
     return this.response.success();
   }
 
-  @Get(':examPackId/review')
-  async getReview(
-    @Query() param: FindManyQueryParam,
-    @Param('examPackId', ParseIntPipe) examPackId: number
-  ): Promise<ApiCollectionResponse<Review>> {
-    const page =
-      param.page && Number(param.page) > 0 ? Math.floor(Number(param.page)) : 1;
-    const limit =
-      param.limit && Number(param.limit) > 0
-        ? Math.floor(Number(param.limit))
-        : 20;
-    const query = this.reviewService.repository
-      .createQueryBuilder('review')
-      .andWhere(
-        'reviewableId = :reviewableId AND reviewableType = :reviewableType',
-        { reviewableId: examPackId, reviewableType: 'exampack' }
-      );
-    const result = await this.reviewService.paginate(query, { page, limit });
-    return this.response.paginate(result, ReviewTransformer);
-  }
-
   @Post(':examPackId/exam')
   @Auth('admin')
   async addExamForExamPack(
@@ -357,33 +278,6 @@ export class ExamPackController {
       examId: data.examId,
       examPackId: examPackId,
     });
-
-    return this.response.success();
-  }
-
-  @Delete(':examPackId/related/:relatedExamPackId')
-  async deleteRelatedCourse(
-    @Param('examPackId', ParseIntPipe) examPackId: number,
-    @Param('relatedExamPackId') relatedExamPackId: number
-  ): Promise<ApiSuccessResponse> {
-    if (
-      !(await this.relatedExamPackService.isExamPackRelateToExamPack(
-        examPackId,
-        relatedExamPackId
-      ))
-    ) {
-      throw new ConflictException('Không tồn tại bản ghi');
-    }
-
-    await this.relatedExamPackService.repository
-      .createQueryBuilder()
-      .delete()
-      .where('examPackId = :relatedExamPackId', { relatedExamPackId })
-      .andWhere('relatedId = :relatedId ', { relatedId: examPackId })
-      .andWhere('relatedId = :relatedId AND relatedType = :relatedType', {
-        relatedType: 'exam-pack',
-      })
-      .execute();
 
     return this.response.success();
   }
@@ -408,41 +302,6 @@ export class ExamPackController {
       .execute();
 
     return this.response.success();
-  }
-
-  @Get(':examPackId/remaining-exam-time')
-  @Auth('admin', 'user')
-  async getRemainingExamTime(
-    @AuthenticatedUser() user: User,
-    @Param('examPackId', ParseIntPipe) examPackId: number
-  ): Promise<ApiSuccessResponse> {
-    const examPack = await this.examPackService.findOrFail(examPackId, {
-      relations: ['exams'],
-    });
-    const { exams } = examPack;
-    const result: Array<{
-      examId: number;
-      remaining: number | null;
-      retry: number;
-    }> = [];
-    for (const exam of exams) {
-      if (exam.canRetryAnyTime()) {
-        result.push({ examId: exam.id, remaining: null, retry: exam.retry });
-      } else {
-        const completedExamCount = await this.examService.completedExamCount(
-          user.id,
-          examPackId,
-          exam.id
-        );
-        const remaining = exam.retry - completedExamCount;
-        result.push({
-          examId: exam.id,
-          remaining: remaining > 0 ? remaining : 0,
-          retry: exam.retry,
-        });
-      }
-    }
-    return this.response.object(result);
   }
 
   @Get('slug/:slug')

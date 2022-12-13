@@ -16,7 +16,6 @@ import { UserChannel } from '../../systemNotification/userChannel.entity';
 import { UserNotificationUnread } from '../../systemNotification/userNotificationUnread.entity';
 import { UserCourse } from '../../user/userCourse.entity';
 import { UserExamPack } from '../../user/userExamPack.entity';
-import { TestSession } from '../../test-session/test-session.entity';
 import { UserActivity } from '../../user-activity-manager/user-activity.entity';
 
 export enum UserStatus {
@@ -110,9 +109,6 @@ export class User {
 
   @OneToMany(() => UserExamPack, (userExamPack) => userExamPack.user)
   userExamPacks: UserExamPack[]
-
-  @OneToMany(() => TestSession, (testSession) => testSession.user)
-  testSessions: TestSession[]
 
   @OneToMany(() => UserNotificationUnread, (userNotificationUnread) => userNotificationUnread.user)
   userNotificationUnreads: UserNotificationUnread[];

@@ -39,13 +39,6 @@ const routes: Routes = [
               import('./course/course.module').then((m) => m.CourseModule),
           },
           {
-            path: 'category',
-            loadChildren: () =>
-              import('./category/category.module').then(
-                (m) => m.CategoryModule
-              ),
-          },
-          {
             path: 'exam-manager',
             loadChildren: () =>
               import('./exam-manager/exam-manager.module').then(
@@ -60,39 +53,10 @@ const routes: Routes = [
               ),
           },
           {
-            path: 'test-session-manager',
-            loadChildren: () =>
-              import('./test-session-manager/test-session-manager.module').then(
-                (m) => m.TestSessionManagerModule
-              ),
-          },
-          {
-            path: 'lesson',
-            loadChildren: () =>
-              import('./lesson/lesson.module').then((m) => m.LessonModule),
-          },
-          {
-            path: 'contact',
-            loadChildren: () =>
-              import('./contact/contact.module').then((m) => m.ContactModule),
-          },
-          {
             path: 'user',
             loadChildren: () =>
               import('./user-manager/user-manager.module').then(
                 (m) => m.UserManagerModule
-              ),
-          },
-          {
-            path: 'faq',
-            loadChildren: () =>
-              import('./faq/faq.module').then((m) => m.FaqModule),
-          },
-          {
-            path: 'review-manager',
-            loadChildren: () =>
-              import('./review-manager/review-manager.module').then(
-                (m) => m.ReviewManagerModule
               ),
           },
           { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },

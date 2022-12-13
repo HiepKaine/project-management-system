@@ -14,8 +14,6 @@ import { RolePermission } from './auth/entity/role-permission.entity';
 import { Role } from './auth/entity/role.entity';
 import { UserRole } from './auth/entity/user-role.entity';
 import { User } from './auth/entity/user.entity';
-import { Contact } from './contact/contact.entity';
-import { ContactModule } from './contact/contact.module';
 import { CourseChapterLesson } from './course/course-chapter-lesson.entity';
 import { CourseChapter } from './course/course-chapter.entity';
 import { Course } from './course/course.entity';
@@ -33,8 +31,6 @@ import { Exam } from './exam/exam.entity';
 import { ExamModule } from './exam/exam.module';
 import { Question } from './exam/question.entity';
 import { ReadingContent } from './exam/reading-content.entity';
-import { Faq } from './faq/faq.entity';
-import { FaqModule } from './faq/faq.module';
 import { FileModule } from './file/file.module';
 import { Highlight } from './highlight/highlight.entity';
 import { HighlightService } from './highlight/highlight.service';
@@ -42,20 +38,11 @@ import { Lesson } from './lesson/lesson.entity';
 import { LessonModule } from './lesson/lesson.module';
 import { MailManagerModule } from './mail-manager/mail-manager.module';
 import { ProfileModule } from './profile/profile.module';
-import { RelatedCourse } from './relatedCourse/relatedCourse.entity';
-import { RelatedExamPack } from './relatedExamPack/relatedExamPack.entity';
-import { Review } from './review/review.entity';
-import { ReviewModule } from './review/review.module';
 import { Channel } from './systemNotification/channel.entity';
 import { SystemNotification } from './systemNotification/systemNotification.entity';
 import { SystemNotificationModule } from './systemNotification/systemNotification.module';
 import { UserChannel } from './systemNotification/userChannel.entity';
 import { UserNotificationUnread } from './systemNotification/userNotificationUnread.entity';
-import { TestSessionAnswer } from './test-session-answer/test-session-answer.entity';
-import { TestSessionAnswerService } from './test-session-answer/test-session-answer.service';
-import { TestSession } from './test-session/test-session.entity';
-import { TestSessionModule } from './test-session/test-session.module';
-import { UserModule } from './user/user.module';
 import { UserCourse } from './user/userCourse.entity';
 import { UserExamPack } from './user/userExamPack.entity';
 import { Email } from './mail-manager/email.entity';
@@ -80,7 +67,6 @@ import { Class } from './class/class.entity';
         RolePermission,
         PasswordReset,
         Course,
-        Contact,
         ExamPack,
         Lesson,
         Question,
@@ -91,8 +77,6 @@ import { Class } from './class/class.entity';
         UserNotificationUnread,
         UserCourse,
         UserExamPack,
-        RelatedCourse,
-        RelatedExamPack,
         Exam,
         ExamPackExam,
         ExamQuestion,
@@ -100,13 +84,9 @@ import { Class } from './class/class.entity';
         ExamCodeQuestionAnswer,
         ExamCode,
         ReadingContent,
-        TestSession,
-        TestSessionAnswer,
         CourseChapter,
         CourseChapterLesson,
-        Review,
         Highlight,
-        Faq,
         Email,
         Ip,
         UserIp,
@@ -116,19 +96,14 @@ import { Class } from './class/class.entity';
       ],
     }),
     AuthModule,
-    UserModule,
     ProfileModule,
     CourseModule,
     FileModule,
     DictionaryModule,
-    ContactModule,
     ExamPackModule,
     LessonModule,
     ExamModule,
     SystemNotificationModule,
-    TestSessionModule,
-    ReviewModule,
-    FaqModule,
     MailManagerModule,
     ScheduleModule.forRoot(),
     UserActivityManagerModule,
@@ -139,7 +114,7 @@ import { Class } from './class/class.entity';
   ],
 
   controllers: [AppController],
-  providers: [AppService, TestSessionAnswerService, HighlightService],
+  providers: [AppService, HighlightService],
 })
 export class AppModule {
   constructor() {

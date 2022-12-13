@@ -19,39 +19,22 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Sinh viên',
     icon: { icon: 'people-outline' },
-    link: '/admin/exam-pack-manager',
+    link: '/admin/student',
   },
   {
     title: 'Quản lí giảng viên',
     icon: { icon: 'people-outline' },
-    children: [
-      {
-        title: 'Đề trắc nghiệm',
-        link: '/admin/exam-manager/exam',
-      },
-      {
-        title: 'Câu hỏi trắc nghiệm',
-        link: '/admin/exam-manager/question',
-      },
-      {
-        title: 'Bài đọc',
-        link: '/admin/exam-manager/reading-content',
-      },
-      {
-        title: 'Kết quả',
-        link: '/admin/test-session-manager',
-      },
-    ],
+    link: '/admin/teacher'
   },
   {
     title: 'Quản lí môn học',
     icon: { icon: 'people-outline' },
-    link: '/admin/user',
+    link: '/admin/subject',
   },
   {
     title: 'Quản lí điểm',
     icon: { icon: 'people-outline' },
-    link: '/admin/review-manager',
+    link: '/admin/score',
   },
   {
     title: 'Quản lí điểm danh',
