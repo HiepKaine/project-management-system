@@ -69,7 +69,7 @@
                 <button
                   nz-button
                   nzType="link"
-                  [routerLink]="[item.id, 'edit']"
+                  (click)="editFacultyModal(item)"
                 >
                   <i nz-icon nzType="form" style="color: #1452d7"></i>
                 </button>

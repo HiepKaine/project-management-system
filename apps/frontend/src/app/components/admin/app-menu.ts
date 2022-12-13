@@ -14,7 +14,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Lớp',
     icon: { icon: 'browser-outline' },
-    link: '/admin/lesson',
+    link: '/admin/class',
   },
   {
     title: 'Sinh viên',

@@ -10,6 +10,7 @@ import { pageParser } from 'apps/frontend/src/app/@core/utils/query-parser';
 import { plainToInstance } from 'class-transformer';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { CreateFacultyModalComponent } from '../create-faculty-modal/create-faculty-modal.component';
+import { EditComponent } from '../edit/edit.component';
 import { FacultyService } from '../faculty.service';
 
 @UntilDestroy()
@@ -89,6 +90,38 @@ export class ListComponent {
             facultyCode: form.get('facultyCode')?.value,
           };
           this.facultyService.create(data).subscribe(() => {
+            console.log(data);
+            this.notificationService.success(
+              this.translate.instant('success.title'),
+              this.translate.instant('success.create'),
+              { nzDuration: 3000 }
+            );
+            modal.destroy();
+          });
+        }
+        return false;
+      },
+    });
+  }
+
+  editFacultyModal(item: Faculty): void {
+    const modal = this.modal.create({
+      nzTitle: 'Cập nhật khoa',
+      nzContent: EditComponent,
+      nzViewContainerRef: this.viewcontainerRef,
+      nzComponentParams: {
+        faculty: item,
+      },
+      nzOnOk: () => {
+        const form = modal.getContentComponent().form;
+        if (form.invalid) {
+          this.ngxFormManager.markAllAsDirty(form);
+        } else {
+          const data = {
+            name: form.get('name')?.value,
+            facultyCode: form.get('facultyCode')?.value,
+          };
+          this.facultyService.update(item.id, data).subscribe(() => {
             console.log(data);
             this.notificationService.success(
               this.translate.instant('success.title'),
