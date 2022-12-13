@@ -47,8 +47,8 @@ export class ClassController {
       this.classService.repository.createQueryBuilder('class');
 
     if (param.keyword) {
-      query = query.where(`class.name LIKE "%${param.keyword}%"`);
-      query = query.where(`class.classCode LIKE "%${param.keyword}%"`);
+      query = query.where(`class.name LIKE "%${param.keyword}%"`)
+      .orWhere(`class.classCode LIKE "%${param.keyword}%"`);
     }
 
     const result = await this.classService.paginate(query, { page, limit });

@@ -90,13 +90,13 @@ export class ListComponent {
             facultyCode: form.get('facultyCode')?.value,
           };
           this.facultyService.create(data).subscribe(() => {
-            console.log(data);
             this.notificationService.success(
               this.translate.instant('success.title'),
               this.translate.instant('success.create'),
               { nzDuration: 3000 }
             );
             modal.destroy();
+            this.getFaculty()
           });
         }
         return false;
@@ -122,13 +122,13 @@ export class ListComponent {
             facultyCode: form.get('facultyCode')?.value,
           };
           this.facultyService.update(item.id, data).subscribe(() => {
-            console.log(data);
             this.notificationService.success(
               this.translate.instant('success.title'),
               this.translate.instant('success.create'),
               { nzDuration: 3000 }
             );
             modal.destroy();
+            this.getFaculty();
           });
         }
         return false;
@@ -147,6 +147,7 @@ export class ListComponent {
             this.translate.instant('success.delete'),
             { nzDuration: 3000 }
           );
+          this.getFaculty();
         });
       },
     });

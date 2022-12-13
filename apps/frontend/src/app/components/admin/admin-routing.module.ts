@@ -29,9 +29,9 @@ const routes: Routes = [
               ),
           },
           {
-            path: 'option',
+            path: 'class',
             loadChildren: () =>
-              import('./option/option.module').then((m) => m.OptionModule),
+              import('./class/class.module').then((m) => m.ClassModule),
           },
           {
             path: 'course',

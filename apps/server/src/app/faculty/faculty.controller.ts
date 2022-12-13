@@ -50,8 +50,9 @@ export class FacultyController {
       this.facultyService.repository.createQueryBuilder('faculty');
 
     if (param.keyword) {
-      query = query.where(`faculty.name LIKE "%${param.keyword}%"`);
-      query = query.where(`faculty.facultyCode LIKE "%${param.keyword}%"`);
+      query = query
+        .where(`faculty.name LIKE "%${param.keyword}%"`)
+        .orWhere(`faculty.facultyCode LIKE "%${param.keyword}%"`)
     }
 
     const result = await this.facultyService.paginate(query, { page, limit });
