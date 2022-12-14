@@ -60,6 +60,7 @@ import { Teacher } from './teacher/teacher.entity';
 import { SubjectModule } from './subject/subject.module';
 import { Subject } from './subject/subject.entity';
 import { DivisionModule } from './division/division.module';
+import { Division } from './division/division.entity';
 
 @Module({
   imports: [
@@ -100,6 +101,7 @@ import { DivisionModule } from './division/division.module';
         Class,
         Teacher,
         Subject,
+        Division,
       ],
     }),
     AuthModule,
