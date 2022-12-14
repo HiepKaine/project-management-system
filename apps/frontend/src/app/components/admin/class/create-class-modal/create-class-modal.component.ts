@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { NgxFormManager, NgxFormrAnchorComponent } from '@ngxform/platform';
@@ -14,9 +15,9 @@ import { TextControlComponent } from '@webpress/form';
   styleUrls: ['./create-class-modal.component.scss'],
 })
 export class CreateClassModalComponent implements OnInit {
-  public form: FormGroup = this.fb.group({
-    name: new FormControl('', [Validators.required]),
-    classCode: new FormControl('', [Validators.required]),
+  public form: UntypedFormGroup = this.fb.group({
+    name: new UntypedFormControl('', [Validators.required]),
+    classCode: new UntypedFormControl('', [Validators.required]),
   });
 
   @ViewChild('formInputs', { static: true })
