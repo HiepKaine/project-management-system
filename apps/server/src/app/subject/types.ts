@@ -5,19 +5,19 @@ export class createSubjectDto {
   @ApiProperty()
   @IsString()
   @MaxLength(255)
-  name: string;
+  subjectCode: string;
 
   @ApiProperty()
   @IsString()
   @MaxLength(255)
-  subjectCode: string;
+  subjectName: string;
 }
 
 export class updateSubjectDto {
   @ApiProperty()
   @IsString()
   @MaxLength(255)
-  name: string;
+  subjectName: string;
 
   @ApiProperty()
   @IsString()

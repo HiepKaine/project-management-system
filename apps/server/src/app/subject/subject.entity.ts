@@ -13,7 +13,7 @@ export class Subject {
   id: number;
 
   @Column()
-  subjectname: string;
+  subjectName: string;
 
   @Column()
   subjectCode: string;

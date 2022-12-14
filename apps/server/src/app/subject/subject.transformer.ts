@@ -1,6 +1,6 @@
-export class TeacherTransformer {
+export class SubjectTransformer {
   id: number;
-  subjectname: string;
+  subjectName: string;
   subjectCode: string;
   deletedAt: Date;
   createdAt: Date;

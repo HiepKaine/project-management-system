@@ -58,6 +58,8 @@ import { Class } from './class/class.entity';
 import { TeacherModule } from './teacher/teacher.module';
 import { Teacher } from './teacher/teacher.entity';
 import { SubjectModule } from './subject/subject.module';
+import { Subject } from './subject/subject.entity';
+import { DivisionModule } from './division/division.module';
 
 @Module({
   imports: [
@@ -97,6 +99,7 @@ import { SubjectModule } from './subject/subject.module';
         Faculty,
         Class,
         Teacher,
+        Subject,
       ],
     }),
     AuthModule,
@@ -117,6 +120,7 @@ import { SubjectModule } from './subject/subject.module';
     ClassModule,
     TeacherModule,
     SubjectModule,
+    DivisionModule,
   ],
 
   controllers: [AppController],
