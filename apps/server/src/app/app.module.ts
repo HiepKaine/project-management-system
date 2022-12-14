@@ -57,6 +57,7 @@ import { ClassModule } from './class/class.module';
 import { Class } from './class/class.entity';
 import { TeacherModule } from './teacher/teacher.module';
 import { Teacher } from './teacher/teacher.entity';
+import { SubjectModule } from './subject/subject.module';
 
 @Module({
   imports: [
@@ -115,6 +116,7 @@ import { Teacher } from './teacher/teacher.entity';
     FacultyModule,
     ClassModule,
     TeacherModule,
+    SubjectModule,
   ],
 
   controllers: [AppController],
