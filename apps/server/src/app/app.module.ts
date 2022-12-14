@@ -55,6 +55,8 @@ import { FacultyModule } from './faculty/faculty.module';
 import { Faculty } from './faculty/faculty.entity';
 import { ClassModule } from './class/class.module';
 import { Class } from './class/class.entity';
+import { TeacherModule } from './teacher/teacher.module';
+import { Teacher } from './teacher/teacher.entity';
 
 @Module({
   imports: [
@@ -93,6 +95,7 @@ import { Class } from './class/class.entity';
         UserActivity,
         Faculty,
         Class,
+        Teacher,
       ],
     }),
     AuthModule,
@@ -111,6 +114,7 @@ import { Class } from './class/class.entity';
     StaticServerModule,
     FacultyModule,
     ClassModule,
+    TeacherModule,
   ],
 
   controllers: [AppController],

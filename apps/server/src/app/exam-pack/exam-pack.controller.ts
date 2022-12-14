@@ -18,11 +18,9 @@ import {
   ApiResponseService,
   ApiSuccessResponse,
   Auth,
-  AuthenticatedUser,
 } from '@server/common';
 import slugify from 'slugify';
 import { SelectQueryBuilder } from 'typeorm';
-import { User } from '../auth/entity/user.entity';
 import { Course } from '../course/course.entity';
 import { CourseService } from '../course/course.service';
 import { CourseTransformer } from '../course/course.transformer';
@@ -33,7 +31,6 @@ import { Highlight } from '../highlight/highlight.entity';
 import { HighlightService } from '../highlight/highlight.service';
 import { HighlightTransformer } from '../highlight/highlight.transformer';
 import {
-  FindManyQueryParam,
   FindManyQueryParamWithCategory,
 } from './../@core/types';
 import { ExamPack, ExamPackStatus } from './exam-pack.entity';

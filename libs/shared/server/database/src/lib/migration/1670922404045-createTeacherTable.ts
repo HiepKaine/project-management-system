@@ -18,39 +18,35 @@ export class createTeacherTable1670922404045 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'teacherName',
+            name: 'name',
             type: 'varchar',
           },
           {
-            name: 'teacherPhoneNumber',
+            name: 'phoneNumber',
             type: 'varchar',
           },
           {
-            name: 'teacherAddress',
+            name: 'address',
             type: 'varchar',
           },
           {
-            name: 'teacherSex',
+            name: 'sex',
             type: 'varchar',
           },
           {
-            name: 'teacherLevel',
+            name: 'level',
             type: 'varchar',
           },
           {
-            name: 'teacherEmail',
+            name: 'email',
             type: 'varchar',
           },
           {
-            name: 'teacherNationality',
+            name: 'nationality',
             type: 'varchar',
           },
           {
             name: 'subject',
-            type: 'varchar',
-          },
-          {
-            name: 'class',
             type: 'varchar',
           },
           {

@@ -9,6 +9,7 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import {
   ApiItemResponse,
   ApiPaginateResponse,
@@ -23,7 +24,7 @@ import { Class } from './class.entity';
 import { ClassService } from './class.service';
 import { ClassTransformer } from './class.transformer';
 import { createClassDto, updateClassDto } from './types';
-
+@ApiTags('Class')
 @Controller('class')
 export class ClassController {
   constructor(

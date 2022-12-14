@@ -13,7 +13,8 @@ export class MailManagerService extends BaseService<Email> {
   private readonly logger = new Logger(MailManagerService.name);
   constructor(
     private readonly mailerService: MailerService,
-    private connection: Connection) {
+    private connection: Connection
+  ) {
     super();
   }
 
@@ -29,34 +30,39 @@ export class MailManagerService extends BaseService<Email> {
   }
 
   private getPendingEmail(limit?: number): Promise<Email[]> {
-    return this.repository.createQueryBuilder('email')
+    return this.repository
+      .createQueryBuilder('email')
       .where('email.sent = 0')
       .andWhere('email.retry < 3')
       .limit(limit ?? 5)
-      .getMany()
+      .getMany();
   }
 
   async createAdminEmailNotification(data: CreateAdminEmailNotificationDto) {
-    const adminEmailAddress = this.connection.getRepository(Option).findOne({ where: { key: 'email' } });
+    const adminEmailAddress = this.connection
+      .getRepository(Option)
+      .findOne({ where: { key: 'email' } });
     return this.create({ ...{ to: (await adminEmailAddress).value }, ...data });
   }
 
   async send(email: Email) {
     try {
-      await this.mailerService
-        .sendMail({
-          to: email.to,
-          subject: email.subject,
-          template: 'email',
-          context: {
-            title: email.title,
-            greeting: email.greeting,
-            content: email.content,
-          },
-        });
+      await this.mailerService.sendMail({
+        to: email.to,
+        subject: email.subject,
+        template: 'email',
+        context: {
+          title: email.title,
+          greeting: email.greeting,
+          content: email.content,
+        },
+      });
       await this.update(email.id, { sent: true });
     } catch (error) {
-      await this.update(email.id, { error: error.toString, retry: email.retry + 1 });
+      await this.update(email.id, {
+        error: error.toString,
+        retry: email.retry + 1,
+      });
     }
   }
 }
