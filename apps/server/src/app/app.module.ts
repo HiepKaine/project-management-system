@@ -61,6 +61,9 @@ import { SubjectModule } from './subject/subject.module';
 import { Subject } from './subject/subject.entity';
 import { DivisionModule } from './division/division.module';
 import { Division } from './division/division.entity';
+import { ScoreController } from './score/score.controller';
+import { ScoreModule } from './score/score.module';
+import { Score } from './score/score.entity';
 
 @Module({
   imports: [
@@ -102,6 +105,7 @@ import { Division } from './division/division.entity';
         Teacher,
         Subject,
         Division,
+        Score,
       ],
     }),
     AuthModule,
@@ -123,6 +127,7 @@ import { Division } from './division/division.entity';
     TeacherModule,
     SubjectModule,
     DivisionModule,
+    ScoreModule,
   ],
 
   controllers: [AppController],

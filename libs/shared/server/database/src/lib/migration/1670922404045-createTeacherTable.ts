@@ -46,8 +46,8 @@ export class createTeacherTable1670922404045 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'subject',
-            type: 'varchar',
+            name: 'divisionId',
+            type: 'int',
           },
           {
             name: 'deletedAt',

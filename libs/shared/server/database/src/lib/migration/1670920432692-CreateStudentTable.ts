@@ -19,7 +19,7 @@ export class CreateStudentTable1670920432692 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'studentName',
+            name: 'name',
             type: 'varchar',
           },
           {
@@ -31,7 +31,7 @@ export class CreateStudentTable1670920432692 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'studentIdCard',
+            name: 'idCard',
             type: 'varchar',
           },
           {
@@ -39,31 +39,31 @@ export class CreateStudentTable1670920432692 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'studentSex',
+            name: 'sex',
             type: 'varchar',
           },
           {
-            name: 'studentDate',
+            name: 'date',
             type: 'varchar',
           },
           {
-            name: 'studentAddress',
+            name: 'address',
             type: 'varchar',
           },
           {
-            name: 'studentEthnic',
+            name: 'ethnic',
             type: 'varchar',
           },
           {
-            name: 'studentReligion',
+            name: 'religion',
             type: 'varchar',
           },
           {
-            name: 'studentFacutly',
+            name: 'facutly',
             type: 'varchar',
           },
           {
-            name: 'studentClass',
+            name: 'class',
             type: 'varchar',
           },
           {

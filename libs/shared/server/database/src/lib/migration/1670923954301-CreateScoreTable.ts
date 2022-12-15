@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table, TableIndex } from 'typeorm';
 
 export class CreateScoreTable1670923954301 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -14,16 +14,12 @@ export class CreateScoreTable1670923954301 implements MigrationInterface {
             generationStrategy: 'increment',
           },
           {
-            name: 'studentName',
-            type: 'varchar',
+            name: 'studentId',
+            type: 'int',
           },
           {
-            name: 'studentCode',
-            type: 'varchar',
-          },
-          {
-            name: 'subjects',
-            type: 'varchar',
+            name: 'subjectId',
+            type: 'int',
           },
           {
             name: 'score',
@@ -45,6 +41,22 @@ export class CreateScoreTable1670923954301 implements MigrationInterface {
             default: 'NOW()',
           },
         ],
+      })
+    );
+
+    await queryRunner.createIndex(
+      'score',
+      new TableIndex({
+        name: 'STUDENT_IDX',
+        columnNames: ['studentId'],
+      })
+    );
+
+    await queryRunner.createIndex(
+      'score',
+      new TableIndex({
+        name: 'SUBJECT_IDX',
+        columnNames: ['subjectId'],
       })
     );
   }

@@ -18,7 +18,7 @@ export class CreateSubjectTable1670924186821 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'subjectName',
+            name: 'name',
             type: 'varchar',
           },
           {
