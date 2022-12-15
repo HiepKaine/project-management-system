@@ -59,15 +59,15 @@ export class CreateStudentTable1670920432692 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'facutly',
+            name: 'facutlyId',
             type: 'varchar',
           },
           {
-            name: 'class',
+            name: 'classId',
             type: 'varchar',
           },
           {
-            name: 'fatherStudent',
+            name: 'fatherName',
             type: 'varchar',
           },
           {
@@ -79,7 +79,7 @@ export class CreateStudentTable1670920432692 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'motherStudent',
+            name: 'motherName',
             type: 'varchar',
           },
           {

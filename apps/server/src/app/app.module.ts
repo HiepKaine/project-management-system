@@ -64,6 +64,7 @@ import { Division } from './division/division.entity';
 import { ScoreController } from './score/score.controller';
 import { ScoreModule } from './score/score.module';
 import { Score } from './score/score.entity';
+import { StudentModule } from './student/student.module';
 
 @Module({
   imports: [
@@ -128,6 +129,7 @@ import { Score } from './score/score.entity';
     SubjectModule,
     DivisionModule,
     ScoreModule,
+    StudentModule,
   ],
 
   controllers: [AppController],
