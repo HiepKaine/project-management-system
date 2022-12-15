@@ -42,6 +42,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/admin/contact',
   },
   {
+    title: 'Danh sách bộ môn',
+    icon: { icon: 'email-outline' },
+    link: '/admin/division',
+  },
+  {
     title: 'Thành viên',
     icon: { icon: 'question-mark-circle-outline' },
     link: '/admin/faq',

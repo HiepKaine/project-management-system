@@ -23,7 +23,6 @@ export class ListComponent {
   public pagination!: ApiResponsePagination;
   constructor(
     private classService: ClassService,
-    private route: ActivatedRoute,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private modal: NzModalService,
@@ -32,7 +31,7 @@ export class ListComponent {
     private notificationService: NotificationService,
     private viewcontainerRef: ViewContainerRef
   ) {
-    this.route.queryParams.subscribe(({ keyword, page }) => {
+    this.activatedRoute.queryParams.subscribe(({ keyword, page }) => {
       const param: { keyword?: string; page?: number } = {
         page: pageParser(page),
       };

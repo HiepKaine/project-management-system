@@ -18,6 +18,10 @@ export class CreateDivisionTable1671000747754 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'divisionCode',
+            type: 'varchar',
+          },
+          {
             name: 'createdAt',
             type: 'timestamp',
             default: 'NOW()',

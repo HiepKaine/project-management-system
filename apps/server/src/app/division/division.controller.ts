@@ -49,7 +49,9 @@ export class DivisionController {
       this.divisionService.repository.createQueryBuilder('division');
 
     if (param.keyword) {
-      query = query.where(`division.name LIKE "%${param.keyword}%"`);
+      query = query
+        .where(`division.name LIKE "%${param.keyword}%"`)
+        .orWhere(`division.divisionCode LIKE "%${param.keyword}%"`);
     }
 
     const result = await this.divisionService.paginate(query, { page, limit });
@@ -61,7 +63,9 @@ export class DivisionController {
   async create(
     @Body() data: createDivisionDto
   ): Promise<ApiItemResponse<Division>> {
-    const result = await this.divisionService.create(pick(data, ['name']));
+    const result = await this.divisionService.create(
+      pick(data, ['name', 'divisionCode'])
+    );
     return this.response.item(result, DivisionTransformer);
   }
 
@@ -73,7 +77,7 @@ export class DivisionController {
   ): Promise<ApiItemResponse<Division>> {
     const result = await this.divisionService.update(
       divisionId,
-      pick(data, ['name'])
+      pick(data, ['name', 'divisionCode'])
     );
     return this.response.item(result, DivisionTransformer);
   }

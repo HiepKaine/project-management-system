@@ -1,5 +1,9 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { Classes } from '@frontend/models/class.model';
 import {
   FormBuilder,
@@ -16,9 +20,9 @@ import { TextControlComponent } from '@webpress/form';
 export class EditClassModalComponent implements OnInit {
   @Input() class!: Classes;
 
-  form: FormGroup = this.fb.group({
-    name: new FormControl('', [Validators.required]),
-    classCode: new FormControl('', [Validators.required]),
+  form: UntypedFormGroup = this.fb.group({
+    name: new UntypedFormControl('', [Validators.required]),
+    classCode: new UntypedFormControl('', [Validators.required]),
   });
 
   @ViewChild('formInputs', { static: true })

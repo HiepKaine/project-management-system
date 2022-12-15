@@ -6,6 +6,11 @@ export class createDivisionDto {
   @IsString()
   @MaxLength(255)
   name: string;
+
+  @ApiProperty()
+  @IsString()
+  @MaxLength(255)
+  divisionCode: string;
 }
 
 export class updateDivisionDto {
@@ -13,4 +18,9 @@ export class updateDivisionDto {
   @IsString()
   @MaxLength(255)
   name: string;
+
+  @ApiProperty()
+  @IsString()
+  @MaxLength(255)
+  divisionCode: string;
 }

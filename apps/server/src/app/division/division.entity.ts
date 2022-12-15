@@ -15,6 +15,9 @@ export class Division {
   @Column()
   name: string;
 
+  @Column()
+  divisionCode: string;
+
   @CreateDateColumn({
     type: 'timestamp',
     precision: null,

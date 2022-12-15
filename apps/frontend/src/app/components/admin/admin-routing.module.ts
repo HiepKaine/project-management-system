@@ -34,9 +34,9 @@ const routes: Routes = [
               import('./class/class.module').then((m) => m.ClassModule),
           },
           {
-            path: 'course',
+            path: 'division',
             loadChildren: () =>
-              import('./course/course.module').then((m) => m.CourseModule),
+              import('./division/division.module').then((m) => m.DivisionModule),
           },
           {
             path: 'exam-manager',

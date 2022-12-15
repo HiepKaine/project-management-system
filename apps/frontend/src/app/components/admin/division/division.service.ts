@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { BaseService } from '@frontend/common';
+import { Division } from '@frontend/models/division.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class DivisionService {
-
-  constructor() { }
+export class DivisionService extends BaseService<Division> {
+  public override url = 'division';
 }
