@@ -95,7 +95,7 @@ export class UserCourseComponent {
 
   openAddCourseModal(): void {
     const modal = this.modal.create({
-      nzTitle: `Thêm khoá học cho ${this.user.getFullName()}`,
+      nzTitle: `Thêm khoá học cho `,
       nzContent: AddUserCourseModalComponent,
       nzViewContainerRef: this.viewContainerRef,
       nzComponentParams: {},

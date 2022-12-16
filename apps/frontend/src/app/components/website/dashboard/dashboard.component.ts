@@ -54,9 +54,6 @@ export class DashboardComponent {
           this.ngxFormManager.markAllAsDirty(form);
         } else {
           const data = {
-            lastName: form.get('lastName')?.value,
-            firstName: form.get('firstName')?.value,
-            image: form.get('image')?.value[0]?.url ?? null,
             email: form.get('email')?.value,
             phoneNumber: form.get('phoneNumber')?.value,
           };

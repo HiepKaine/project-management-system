@@ -7,10 +7,7 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import {
-  ApiBearerAuth,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import {
   ApiItemResponse,
   ApiResponseService,
@@ -30,11 +27,12 @@ import { UserService } from '../user/user.service';
 export class ProfileController {
   constructor(
     private response: ApiResponseService,
-    private userService: UserService,
-
-  ) { }
+    private userService: UserService
+  ) {}
   @Get()
-  async profile(@AuthenticatedUser() user: User): Promise<ApiItemResponse<User>> {
+  async profile(
+    @AuthenticatedUser() user: User
+  ): Promise<ApiItemResponse<User>> {
     if (!user.status) {
       throw new BadGatewayException('Tài khoản của bạn đã bị khoá');
     }
@@ -42,8 +40,14 @@ export class ProfileController {
   }
 
   @Put()
-  async update(@AuthenticatedUser() user: User, @Body() updateUserDto: UpdateUserDto): Promise<ApiItemResponse<User>> {
-    const result = await this.userService.update(user.id, pick(updateUserDto, ['email', 'firstName', 'lastName', 'phoneNumber', 'image']));
+  async update(
+    @AuthenticatedUser() user: User,
+    @Body() updateUserDto: UpdateUserDto
+  ): Promise<ApiItemResponse<User>> {
+    const result = await this.userService.update(
+      user.id,
+      pick(updateUserDto, ['email', 'phoneNumber'])
+    );
     return this.response.item(result, UserTransformer);
   }
 }

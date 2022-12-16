@@ -39,34 +39,8 @@ export class MyAccountComponent implements OnInit {
     this.init$.next({ admin: this.admin });
     this.init$.subscribe((data) => {
       if (data) {
-        const imageImputValues: ImageUploadValue[] = [
-          {
-            uid: '1',
-            name: data.admin.image,
-            status: 'done',
-            url: data.admin.image,
-          },
-        ];
-
-        this.form.setValue({
-          image: imageImputValues,
-        });
 
         const ngxform = this.ngxFormManager.init(this.form, {
-          image: {
-            component: ImageUploadControlComponent,
-            option: {
-              nzSize: 'large',
-              type: 'text',
-              label: 'Ảnh đại diện',
-              nzMultiple: false,
-              queryParamKey: 'files',
-              apiEndPoint: `${environment.apiUrl}/file/upload`,
-              reponseHandler: (res: ApiCollectionResponse<{ url: string }>) =>
-                res.data[0].url,
-              className: ['col-12'],
-            },
-          },
         });
         this.ngxFormManager.render(ngxform, this.formInputs.viewContainerRef);
       }

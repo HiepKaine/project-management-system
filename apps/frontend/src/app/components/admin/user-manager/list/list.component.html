@@ -64,13 +64,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of users">
-            <td class="d-none d-xl-table-cell">{{ user.getFullName() }}</td>
             <td class="user-list__email">
               <p>{{ user.email }}</p>
             </td>
             <td>{{ user.phoneNumber }}</td>
-            <td class="d-none d-xl-table-cell">{{ user.position }}</td>
-            <td class="d-none d-xl-table-cell">{{ user.organization }}</td>
             <td>
               <nz-switch
                 [ngModel]="user.status"

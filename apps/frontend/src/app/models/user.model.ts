@@ -10,16 +10,10 @@ export class User {
   id!: number;
   email!: string | null;
   code!: string | null;
-  fullname!: string | null;
-  firstName!: string | null;
-  lastName!: string | null;
   status!: number;
   username!: string;
   password!: string;
   phoneNumber!: string;
-  position!: string;
-  organization!: string;
-  image!: string;
   verifiedAt!: string;
   deletedAt!: string;
   createdAt!: string;
@@ -47,15 +41,6 @@ export class User {
       return true;
     } else {
       return false;
-    }
-  }
-
-
-  getFullName(): string {
-    if (this.firstName && this.lastName) {
-      return `${this.lastName} ${this.firstName}`;
-    } else {
-      return this.email ?? '';
     }
   }
 

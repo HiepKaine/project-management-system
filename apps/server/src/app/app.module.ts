@@ -14,10 +14,6 @@ import { RolePermission } from './auth/entity/role-permission.entity';
 import { Role } from './auth/entity/role.entity';
 import { UserRole } from './auth/entity/user-role.entity';
 import { User } from './auth/entity/user.entity';
-import { Category } from './category/category.entity';
-import { CategoryModule } from './category/category.module';
-import { Contact } from './contact/contact.entity';
-import { ContactModule } from './contact/contact.module';
 import { CourseChapterLesson } from './course/course-chapter-lesson.entity';
 import { CourseChapter } from './course/course-chapter.entity';
 import { Course } from './course/course.entity';
@@ -35,33 +31,18 @@ import { Exam } from './exam/exam.entity';
 import { ExamModule } from './exam/exam.module';
 import { Question } from './exam/question.entity';
 import { ReadingContent } from './exam/reading-content.entity';
-import { Faq } from './faq/faq.entity';
-import { FaqModule } from './faq/faq.module';
 import { FileModule } from './file/file.module';
 import { Highlight } from './highlight/highlight.entity';
 import { HighlightService } from './highlight/highlight.service';
 import { Lesson } from './lesson/lesson.entity';
 import { LessonModule } from './lesson/lesson.module';
 import { MailManagerModule } from './mail-manager/mail-manager.module';
-import { Option } from './option/option.entity';
-import { OptionModule } from './option/option.module';
 import { ProfileModule } from './profile/profile.module';
-import { RelatedCourse } from './relatedCourse/relatedCourse.entity';
-import { RelatedExamPack } from './relatedExamPack/relatedExamPack.entity';
-import { Review } from './review/review.entity';
-import { ReviewModule } from './review/review.module';
-import { Slider } from './slider/slider.entity';
-import { SliderModule } from './slider/slider.module';
 import { Channel } from './systemNotification/channel.entity';
 import { SystemNotification } from './systemNotification/systemNotification.entity';
 import { SystemNotificationModule } from './systemNotification/systemNotification.module';
 import { UserChannel } from './systemNotification/userChannel.entity';
 import { UserNotificationUnread } from './systemNotification/userNotificationUnread.entity';
-import { TestSessionAnswer } from './test-session-answer/test-session-answer.entity';
-import { TestSessionAnswerService } from './test-session-answer/test-session-answer.service';
-import { TestSession } from './test-session/test-session.entity';
-import { TestSessionModule } from './test-session/test-session.module';
-import { UserModule } from './user/user.module';
 import { UserCourse } from './user/userCourse.entity';
 import { UserExamPack } from './user/userExamPack.entity';
 import { Email } from './mail-manager/email.entity';
@@ -70,8 +51,20 @@ import { Ip } from './user-activity-manager/ip.entity';
 import { UserIp } from './user-activity-manager/user-ip.entity';
 import { AnalyticModule } from './analytic/analytic.module';
 import { StaticServerModule } from './static-server/static-server.module';
-import { CompletedLesson } from './completed-lesson/completed-lesson.entity';
-import { CompletedLessonModule } from './completed-lesson/completed-lesson.module';
+import { FacultyModule } from './faculty/faculty.module';
+import { Faculty } from './faculty/faculty.entity';
+import { ClassModule } from './class/class.module';
+import { Class } from './class/class.entity';
+import { TeacherModule } from './teacher/teacher.module';
+import { Teacher } from './teacher/teacher.entity';
+import { SubjectModule } from './subject/subject.module';
+import { Subject } from './subject/subject.entity';
+import { DivisionModule } from './division/division.module';
+import { Division } from './division/division.entity';
+import { ScoreModule } from './score/score.module';
+import { Score } from './score/score.entity';
+import { StudentModule } from './student/student.module';
+import { Student } from './student/student.entity';
 
 @Module({
   imports: [
@@ -84,22 +77,16 @@ import { CompletedLessonModule } from './completed-lesson/completed-lesson.modul
         RolePermission,
         PasswordReset,
         Course,
-        Category,
-        Contact,
         ExamPack,
         Lesson,
         Question,
         Answer,
-        Slider,
-        Option,
         Channel,
         SystemNotification,
         UserChannel,
         UserNotificationUnread,
         UserCourse,
         UserExamPack,
-        RelatedCourse,
-        RelatedExamPack,
         Exam,
         ExamPackExam,
         ExamQuestion,
@@ -107,47 +94,47 @@ import { CompletedLessonModule } from './completed-lesson/completed-lesson.modul
         ExamCodeQuestionAnswer,
         ExamCode,
         ReadingContent,
-        TestSession,
-        TestSessionAnswer,
         CourseChapter,
         CourseChapterLesson,
-        Review,
         Highlight,
-        Faq,
         Email,
         Ip,
         UserIp,
         UserActivity,
-        CompletedLesson
+        Faculty,
+        Class,
+        Teacher,
+        Subject,
+        Division,
+        Score,
+        Student,
       ],
     }),
     AuthModule,
-    UserModule,
     ProfileModule,
     CourseModule,
     FileModule,
-    CategoryModule,
     DictionaryModule,
-    ContactModule,
     ExamPackModule,
     LessonModule,
     ExamModule,
-    SliderModule,
-    OptionModule,
     SystemNotificationModule,
-    TestSessionModule,
-    ReviewModule,
-    FaqModule,
     MailManagerModule,
     ScheduleModule.forRoot(),
     UserActivityManagerModule,
     AnalyticModule,
-    CompletedLessonModule,
     StaticServerModule,
+    FacultyModule,
+    ClassModule,
+    TeacherModule,
+    SubjectModule,
+    DivisionModule,
+    ScoreModule,
+    StudentModule,
   ],
 
   controllers: [AppController],
-  providers: [AppService, TestSessionAnswerService, HighlightService],
+  providers: [AppService, HighlightService],
 })
 export class AppModule {
   constructor() {

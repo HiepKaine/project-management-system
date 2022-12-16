@@ -1,8 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
@@ -14,14 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 import * as ShellActions from '@frontend/shell/shell.actions';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import {
-  NgxFormManager,
-  NgxFormrAnchorComponent,
-} from '@ngxform/platform';
-import {
-  PasswordControlComponent,
-  TextControlComponent,
-} from '@webpress/form';
+import { NgxFormManager, NgxFormrAnchorComponent } from '@ngxform/platform';
+import { PasswordControlComponent, TextControlComponent } from '@webpress/form';
 
 @Component({
   selector: 'app-login',
@@ -30,11 +20,15 @@ import {
 })
 export class LoginComponent implements OnInit {
   public loginForm: UntypedFormGroup = this.fb.group({
-    user: new UntypedFormControl('', [Validators.required, Validators.email],),
-    password: new UntypedFormControl('', [Validators.required, Validators.minLength(6),]),
+    user: new UntypedFormControl('', [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
   });
 
-  @ViewChild('login', { static: true }) loginFormAnchor!: NgxFormrAnchorComponent;
+  @ViewChild('login', { static: true })
+  loginFormAnchor!: NgxFormrAnchorComponent;
 
   constructor(
     private store: Store,
@@ -47,13 +41,24 @@ export class LoginComponent implements OnInit {
     this.ngxFormManager.cast('login', {
       user: {
         component: TextControlComponent,
-        option: { nzSize: 'large', label: this.translate.get('auth.login.loginUserLabel'), nzPrefixIcon: "mail", className: ['ant-col', 'ant-col-xs-24', 'ant-col-sm-24', 'p-1'] }
+        option: {
+          nzSize: 'large',
+          label: this.translate.get('auth.login.loginUserLabel'),
+          nzPrefixIcon: 'mail',
+          className: ['ant-col', 'ant-col-xs-24', 'ant-col-sm-24', 'p-1'],
+        },
       },
       password: {
         component: PasswordControlComponent,
-        option: { nzSize: 'large', type: 'password', label: this.translate.get('auth.login.passwordLabel'), nzPrefixIcon: "lock", className: ['ant-col', 'ant-col-xs-24', 'ant-col-sm-24', 'p-1'] }
+        option: {
+          nzSize: 'large',
+          type: 'password',
+          label: this.translate.get('auth.login.passwordLabel'),
+          nzPrefixIcon: 'lock',
+          className: ['ant-col', 'ant-col-xs-24', 'ant-col-sm-24', 'p-1'],
+        },
       },
-    })
+    });
   }
   ngOnInit() {
     this.ngxFormManager.render('login', this.loginFormAnchor.viewContainerRef);
@@ -64,9 +69,11 @@ export class LoginComponent implements OnInit {
       this.ngxFormManager.markAllAsDirty('login');
     } else {
       const values = this.loginForm.value;
-      const isAdmin = this.activatedRoute.snapshot.queryParams['type'] === 'admin';
-      this.store.dispatch(ShellActions.loginRequested({ payload: values, isAdmin }));
+      const isAdmin =
+        this.activatedRoute.snapshot.queryParams['type'] === 'admin';
+      this.store.dispatch(
+        ShellActions.loginRequested({ payload: values, isAdmin })
+      );
     }
-
   }
 }

@@ -12,7 +12,6 @@ import {
 import { Exam } from './exam.entity';
 import { ExamCodeQuestion } from './exam-code-question.entity';
 import { Question } from './question.entity';
-import { TestSession } from '../test-session/test-session.entity';
 
 
 @Entity({ name: 'examCode' })
@@ -56,8 +55,5 @@ export class ExamCode {
     },
   })
   questions: Question[];
-
-  @OneToMany(() => TestSession, (testSession) => testSession.examCode)
-  testSessions: TestSession[]
 }
 

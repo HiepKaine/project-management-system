@@ -11,20 +11,5 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class HomeService {
-
-  constructor(private http: HttpClient) { }
-
-  getCourse(): Observable<ApiPaginateResponse<Course>>
-  getCourse(param: { page?: number, type?: number, limit?: number, keyword?: string, isFree?: number| string }): Observable<ApiPaginateResponse<Course>>
-  getCourse<T>(param?: T): Observable<ApiPaginateResponse<Course>> {
-    const p = new HttpParams({ fromObject: param ?? {} });
-    return this.http.get<ApiPaginateResponse<Course>>(`${environment.apiUrl}/course/active`, { params: p });
-  }
-
-  getExamPack(): Observable<ApiPaginateResponse<ExamPack>>
-  getExamPack(param: { page?: number, type?: number, limit?: number, keyword?: string, isFree?: number| string }): Observable<ApiPaginateResponse<ExamPack>>
-  getExamPack<T>(param?: T): Observable<ApiPaginateResponse<ExamPack>> {
-    const p = new HttpParams({ fromObject: param ?? {} });
-    return this.http.get<ApiPaginateResponse<ExamPack>>(`${environment.apiUrl}/exam-pack/active`, { params: p });
-  }
+  constructor(private http: HttpClient) {}
 }

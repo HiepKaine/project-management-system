@@ -9,54 +9,42 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Khoa',
     icon: { icon: 'book-outline' },
-    link: '/admin/course',
+    link: '/admin/faculty',
   },
   {
     title: 'Lớp',
     icon: { icon: 'browser-outline' },
-    link: '/admin/lesson',
+    link: '/admin/class',
   },
   {
     title: 'Sinh viên',
-    icon: { icon: 'npm-outline' },
-    link: '/admin/exam-pack-manager',
+    icon: { icon: 'people-outline' },
+    link: '/admin/student',
   },
   {
     title: 'Quản lí giảng viên',
-    icon: { icon: 'file-remove-outline' },
-    children: [
-      {
-        title: 'Đề trắc nghiệm',
-        link: '/admin/exam-manager/exam',
-      },
-      {
-        title: 'Câu hỏi trắc nghiệm',
-        link: '/admin/exam-manager/question',
-      },
-      {
-        title: 'Bài đọc',
-        link: '/admin/exam-manager/reading-content',
-      },
-      {
-        title: 'Kết quả',
-        link: '/admin/test-session-manager',
-      },
-    ],
+    icon: { icon: 'people-outline' },
+    link: '/admin/teacher'
   },
   {
     title: 'Quản lí môn học',
     icon: { icon: 'people-outline' },
-    link: '/admin/user',
+    link: '/admin/subject',
   },
   {
     title: 'Quản lí điểm',
     icon: { icon: 'people-outline' },
-    link: '/admin/review-manager',
+    link: '/admin/score',
   },
   {
     title: 'Quản lí điểm danh',
     icon: { icon: 'email-outline' },
     link: '/admin/contact',
+  },
+  {
+    title: 'Danh sách bộ môn',
+    icon: { icon: 'email-outline' },
+    link: '/admin/division',
   },
   {
     title: 'Thành viên',

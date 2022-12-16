@@ -30,34 +30,7 @@ export class AdminCreateAccountDto {
   @ApiProperty({ required: false })
   @IsOptional()
   @MaxLength(255)
-  image: string;
-
-  @ApiProperty({ required: false })
-  @IsOptional()
-  @MaxLength(255)
   phoneNumber: string;
-
-  @ApiProperty({ required: false })
-  @IsOptional()
-  @MaxLength(255)
-  firstName: string;
-
-  @ApiProperty({ required: false })
-  @IsOptional()
-  @MaxLength(255)
-  lastName: string;
-
-  @ApiProperty({ required: false })
-  @IsString()
-  @MaxLength(255)
-  @IsOptional()
-  position: string;
-
-  @ApiProperty({ required: false })
-  @IsString()
-  @MaxLength(255)
-  @IsOptional()
-  organization: string;
 }
 
 export class AddUserCourseDto {
@@ -75,18 +48,6 @@ export class UpdateUserDto {
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  @MaxLength(255)
-  firstName: string;
-
-  @ApiProperty({ required: false })
-  @IsOptional()
-  @IsString()
-  @MaxLength(255)
-  lastName: string;
-
-  @ApiProperty({ required: false })
-  @IsOptional()
-  @IsString()
   @IsEmail()
   @MaxLength(255)
   email: string;
@@ -96,25 +57,6 @@ export class UpdateUserDto {
   @IsString()
   @MaxLength(255)
   phoneNumber: string;
-
-  @ApiProperty({ required: false })
-  @IsOptional()
-  @IsString()
-  @MaxLength(255)
-  image: string;
-
-  @ApiProperty({ required: false })
-  @IsString()
-  @MaxLength(255)
-  @IsOptional()
-  position: string;
-
-  @ApiProperty({ required: false })
-  @IsString()
-  @MaxLength(255)
-  @IsOptional()
-  organization: string;
-
 }
 
 

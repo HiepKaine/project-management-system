@@ -12,9 +12,9 @@ const routes: Routes = [
         path: '',
         children: [
           {
-            path: 'slider',
+            path: 'faculty',
             loadChildren: () =>
-              import('./slider/slider.module').then((m) => m.SliderModule),
+              import('./faculty/faculty.module').then((m) => m.FacultyModule),
           },
           {
             path: 'profile',
@@ -29,28 +29,21 @@ const routes: Routes = [
               ),
           },
           {
-            path: 'option',
+            path: 'class',
             loadChildren: () =>
-              import('./option/option.module').then((m) => m.OptionModule),
+              import('./class/class.module').then((m) => m.ClassModule),
           },
           {
-            path: 'course',
+            path: 'division',
             loadChildren: () =>
-              import('./course/course.module').then((m) => m.CourseModule),
-          },
-          {
-            path: 'category',
-            loadChildren: () =>
-              import('./category/category.module').then(
-                (m) => m.CategoryModule
+              import('./division/division.module').then(
+                (m) => m.DivisionModule
               ),
           },
           {
-            path: 'exam-manager',
+            path: 'teacher',
             loadChildren: () =>
-              import('./exam-manager/exam-manager.module').then(
-                (m) => m.ExamManagerModule
-              ),
+              import('./teacher/teacher.module').then((m) => m.TeacherModule),
           },
           {
             path: 'exam-pack-manager',
@@ -60,39 +53,10 @@ const routes: Routes = [
               ),
           },
           {
-            path: 'test-session-manager',
-            loadChildren: () =>
-              import('./test-session-manager/test-session-manager.module').then(
-                (m) => m.TestSessionManagerModule
-              ),
-          },
-          {
-            path: 'lesson',
-            loadChildren: () =>
-              import('./lesson/lesson.module').then((m) => m.LessonModule),
-          },
-          {
-            path: 'contact',
-            loadChildren: () =>
-              import('./contact/contact.module').then((m) => m.ContactModule),
-          },
-          {
             path: 'user',
             loadChildren: () =>
               import('./user-manager/user-manager.module').then(
                 (m) => m.UserManagerModule
-              ),
-          },
-          {
-            path: 'faq',
-            loadChildren: () =>
-              import('./faq/faq.module').then((m) => m.FaqModule),
-          },
-          {
-            path: 'review-manager',
-            loadChildren: () =>
-              import('./review-manager/review-manager.module').then(
-                (m) => m.ReviewManagerModule
               ),
           },
           { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },

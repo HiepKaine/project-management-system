@@ -55,8 +55,6 @@ export class UserController {
         sqb.where('user.email LIKE :searchString', { searchString })
           .orWhere('user.phoneNumber LIKE :searchString', { searchString })
           .orWhere('user.username LIKE :searchString', { searchString })
-          .orWhere('user.firstName LIKE :searchString', { searchString })
-          .orWhere('user.lastName LIKE :searchString', { searchString })
       }))
     }
 
@@ -83,85 +81,8 @@ export class UserController {
   @Put(':id')
   @Auth('admin')
   async update(@Param('id', ParseIntPipe) userId: number, @Body() updateUserDto: UpdateUserDto): Promise<ApiItemResponse<User>> {
-    const result = await this.userService.update(userId, pick(updateUserDto, ['email', 'firstName', 'lastName', 'phoneNumber', 'image', 'organization', 'position']));
+    const result = await this.userService.update(userId, pick(updateUserDto, ['email', 'phoneNumber']));
     return this.response.item(result, UserTransformer);
-  }
-
-  @Get('/:userId/course')
-  @Auth('admin')
-  async getUserCourse(@Param('userId', ParseIntPipe) userId: number): Promise<ApiPaginateResponse<Course>> {
-    const query = this.courseService.repository.createQueryBuilder('course')
-      .leftJoinAndSelect('course.userCourses', 'userCourse')
-      .where("userCourse.userId = :userId", { userId })
-
-    const result = await this.courseService.paginate(query);
-    return this.response.paginate(result, CourseTransformer)
-  }
-
-  @Get('/:userId/exam-pack')
-  @Auth('admin')
-  async getUserExamPack(@Param('userId', ParseIntPipe) userId: number): Promise<ApiPaginateResponse<ExamPack>> {
-    const query = this.examPackService.repository.createQueryBuilder('examPack')
-      .leftJoinAndSelect('examPack.userExamPacks', 'userExamPack')
-      .where("userExamPack.userId = :userId", { userId })
-
-    const result = await this.examPackService.paginate(query)
-    return this.response.paginate(result, ExamPackTransformer)
-  }
-
-  @Get('my-course')
-  @Auth('user')
-  async getMyCousre(@AuthenticatedUser() user: User): Promise<ApiPaginateResponse<Course>> {
-    const userId = user.id
-    const query = this.courseService.repository.createQueryBuilder('course')
-      .leftJoinAndSelect('course.courseChapters', 'courseChapter')
-      .leftJoinAndSelect('courseChapter.lessons', 'lesson')
-      .leftJoinAndSelect('course.userCourses', 'userCourse')
-      .where("userCourse.userId = :userId", { userId })
-      .andWhere('course.status = :status', { status: CourseStatus.active })
-
-    const result = await this.courseService.paginate(query)
-    return this.response.paginate(result, CourseTransformer)
-  }
-
-  @Post('my-course')
-  @Auth('user')
-  async addFreeCourse(@AuthenticatedUser() authenticatedUser: User, @Body() data: AddFreeCourseDto): Promise<ApiItemResponse<Course>> {
-    const course = await this.courseService.findOrFail(data.courseId);
-    if (!course.isFreeCourse) {
-      throw new BadRequestException('Không thêm được khoá học có phí');
-    }
-    if (await this.userCourseService.isExist(authenticatedUser.id, data.courseId)) {
-      throw new BadRequestException('Bạn đã thêm khoá học này trước đó');
-    }
-    await this.userCourseService.create({ userId: authenticatedUser.id, courseId: data.courseId });
-    return this.response.item(course, CourseTransformer);
-  }
-
-  @Get('my-exam-pack')
-  @Auth('user')
-  async getMyExamPack(@AuthenticatedUser() user: User): Promise<ApiPaginateResponse<ExamPack>> {
-    const userId = user.id
-    const query = this.examPackService.repository.createQueryBuilder('examPack')
-      .leftJoinAndSelect('examPack.userExamPacks', 'userExamPack')
-      .where("userExamPack.userId = :userId", { userId })
-
-    const result = await this.examPackService.paginate(query)
-    return this.response.paginate(result, ExamPackTransformer)
-  }
-
-  @Post('my-exam-pack')
-  @Auth('user')
-  async addFreeExamPack(@AuthenticatedUser() authenticatedUser: User, @Body() data: AddFreeExamPackDto): Promise<ApiItemResponse<ExamPack>> {
-    const examPack = await this.examPackService.findOrFail(data.examPackId);
-    if (!examPack.isFree) {
-      throw new BadRequestException('Không thêm được gói trắc nghiệm có phí');
-    }
-    if (await this.userExamPackService.isExist(authenticatedUser.id, data.examPackId)) {
-      throw new BadRequestException('Bạn đã thêm gói trắc nghiệm này trước đó');
-    }
-    await this.userExamPackService.create({ userId: authenticatedUser.id, examPackId: data.examPackId });
-    return this.response.item(examPack, ExamPackTransformer);
   }
 
   @Get(':id')
@@ -196,12 +117,7 @@ export class UserController {
       password: this.hashService.hash(data.password),
       code,
       email: emailLowerCase,
-      image: data.image,
       phoneNumber: data.phoneNumber,
-      firstName: data.firstName,
-      lastName: data.lastName,
-      position: data.position,
-      organization: data.organization,
       status: UserStatus.active,
     });
     await this.authService.attachDefaultRole(user);
@@ -224,109 +140,6 @@ export class UserController {
   async adminChangeUserStatus(@Param('userId', ParseIntPipe) userId: number, @Body('status', ParseBoolPipe) status: boolean): Promise<ApiItemResponse<User>> {
     const result = await this.userService.update(userId, { status, loginFailed: 0 });
     return this.response.item(result, UserTransformer)
-  }
-
-  @Post('/:userId/course')
-  @Auth('admin')
-  async addCourse(@Param('userId', ParseIntPipe) userId: number, @Body() data: AddUserCourseDto): Promise<ApiSuccessResponse> {
-    if (await this.userCourseService.isExist(userId, data.courseId)) {
-      throw new ConflictException('Khóa học đã được thêm trước đó');
-    }
-
-    await this.userCourseService.create({ userId: userId, courseId: data.courseId })
-    return this.response.success()
-  }
-
-  @Post('/:userId/exam-pack')
-  @Auth('admin')
-  async addExamPack(@Param('userId', ParseIntPipe) userId: number, @Body() data: AddUserExamPackDto): Promise<ApiSuccessResponse> {
-    if (await this.userExamPackService.isExist(userId, data.examPackId)) {
-      throw new ConflictException('Gói câu hỏi đã được thêm trước đó');
-    }
-
-    await this.userExamPackService.create({ userId: userId, examPackId: data.examPackId })
-    return this.response.success()
-  }
-
-  @Get('/:userId/course/:courseId/check')
-  @Auth('admin')
-  async checkCourseAdded(@Param('userId', ParseIntPipe) userId: number, @Param('courseId', ParseIntPipe) courseId: number): Promise<ApiObjectResponse<{ exist: boolean }>> {
-    const exist = await this.userCourseService.repository
-      .createQueryBuilder()
-      .where("userId = :userId AND courseId = :courseId", { userId, courseId })
-      .getCount() > 0
-
-    return this.response.object({ exist: exist })
-  }
-
-  @Get('/:userId/exam-pack/:examPackId/check')
-  @Auth('admin')
-  async checkExamPackAdded(@Param('userId', ParseIntPipe) userId: number, @Param('examPackId', ParseIntPipe) examPackId: number): Promise<ApiObjectResponse<{ exist: boolean }>> {
-    const exist = await this.userExamPackService.repository
-      .createQueryBuilder()
-      .where("userId = :userId AND examPackId = :examPackId", { userId, examPackId })
-      .getCount() > 0
-
-    return this.response.object({ exist: exist })
-  }
-
-  @Get('/my-course/:courseId/check')
-  @Auth('admin', 'user')
-  async checkCourseAddedByUser(@AuthenticatedUser() user: User, @Param('courseId', ParseIntPipe) courseId: number): Promise<ApiObjectResponse<{ exist: boolean }>> {
-    if (user.isRole('admin')) {
-      return this.response.object({ exist: true })
-    } else {
-      const userId = user.id
-      const exist = await this.userCourseService.repository
-        .createQueryBuilder()
-        .where("userId = :userId AND courseId = :courseId", { userId, courseId })
-        .getCount() > 0
-
-      return this.response.object({ exist: exist })
-    }
-  }
-
-  @Get('/my-exam-pack/:examPackId/check')
-  @Auth('user')
-  async checkExamPackAddedByUser(@AuthenticatedUser() user: User, @Param('examPackId', ParseIntPipe) examPackId: number): Promise<ApiObjectResponse<{ exist: boolean }>> {
-    const userId = user.id
-
-    const exist = await this.userExamPackService.repository
-      .createQueryBuilder()
-      .where("userId = :userId AND examPackId = :examPackId", { userId, examPackId })
-      .getCount() > 0
-
-    return this.response.object({ exist: exist })
-  }
-
-  @Delete('/:userId/course/:courseId')
-  @Auth('admin')
-  async deleteCourse(@Param('userId', ParseIntPipe) userId: number, @Param('courseId', ParseIntPipe) courseId: number): Promise<ApiSuccessResponse> {
-    if (!await this.userCourseService.isExist(userId, courseId)) {
-      throw new ConflictException('Khóa học chưa được thêm với người dùng này');
-    }
-
-    await this.userCourseService.repository.createQueryBuilder()
-      .delete()
-      .where("userId = :userId AND courseId = :courseId", { userId, courseId })
-      .execute()
-
-    return this.response.success()
-  }
-
-  @Delete('/:userId/exam-pack/:examPackId')
-  @Auth('admin')
-  async deleteExamPack(@Param('userId', ParseIntPipe) userId: number, @Param('examPackId', ParseIntPipe) examPackId: number): Promise<ApiSuccessResponse> {
-    if (!await this.userExamPackService.isExist(userId, examPackId)) {
-      throw new ConflictException('Gói câu hỏi chưa được thêm với người dùng này');
-    }
-
-    await this.userExamPackService.repository.createQueryBuilder()
-      .delete()
-      .where("userId = :userId AND examPackId = :examPackId", { userId, examPackId })
-      .execute()
-
-    return this.response.success()
   }
 
 }

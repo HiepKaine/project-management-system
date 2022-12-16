@@ -4,7 +4,7 @@ import {
   OnInit
 } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { isBoolean } from 'lodash';
+import { isBoolean } from 'lodash-es';
 
 import { isObservable } from 'rxjs';
 

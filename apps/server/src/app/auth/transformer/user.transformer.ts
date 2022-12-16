@@ -17,25 +17,9 @@ export class UserTransformer {
   @Exclude()
   password: string;
 
-  firstName: string;
-
-  lastName: string;
-
-  position: string;
-
-  organization: string;
-
   status: boolean;
 
-  image: string;
-
   phoneNumber: string;
-
-  verifyToken: string;
-
-  verified: boolean;
-
-  verifiedAt: Date;
 
   @Exclude()
   loginFailed: number;

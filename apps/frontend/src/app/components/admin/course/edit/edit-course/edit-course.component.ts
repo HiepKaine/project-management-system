@@ -3,7 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { ActivatedRoute } from '@angular/router';
 
 import { plainToInstance } from 'class-transformer';
-import { isBoolean } from 'lodash';
+import { isBoolean } from 'lodash-es';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 
 import { environment } from '@frontend/env/environment';

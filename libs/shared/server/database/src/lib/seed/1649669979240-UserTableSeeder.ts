@@ -38,16 +38,7 @@ export class UserTableSeeder1649669979240 implements MigrationInterface {
         password: this.hash('secret'),
         role: 'user',
         phoneNumber: '0123456787',
-        image: `${environment.appUrl}/uploads/hoangthuong.png`,
-        status: UserStatus.active,
-        loginFailed: 0,
-      },
-      {
-        email: 'hoangthuong@gmail.com',
-        username: 'hoangthuong',
-        password: this.hash('secret'),
-        role: 'user',
-        image: `${environment.appUrl}/uploads/hoangthuong.png`,
+        image: ``,
         status: UserStatus.active,
         loginFailed: 0,
       },
@@ -67,7 +58,6 @@ export class UserTableSeeder1649669979240 implements MigrationInterface {
             'email',
             'password',
             'status',
-            'image',
             'phoneNumber',
           ])
         )

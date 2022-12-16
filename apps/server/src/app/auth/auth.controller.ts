@@ -43,7 +43,6 @@ import { RealIP } from 'nestjs-real-ip';
 @ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
-
   constructor(
     private authService: AuthService,
     private hashService: HashService,
@@ -52,30 +51,39 @@ export class AuthController {
     private passwordResetService: PasswordResetService,
     private systemNotificationService: SystemNotificationService,
     private mailManagerService: MailManagerService,
-    private userActivityManagerService: UserActivityManagerService,
-  ) { }
+    private userActivityManagerService: UserActivityManagerService
+  ) {}
 
   @Post('/login')
   @ApiResponse({ status: 201, description: 'Logged In' })
   @ApiBadRequestResponse({ status: 400, description: 'Validation Error' })
   @ApiUnauthorizedResponse()
-  async login(@Body() data: LoginDto, @RealIP() ip: string, @Headers() headers): Promise<ApiObjectResponse<{ token: string }>> {
+  async login(
+    @Body() data: LoginDto,
+    @RealIP() ip: string,
+    @Headers() headers
+  ): Promise<ApiObjectResponse<{ token: string }>> {
     const usernameLowerCase = data.user.toLowerCase();
 
     const user = await this.authService.findUser({
       where: {
         email: usernameLowerCase,
       },
-      select: ['id', 'email', 'username', 'firstName', 'lastName', 'password', 'status', 'verified', 'loginFailed'],
-      relations: ['roles']
+      select: ['id', 'email', 'username', 'password', 'status', 'loginFailed'],
+      relations: ['roles'],
     });
 
     if (!user) {
       throw new NotFoundException('Tài khoản hoặc mật khẩu không đúng');
     }
 
-    if (environment.enableLoginFailedCheck && user.loginFailed > environment.maxLoginFailed) {
-      throw new ForbiddenException('Tài khoản của bạn đã bị khóa do đăng nhập sai quá nhiều, vui lòng liên hệ để được mở khóa tài khoản');
+    if (
+      environment.enableLoginFailedCheck &&
+      user.loginFailed > environment.maxLoginFailed
+    ) {
+      throw new ForbiddenException(
+        'Tài khoản của bạn đã bị khóa do đăng nhập sai quá nhiều, vui lòng liên hệ để được mở khóa tài khoản'
+      );
     }
 
     const isValidPassword = this.hashService.check(
@@ -89,19 +97,23 @@ export class AuthController {
     }
 
     if (!user.status) {
-      throw new ForbiddenException('Tài khoản của bạn đã bị khóa, vui lòng liên hệ để được mở khóa tài khoản');
+      throw new ForbiddenException(
+        'Tài khoản của bạn đã bị khóa, vui lòng liên hệ để được mở khóa tài khoản'
+      );
     }
 
-    const isValidActivity = await this.userActivityManagerService.checkValidActivityAndSaveIp(user.id, ip, headers);
+    // const isValidActivity = await this.userActivityManagerService.checkValidActivityAndSaveIp(user.id, ip, headers);
 
-    if (!isValidActivity && user.isRole('user')) {
-      throw new ForbiddenException('Tài khoản của bạn đã bị khóa do truy cập trên quá nhiều thiết bị, vui lòng liên hệ để được mở khóa tài khoản');
-    }
+    // if (!isValidActivity && user.isRole('user')) {
+    //   throw new ForbiddenException('Tài khoản của bạn đã bị khóa do truy cập trên quá nhiều thiết bị, vui lòng liên hệ để được mở khóa tài khoản');
+    // }
 
     await this.authService.resetLoginFailed(user.id);
 
     return this.response.object({
-      token: this.jwtService.sign(pick(user, ['id', 'email', 'username', 'firstName', 'lastName', 'status', 'verified'])),
+      token: this.jwtService.sign(
+        pick(user, ['id', 'email', 'username', 'status', 'verified'])
+      ),
     });
   }
 
@@ -109,8 +121,9 @@ export class AuthController {
   @ApiResponse({ status: 201, description: 'User created' })
   @ApiBadRequestResponse({ status: 400, description: 'Validation Error' })
   @ApiConflictResponse({ description: 'Email already exist' })
-  async register(@Body() data: RegisterDto): Promise<ApiObjectResponse<{ token: string }>> {
-
+  async register(
+    @Body() data: RegisterDto
+  ): Promise<ApiObjectResponse<{ token: string }>> {
     const emailLowerCase = data.email.toLowerCase();
 
     if (await this.authService.isExist(emailLowerCase)) {
@@ -125,8 +138,11 @@ export class AuthController {
     });
     await this.authService.attachDefaultRole(user);
 
-    const message = `${emailLowerCase} đã đăng ký`
-    await this.systemNotificationService.createSystemNotification(NotificationType.UserRegister, message);
+    const message = `${emailLowerCase} đã đăng ký`;
+    await this.systemNotificationService.createSystemNotification(
+      NotificationType.UserRegister,
+      message
+    );
 
     try {
       await this.mailManagerService.create({
@@ -134,14 +150,17 @@ export class AuthController {
         subject: 'Đăng kí tài khoản thành công',
         title: 'Chúc mừng bạn đã đăng kí tài khoản thành công',
         greeting: `Xin chào ${user.email}`,
-        content: 'Bạn đã đăng kí tài khoản thành công. Bây giờ bạn đã có thể tham gia học và thi thử ở các khoá học miễn phí.'
+        content:
+          'Bạn đã đăng kí tài khoản thành công. Bây giờ bạn đã có thể tham gia học và thi thử ở các khoá học miễn phí.',
       });
     } catch (error) {
       console.log(error);
     }
 
     return this.response.object({
-      token: this.jwtService.sign(pick(user, ['id', 'email', 'username', 'firstName', 'lastName', 'status', 'verified'])),
+      token: this.jwtService.sign(
+        pick(user, ['id', 'email', 'username', 'status', 'verified'])
+      ),
     });
   }
 
@@ -149,14 +168,18 @@ export class AuthController {
   @ApiOkResponse({ description: 'Email sent' })
   @ApiNotFoundResponse()
   @ApiBadRequestResponse()
-  async sendResetLinkEmail(@Body() data: ForgotPasswordDto): Promise<ApiSuccessResponse> {
+  async sendResetLinkEmail(
+    @Body() data: ForgotPasswordDto
+  ): Promise<ApiSuccessResponse> {
     const user = await this.authService.firstOrFail({
       where: { email: data.email.toLowerCase() },
     });
 
     await this.passwordResetService.expireAllToken(user.email);
 
-    const token = await this.jwtService.sign(pick(user, ['id', 'email']), { expiresIn: 5 * 60 * 1000 });
+    const token = await this.jwtService.sign(pick(user, ['id', 'email']), {
+      expiresIn: 5 * 60 * 1000,
+    });
 
     await this.passwordResetService.generate(user.email, token);
 
@@ -166,7 +189,9 @@ export class AuthController {
   @Post('reset-password')
   @ApiOkResponse({ description: 'Email sent' })
   @ApiBadRequestResponse({ description: 'Token is expired' })
-  async reset(@Body() data: ResetPasswordDto): Promise<ApiObjectResponse<{ token: string }>> {
+  async reset(
+    @Body() data: ResetPasswordDto
+  ): Promise<ApiObjectResponse<{ token: string }>> {
     const { token, password } = data;
     const passwordReset = await this.passwordResetService.firstOrFail({
       where: { token },
@@ -183,9 +208,9 @@ export class AuthController {
     await this.authService.changePassword(user.id, password);
 
     return this.response.object({
-      token: this.jwtService.sign(pick(user, ['id', 'email', 'username', 'firstName', 'lastName', 'status', 'verified'])),
+      token: this.jwtService.sign(
+        pick(user, ['id', 'email', 'username', 'status', 'verified'])
+      ),
     });
   }
-
 }
-

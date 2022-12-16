@@ -16,7 +16,6 @@ import { UserChannel } from '../../systemNotification/userChannel.entity';
 import { UserNotificationUnread } from '../../systemNotification/userNotificationUnread.entity';
 import { UserCourse } from '../../user/userCourse.entity';
 import { UserExamPack } from '../../user/userExamPack.entity';
-import { TestSession } from '../../test-session/test-session.entity';
 import { UserActivity } from '../../user-activity-manager/user-activity.entity';
 
 export enum UserStatus {
@@ -55,41 +54,12 @@ export class User {
   @Column()
   password: string;
 
-  @Column({ type: 'varchar', default: '' })
-  firstName: string;
-
-  @Column({ type: 'varchar', default: '' })
-  lastName: string;
-
-  @Column()
-  image: string;
-
-  @Column()
-  position: string;
-
-  @Column()
-  organization: string;
 
   @Column({
     type: 'int',
     default: 1,
   })
   status: number;
-
-  @Column({
-    type: 'varchar',
-  })
-  verifyToken: string;
-
-  @Column({
-    type: 'boolean',
-    default: false,
-  })
-  verified: boolean;
-
-
-  @Column({ type: 'timestamp' })
-  public verifiedAt: Date;
 
   @Column({
     type: 'int',
@@ -140,9 +110,6 @@ export class User {
   @OneToMany(() => UserExamPack, (userExamPack) => userExamPack.user)
   userExamPacks: UserExamPack[]
 
-  @OneToMany(() => TestSession, (testSession) => testSession.user)
-  testSessions: TestSession[]
-
   @OneToMany(() => UserNotificationUnread, (userNotificationUnread) => userNotificationUnread.user)
   userNotificationUnreads: UserNotificationUnread[];
 
@@ -162,12 +129,6 @@ export class User {
 
   getEmail(): string {
     return this.email;
-  }
-
-  generateVerifyEmailLink(base_url: string): string {
-    const path = `/auth/verify?token=${this.verifyToken}`;
-    const url = new URL(path, base_url);
-    return url.href;
   }
 
   isRole(role: string): boolean {

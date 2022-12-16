@@ -1,33 +1,19 @@
-import { Component } from '@angular/core';
-import { plainToInstance } from 'class-transformer';
-import { chunk } from 'lodash-es';
-import { HomeService } from './home.service';
-import {
-  ActivatedRoute, NavigationExtras,
-  Router
-} from '@angular/router';
-import { ApiPaginateResponse, ApiResponsePagination } from '@frontend/common';
+import { Component, OnInit } from '@angular/core';
+import { ApiResponsePagination } from '@frontend/common';
 import { Course } from '@frontend/models/course.model';
 import { Dictionary } from '@frontend/models/dictionary.model';
-import { Slide } from '@frontend/models/slide.model';
-import * as ShellSelectors from '@frontend/shell/shell.selectors';
-import { UntilDestroy } from '@ngneat/until-destroy';
-import { Store } from '@ngrx/store';
 import { Option } from '@frontend/models/option.model';
+import { Slide } from '@frontend/models/slide.model';
 
-enum PostType {
-  congChuc = 1,
-  vienChuc = 2,
-  examPack = 3
-}
-
+import { UntilDestroy } from '@ngneat/until-destroy';
+import { chunk } from 'lodash-es';
 @UntilDestroy()
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   public dictionary!: Dictionary;
   public slides: Slide[] = [];
   public courses: Course[] = [];
@@ -148,74 +134,5 @@ export class HomeComponent {
   ]
 
   public chunkedTeachers = chunk(this.teachers, 3)
-  constructor(
-    private store: Store,
-    private homeService: HomeService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-  ) {
-    this.store
-      .select(ShellSelectors.getDictionary)
-      .subscribe((dictionary: Dictionary | undefined) => {
-        if (dictionary) {
-          this.dictionary = plainToInstance(Dictionary, dictionary);
-          this.options = dictionary.option;
-          this.slides = this.dictionary.slider.filter(
-            (item) => item.name === 'header'
-          );
-          this.registers = this.dictionary.slider.filter(
-            (item) => item.name === 'register'
-          );
-          this.sidebarBanner = this.dictionary.option.filter(
-            (item) => item.key === 'left-sidebar-banner'
-          );
-        }
-      });
-
-    this.getCourse()
-    this.getOfficerCourse()
-    this.getOfficalsCourse()
-    this.getCourseFree()
-
-  }
-
-  private getCourse() {
-    this.homeService.getCourse({ limit: 8 }).subscribe((result: ApiPaginateResponse<Course>) => {
-      this.courses = plainToInstance(Course, result.data)
-    })
-  }
-
-  private getOfficerCourse() {
-    this.homeService.getCourse({ type: PostType.congChuc, limit: 4 }).subscribe((result: ApiPaginateResponse<Course>) => {
-      this.officerCourse = plainToInstance(Course, result.data)
-    })
-  }
-
-  private getOfficalsCourse() {
-    this.homeService.getCourse({ type: PostType.vienChuc, limit: 4 }).subscribe((result: ApiPaginateResponse<Course>) => {
-      this.officialCourse = plainToInstance(Course, result.data)
-    })
-  }
-
-  private getCourseFree() {
-    this.homeService.getCourse({ limit: 4, isFree: 1 }).subscribe((result: ApiPaginateResponse<Course>) => {
-      this.courseFree = plainToInstance(Course, result.data)
-    })
-  }
-
-  getOptionValueByKey(key: string): string {
-    const item = this.options.find((item) => item.key === key);
-    return item ? item.value : '';
-  }
-
-
-  gotoPage(page: number) {
-    const params: NavigationExtras = { queryParams: { page }, relativeTo: this.activatedRoute };
-    this.router.navigate([], params);
-  }
-
-  search() {
-    const params: NavigationExtras = { queryParams: { keyword: this.keyword, } };
-    this.router.navigate(['/', 'search'], params);
-  }
+  ngOnInit(): void {}
 }

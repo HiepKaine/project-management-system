@@ -11,8 +11,6 @@ const routes: Routes = [
   { path: 'khoa-on-cong-chuc', component: HomeComponent },
   { path: 'khoa-on-vien-chuc', component: HomeComponent },
   { path: 'phong-thi-trac-nghiem-online', component: HomeComponent },
-  { path: 'search', loadChildren: () => import('./search/search.module').then(m => m.SearchModule) },
-
 ];
 
 @NgModule({

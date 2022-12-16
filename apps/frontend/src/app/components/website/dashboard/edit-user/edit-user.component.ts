@@ -32,10 +32,7 @@ export class EditUserComponent implements OnInit {
 
   public form: UntypedFormGroup = this.fb.group({
     email: new FormControl('', [Validators.required, Validators.email]),
-    firstName: new FormControl(null, [Validators.required]),
-    lastName: new FormControl(null, [Validators.required]),
     phoneNumber: new FormControl(null, [Validators.required]),
-    image: new FormControl(null),
   });
   constructor(
     private fb: UntypedFormBuilder,
@@ -46,55 +43,12 @@ export class EditUserComponent implements OnInit {
     this.init$.next({ user: this.profile });
     this.init$.subscribe((data) => {
       if (data) {
-        const imageImputValues: ImageUploadValue[] = [
-          {
-            uid: '1',
-            name: data.user.image,
-            status: 'done',
-            url: data.user.image,
-          },
-        ];
-
         this.form.setValue({
           email: data.user.email,
-          lastName: data.user.lastName,
-          firstName: data.user.firstName,
           phoneNumber: data.user.phoneNumber,
-          image: imageImputValues,
         });
 
         const ngxform = this.ngxFormManager.init(this.form, {
-          firstName: {
-            component: TextControlComponent,
-            option: {
-              nzSize: 'large',
-              label: 'Tên',
-              className: ['col-12', 'p-1'],
-            },
-          },
-          lastName: {
-            component: TextControlComponent,
-            option: {
-              nzSize: 'large',
-              label: 'Họ',
-              className: ['col-12', 'p-1'],
-            },
-          },
-
-          image: {
-            component: ImageUploadControlComponent,
-            option: {
-              nzSize: 'large',
-              type: 'text',
-              label: 'Ảnh đại diện',
-              nzMultiple: false,
-              queryParamKey: 'files',
-              apiEndPoint: `${environment.apiUrl}/file/upload`,
-              reponseHandler: (res: ApiCollectionResponse<{ url: string }>) =>
-                res.data[0].url,
-              className: ['col-12', 'p-1'],
-            },
-          },
           email: {
             component: TextControlComponent,
             option: {

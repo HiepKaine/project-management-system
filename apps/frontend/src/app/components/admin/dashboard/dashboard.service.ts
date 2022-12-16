@@ -10,30 +10,7 @@ import { Observable } from 'rxjs';
 export class DashboardService {
   constructor(private http: HttpClient) {}
 
-  getReport(): Observable<
-    ApiItemResponse<{
-      userCount: number;
-      courseCount: number;
-      questionCount: number;
-    }>
-  > {
-    return this.http.get<
-      ApiItemResponse<{
-        userCount: number;
-        courseCount: number;
-        questionCount: number;
-      }>
-    >(`${environment.apiUrl}/analytic/report`);
-  }
+  getReport() {}
 
-  getUserReport(param?: {
-    type?: string;
-    from?: string;
-  }): Observable<ApiCollectionResponse<{ label: Date; value: number }>> {
-    const params = new HttpParams({ fromObject: param });
-    return this.http.get<ApiCollectionResponse<{ label: Date; value: number }>>(
-      `${environment.apiUrl}/analytic/report/user`,
-      { params }
-    );
-  }
+  getUserReport() {}
 }

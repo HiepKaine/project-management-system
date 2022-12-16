@@ -194,11 +194,4 @@ export class CourseService extends BaseService<Course> {
       );
   }
 
-  fetchCourseUserCount(courseIds: number[]): Observable<ApiCollectionResponse<{ courseId: number, userCount: number }>> {
-    const params = new HttpParams({ fromObject: { ids: courseIds.join(',') } });
-    return this.http
-      .get<ApiCollectionResponse<{ courseId: number, userCount: number }>>(
-        `${environment.apiUrl}/analytic/course/user-count`, { params }
-      )
-  }
 }
