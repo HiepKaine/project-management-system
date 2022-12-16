@@ -47,7 +47,7 @@ export class SubjectController {
       this.subjectService.repository.createQueryBuilder('subject');
 
     if (param.keyword) {
-      query = query.where(`subject.subjectName LIKE "%${param.keyword}%"`)
+      query = query.where(`subject.name LIKE "%${param.keyword}%"`)
     }
 
     const result = await this.subjectService.paginate(query, { page, limit });
@@ -60,7 +60,7 @@ export class SubjectController {
     @Body() data: createSubjectDto
   ): Promise<ApiItemResponse<Subject>> {
     const result = await this.subjectService.create(
-      pick(data, ['subjectName', 'subjectCode'])
+      pick(data, ['name', 'subjectCode'])
     );
 
     return this.response.item(result, SubjectTransformer);
@@ -74,7 +74,7 @@ export class SubjectController {
   ): Promise<ApiItemResponse<Subject>> {
     const result = await this.subjectService.update(
       subjectId,
-      pick(data, ['subjectName', 'subjectCode'])
+      pick(data, ['name', 'subjectCode'])
     );
 
     return this.response.item(result, SubjectTransformer);

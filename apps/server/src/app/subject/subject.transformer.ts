@@ -1,6 +1,6 @@
 export class SubjectTransformer {
   id: number;
-  subjectName: string;
+  name: string;
   subjectCode: string;
   deletedAt: Date;
   createdAt: Date;

@@ -10,14 +10,14 @@ export class createSubjectDto {
   @ApiProperty()
   @IsString()
   @MaxLength(255)
-  subjectName: string;
+  name: string;
 }
 
 export class updateSubjectDto {
   @ApiProperty()
   @IsString()
   @MaxLength(255)
-  subjectName: string;
+  name: string;
 
   @ApiProperty()
   @IsString()

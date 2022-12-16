@@ -4,11 +4,11 @@ export class TeacherTransformer {
   teacherCode: string;
   phoneNumber: string;
   address: string;
-  sex: string;
+  sex: number;
   level: string;
   email: string;
   nationality: string;
-  subject: string;
+  divisionId: number;
   deletedAt: Date;
   createdAt: Date;
   updatedAt: Date;

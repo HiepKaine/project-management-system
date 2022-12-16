@@ -25,7 +25,7 @@ export class Teacher {
   address: string;
 
   @Column()
-  sex: string;
+  sex: number;
 
   @Column()
   level: string;
@@ -37,7 +37,7 @@ export class Teacher {
   nationality: string;
 
   @Column()
-  subject: string;
+  divisionId: number;
 
   @DeleteDateColumn({
     type: 'timestamp',

@@ -23,9 +23,7 @@ export class createTeacherDto {
   address: string;
 
   @ApiProperty()
-  @IsString()
-  @MaxLength(255)
-  sex: string;
+  sex: number;
 
   @ApiProperty()
   @IsString()
@@ -43,9 +41,7 @@ export class createTeacherDto {
   nationality: string;
 
   @ApiProperty()
-  @IsString()
-  @MaxLength(255)
-  subject: string;
+  divisionId: number;
 }
 
 export class updateTeacherDto {
@@ -70,9 +66,7 @@ export class updateTeacherDto {
   address: string;
 
   @ApiProperty()
-  @IsString()
-  @MaxLength(255)
-  sex: string;
+  sex: number;
 
   @ApiProperty()
   @IsString()
@@ -90,7 +84,5 @@ export class updateTeacherDto {
   nationality: string;
 
   @ApiProperty()
-  @IsString()
-  @MaxLength(255)
-  subject: string;
+  divisionId: number;
 }

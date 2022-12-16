@@ -31,7 +31,7 @@ export class createTeacherTable1670922404045 implements MigrationInterface {
           },
           {
             name: 'sex',
-            type: 'varchar',
+            type: 'int',
           },
           {
             name: 'level',

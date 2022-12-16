@@ -74,7 +74,7 @@ export class TeacherController {
     return this.response.item(result, TeacherTransformer);
   }
 
-  @Delete(':id')    
+  @Delete(':id')
   @Auth('admin')
   async delete(
     @Param('id', ParseIntPipe) teacherId: number
