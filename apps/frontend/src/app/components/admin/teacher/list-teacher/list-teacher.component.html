@@ -1,4 +1,4 @@
-<div class="faculty component">
+<div class="teacher component">
   <div class="row">
     <div class="col">
       <h1 class="title">Danh sách giảng viên</h1>
@@ -13,15 +13,8 @@
             nz-input
             nzSize="large"
             placeholder="Tìm kiếm theo tên hoặc mã giảng viên"
-            [(ngModel)]="keyword"
           />
-          <button
-            nz-button
-            nzType="primary"
-            class="btn-success"
-            nzSize="large"
-            (click)="search()"
-          >
+          <button nz-button nzType="primary" class="btn-success" nzSize="large">
             <i nz-icon nzType="search"></i>
             Tìm
           </button>
@@ -41,10 +34,10 @@
     </div>
   </div>
   <div class="row">
-    <div class="col faculty">
+    <div class="col teacher">
       <nz-table
         #basicTable
-        [nzData]="facultys"
+        [nzData]="teachers"
         nzFrontPagination="false"
         class="mb-2"
       >
@@ -54,19 +47,23 @@
             <th class="fw-bold">Tên giảng viên</th>
             <th class="fw-bold">Mã giảng viên</th>
             <th class="fw-bold">Số điện thoại</th>
+            <th class="fw-bold">Trình độ</th>
             <th class="fw-bold">Email</th>
+            <th class="fw-bold">Khoa</th>
             <th class="fw-bold">Bộ môn</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr
-            *ngFor="let item of facultys; let i = index"
-            class="faculty__item"
-          >
+          <tr *ngFor="let item of teachers; let i = index">
             <td>{{ i + 1 }}</td>
-            <td class="faculty__item__name">{{ item.facultyCode }}</td>
-            <td class="faculty__item__name">{{ item.name }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.teacherCode }}</td>
+            <td>{{ item.phoneNumber }}</td>
+            <td>{{ item.level }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.name }}</td>
             <td>
               <div class="text-center">
                 <button

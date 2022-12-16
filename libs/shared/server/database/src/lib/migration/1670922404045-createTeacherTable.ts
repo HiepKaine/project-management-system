@@ -18,6 +18,11 @@ export class createTeacherTable1670922404045 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'image',
+            type: 'varchar',
+            isNullable: true
+          },
+          {
             name: 'name',
             type: 'varchar',
           },

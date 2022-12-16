@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import {
-  FormBuilder,
-  FormControl,
+  UntypedFormBuilder,
+  UntypedFormControl,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
@@ -18,14 +18,14 @@ export class EditComponent implements OnInit {
   @Input() faculty!: Faculty;
 
   public form: UntypedFormGroup = this.fb.group({
-    name: new FormControl('', [Validators.required]),
-    facultyCode: new FormControl('', [Validators.required]),
+    name: new UntypedFormControl('', [Validators.required]),
+    facultyCode: new UntypedFormControl('', [Validators.required]),
   });
 
   @ViewChild('formInputs', { static: true })
   formInputs!: NgxFormrAnchorComponent;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private ngxFormManager: NgxFormManager
   ) {}
 

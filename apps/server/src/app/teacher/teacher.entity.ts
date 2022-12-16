@@ -28,6 +28,9 @@ export class Teacher {
   sex: number;
 
   @Column()
+  image: string;
+
+  @Column()
   level: number;
 
   @Column()

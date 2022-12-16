@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, MaxLength } from "class-validator";
+import { IsOptional, IsString, MaxLength } from "class-validator";
 
 export class createTeacherDto {
   @ApiProperty()
@@ -24,6 +24,11 @@ export class createTeacherDto {
 
   @ApiProperty()
   sex: number;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @MaxLength(255)
+  image: string;
 
   @ApiProperty()
   level: number;
@@ -71,6 +76,11 @@ export class updateTeacherDto {
 
   @ApiProperty()
   level: number;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @MaxLength(255)
+  image: string;
 
   @ApiProperty()
   @IsString()

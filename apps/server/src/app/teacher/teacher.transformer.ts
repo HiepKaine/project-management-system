@@ -7,6 +7,7 @@ export class TeacherTransformer {
   sex: number;
   level: number;
   email: string;
+  image: string;
   nationality: string;
   divisionId: number;
   facultyId!: number;
