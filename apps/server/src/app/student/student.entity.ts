@@ -72,7 +72,6 @@ export class Student {
   @Column()
   note: string;
 
-
   @DeleteDateColumn({
     type: 'timestamp',
   })

@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table, TableIndex } from 'typeorm';
 
 export class CreateStudentTable1670920432692 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -59,7 +59,7 @@ export class CreateStudentTable1670920432692 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'facutlyId',
+            name: 'facultyId',
             type: 'varchar',
           },
           {
@@ -110,6 +110,22 @@ export class CreateStudentTable1670920432692 implements MigrationInterface {
             default: 'NOW()',
           },
         ],
+      })
+    );
+
+    await queryRunner.createIndex(
+      'student',
+      new TableIndex({
+        name: 'IDX_FACULTY_ID',
+        columnNames: ['facultyId'],
+      })
+    );
+
+    await queryRunner.createIndex(
+      'student',
+      new TableIndex({
+        name: 'IDX_CLASS_ID',
+        columnNames: ['classId'],
       })
     );
   }

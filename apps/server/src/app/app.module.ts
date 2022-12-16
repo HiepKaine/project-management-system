@@ -61,10 +61,10 @@ import { SubjectModule } from './subject/subject.module';
 import { Subject } from './subject/subject.entity';
 import { DivisionModule } from './division/division.module';
 import { Division } from './division/division.entity';
-import { ScoreController } from './score/score.controller';
 import { ScoreModule } from './score/score.module';
 import { Score } from './score/score.entity';
 import { StudentModule } from './student/student.module';
+import { Student } from './student/student.entity';
 
 @Module({
   imports: [
@@ -107,6 +107,7 @@ import { StudentModule } from './student/student.module';
         Subject,
         Division,
         Score,
+        Student,
       ],
     }),
     AuthModule,
