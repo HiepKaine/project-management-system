@@ -28,7 +28,7 @@ export class Teacher {
   sex: number;
 
   @Column()
-  level: string;
+  level: number;
 
   @Column()
   email: string;

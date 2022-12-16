@@ -26,9 +26,7 @@ export class createTeacherDto {
   sex: number;
 
   @ApiProperty()
-  @IsString()
-  @MaxLength(255)
-  level: string;
+  level: number;
 
   @ApiProperty()
   @IsString()
@@ -69,9 +67,7 @@ export class updateTeacherDto {
   sex: number;
 
   @ApiProperty()
-  @IsString()
-  @MaxLength(255)
-  level: string;
+  level: number;
 
   @ApiProperty()
   @IsString()

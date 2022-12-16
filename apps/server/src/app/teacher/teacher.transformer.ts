@@ -5,7 +5,7 @@ export class TeacherTransformer {
   phoneNumber: string;
   address: string;
   sex: number;
-  level: string;
+  level: number;
   email: string;
   nationality: string;
   divisionId: number;
