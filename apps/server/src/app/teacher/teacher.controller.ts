@@ -46,7 +46,9 @@ export class TeacherController {
       this.teacherService.repository.createQueryBuilder('teacher');
 
     if (param.keyword) {
-      query = query.where(`teacher.name LIKE "%${param.keyword}%"`);
+      query = query
+        .where(`teacher.name LIKE "%${param.keyword}%"`)
+        .orWhere(`teacher.teacherCode LIKE "%${param.keyword}%"`);
     }
 
     const result = await this.teacherService.paginate(query, { page, limit });

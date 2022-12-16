@@ -50,6 +50,10 @@ export class createTeacherTable1670922404045 implements MigrationInterface {
             type: 'int',
           },
           {
+            name: 'facultyId',
+            type: 'int',
+          },
+          {
             name: 'deletedAt',
             isNullable: true,
             type: 'datetime',

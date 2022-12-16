@@ -39,6 +39,9 @@ export class Teacher {
   @Column()
   divisionId: number;
 
+  @Column()
+  facultyId: number;
+
   @DeleteDateColumn({
     type: 'timestamp',
   })

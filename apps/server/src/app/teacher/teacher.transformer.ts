@@ -9,6 +9,7 @@ export class TeacherTransformer {
   email: string;
   nationality: string;
   divisionId: number;
+  facultyId!: number;
   deletedAt: Date;
   createdAt: Date;
   updatedAt: Date;

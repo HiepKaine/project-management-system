@@ -36,14 +36,14 @@ const routes: Routes = [
           {
             path: 'division',
             loadChildren: () =>
-              import('./division/division.module').then((m) => m.DivisionModule),
+              import('./division/division.module').then(
+                (m) => m.DivisionModule
+              ),
           },
           {
-            path: 'exam-manager',
+            path: 'teacher',
             loadChildren: () =>
-              import('./exam-manager/exam-manager.module').then(
-                (m) => m.ExamManagerModule
-              ),
+              import('./teacher/teacher.module').then((m) => m.TeacherModule),
           },
           {
             path: 'exam-pack-manager',

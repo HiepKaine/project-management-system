@@ -26,6 +26,7 @@ export class TeacherService extends BaseService<Teacher> {
         'email',
         'nationality',
         'divisionId',
+        'facultyId',
       ]),
       ...{ teacherCode: uuidv4() },
     });
@@ -49,6 +50,7 @@ export class TeacherService extends BaseService<Teacher> {
         'email',
         'nationality',
         'divisionId',
+        'facultyId',
       ]),
       ...{ teacherCode: teacher.teacherCode },
     });

@@ -40,6 +40,9 @@ export class createTeacherDto {
 
   @ApiProperty()
   divisionId: number;
+
+  @ApiProperty()
+  facultyId: number;
 }
 
 export class updateTeacherDto {
@@ -81,4 +84,7 @@ export class updateTeacherDto {
 
   @ApiProperty()
   divisionId: number;
+
+  @ApiProperty()
+  facultyId: number;
 }
