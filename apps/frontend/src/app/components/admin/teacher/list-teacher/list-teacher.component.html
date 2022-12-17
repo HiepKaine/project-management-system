@@ -13,8 +13,15 @@
             nz-input
             nzSize="large"
             placeholder="Tìm kiếm theo tên hoặc mã giảng viên"
+            [(ngModel)]="keyword"
           />
-          <button nz-button nzType="primary" class="btn-success" nzSize="large">
+          <button
+            nz-button
+            nzType="primary"
+            class="btn-success"
+            nzSize="large"
+            (click)="search()"
+          >
             <i nz-icon nzType="search"></i>
             Tìm
           </button>
@@ -60,7 +67,7 @@
             <td>{{ item.name }}</td>
             <td>{{ item.teacherCode }}</td>
             <td>{{ item.phoneNumber }}</td>
-            <td>{{ item.level }}</td>
+            <td>{{ item.getLevelName() }}</td>
             <td>{{ item.email }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.name }}</td>

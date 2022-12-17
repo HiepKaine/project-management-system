@@ -12,7 +12,27 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
-
+import { IconDefinition } from '@ant-design/icons-angular';
+import {
+  FormOutline,
+  SearchOutline,
+  DeleteOutline,
+  PlusOutline,
+  DownloadOutline,
+  PictureTwoTone,
+  FileTwoTone
+} from '@ant-design/icons-angular/icons';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+const icons: IconDefinition[] = [
+  SearchOutline,
+  FormOutline,
+  PlusOutline,
+  DeleteOutline,
+  DownloadOutline,
+  PictureTwoTone,
+  FileTwoTone
+];
 @NgModule({
   declarations: [
     ListTeacherComponent,
@@ -30,6 +50,8 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
     NzButtonModule,
     NzFormModule,
     NzPaginationModule,
+    NzModalModule,
+    NzIconModule.forChild(icons),
   ],
 })
 export class TeacherModule {}

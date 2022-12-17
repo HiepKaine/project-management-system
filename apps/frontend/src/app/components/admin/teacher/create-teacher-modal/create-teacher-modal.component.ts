@@ -5,9 +5,15 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { ApiCollectionResponse } from '@frontend/common';
+import { environment } from '@frontend/env/environment';
 import { Level, Sex } from '@frontend/models/teacher.model';
 import { NgxFormManager, NgxFormrAnchorComponent } from '@ngxform/platform';
-import { SelectControlComponent, TextControlComponent } from '@webpress/form';
+import {
+  ImageUploadControlComponent,
+  SelectControlComponent,
+  TextControlComponent,
+} from '@webpress/form';
 
 @Component({
   selector: 'app-create-teacher-modal',
@@ -25,6 +31,7 @@ export class CreateTeacherModalComponent implements OnInit {
     nationality: new UntypedFormControl('', [Validators.required]),
     divisionId: new UntypedFormControl('', [Validators.required]),
     facultyId: new UntypedFormControl('', [Validators.required]),
+    image: new UntypedFormControl('', [Validators.required]),
   });
 
   @ViewChild('formInputs', { static: true })
@@ -37,6 +44,20 @@ export class CreateTeacherModalComponent implements OnInit {
 
   ngOnInit(): void {
     const ngxform = this.ngxFormManager.init(this.form, {
+      image: {
+        component: ImageUploadControlComponent,
+        option: {
+          NzSize: 'large',
+          type: 'image',
+          label: 'Ảnh',
+          nzMultiple: false,
+          queryParamKey: 'files',
+          apiEndPoint: `${environment.apiUrl}/file/upload`,
+          reponseHandler: (res: ApiCollectionResponse<{ url: string }>) =>
+            res.data[0].url,
+          className: ['col-12', 'p-1'],
+        },
+      },
       name: {
         component: TextControlComponent,
         option: {

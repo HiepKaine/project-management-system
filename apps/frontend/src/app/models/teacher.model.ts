@@ -6,6 +6,7 @@ export class Teacher {
   address!: string;
   sex!: number;
   level!: number;
+  image!: string;
   email!: string;
   nationality!: string;
   divisionId!: number;
@@ -13,6 +14,19 @@ export class Teacher {
   deletedAt!: Date;
   createdAt!: Date;
   updatedAt!: Date;
+
+  getLevelName() {
+    switch (this.level) {
+      case 1:
+        return 'Thạc sĩ';
+      case 2:
+        return 'Tiễn sĩ';
+      case 3:
+        return 'Cử nhân';
+      default:
+        return 'Khác';
+    }
+  }
 }
 
 export enum Sex {
