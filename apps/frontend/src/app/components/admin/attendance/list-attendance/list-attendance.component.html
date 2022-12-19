@@ -1,0 +1,99 @@
+<div class="attendance">
+    <div class="row">
+      <div class="col">
+        <h1 class="title">Danh sách điểm danh</h1>
+      </div>
+    </div>
+  
+    <div class="row mb-4">
+      <div class="col">
+        <div class="sub-nav d-flex justify-content-between">
+          <div class="sub-nav-search d-flex">
+            <input
+              class="mb-2"
+              nz-input
+              nzSize="large"
+              placeholder="Tìm kiếm theo tên học sinh"
+              [(ngModel)]="keyword"
+            />
+            <button
+              nz-button
+              nzType="primary"
+              class="btn-success"
+              nzSize="large"
+              (click)="search()"
+            >
+              <i nz-icon nzType="search"></i>
+              Tìm
+            </button>
+          </div>
+  
+          <button
+            nz-button
+            nzType="primary"
+            class="mb-2"
+            nzSize="large"
+            (click)="createAttendanceModal()"
+          >
+            <i nz-icon nzType="plus"></i>
+            Thêm điểm danh mới
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <nz-table
+          #basicTable
+          [nzData]="attendances"
+          nzFrontPagination="false"
+          class="mb-2"
+        >
+          <thead>
+            <tr>
+              <th class="fw-bold">#</th>
+              <th class="fw-bold">Họ và tên</th>
+              <th class="fw-bold">Mã sinh viên</th>
+              <th class="fw-bold">Môn học</th>
+              <th class="fw-bold">Số buổi vắng</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of attendances; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.studentId }}</td>
+              <td>{{ item.studentId }}</td>
+              <td>{{ item.subjectId }}</td>
+              <td>{{ item.totalAbsences }}</td>
+              <td>
+                <div class="text-center">
+                  <button
+                    nz-button
+                    nzType="link"
+                    (click)="editAttendanceModal(item)"
+                  >
+                    <i nz-icon nzType="form" style="color: #1452d7"></i>
+                  </button>
+                  <button nz-button nzType="link" (click)="deleteItem(item)">
+                    <i nz-icon nzType="delete" style="color: #cf002a"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+        <ng-container *ngIf="pagination">
+          <div class="d-flex justify-content-end">
+            <nz-pagination
+              [nzPageIndex]="pagination.currentPage"
+              [nzPageSize]="pagination.itemsPerPage"
+              [nzTotal]="pagination.totalItems"
+              (nzPageIndexChange)="gotoPage($event)"
+            ></nz-pagination>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  

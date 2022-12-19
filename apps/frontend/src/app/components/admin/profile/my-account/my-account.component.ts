@@ -33,14 +33,27 @@ export class MyAccountComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private ngxFormManager: NgxFormManager
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.init$.next({ admin: this.admin });
     this.init$.subscribe((data) => {
       if (data) {
-
         const ngxform = this.ngxFormManager.init(this.form, {
+          image: {
+            component: ImageUploadControlComponent,
+            option: {
+              NzSize: 'large',
+              type: 'image',
+              label: 'Ảnh',
+              nzMultiple: false,
+              queryParamKey: 'files',
+              apiEndPoint: `${environment.apiUrl}/file/upload`,
+              reponseHandler: (res: ApiCollectionResponse<{ url: string }>) =>
+                res.data[0].url,
+              className: ['col-12', 'p-1'],
+            },
+          },
         });
         this.ngxFormManager.render(ngxform, this.formInputs.viewContainerRef);
       }
