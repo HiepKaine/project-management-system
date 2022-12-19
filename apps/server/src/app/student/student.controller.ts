@@ -71,7 +71,7 @@ export class StudentController {
   async create(
     @Body() data: createStudentDto
   ): Promise<ApiItemResponse<Student>> {
-    const result = await this.studentService.create(data);
+    const result = await this.studentService.addStudent(data);
     return this.reponse.item(result, StudentTransformer);
   }
 
@@ -81,7 +81,7 @@ export class StudentController {
     @Param('id', ParseIntPipe) studentId: number,
     @Body() data: updateStudentDto
   ): Promise<ApiItemResponse<Student>> {
-    const result = await this.studentService.update(studentId, data);
+    const result = await this.studentService.updateStudent(studentId, data);
     return this.reponse.item(result, StudentTransformer);
   }
 

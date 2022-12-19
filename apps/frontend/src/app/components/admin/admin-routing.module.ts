@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from '../../@core/guard/admin.guard';
 import { AdminComponent } from './admin.component';
+import { StudentModule } from './student/student.module';
 
 const routes: Routes = [
   {
@@ -49,6 +50,16 @@ const routes: Routes = [
             path: 'subject',
             loadChildren: () =>
               import('./subject/subject.module').then((m) => m.SubjectModule),
+          },
+          {
+            path: 'student',
+            loadChildren: () =>
+              import('./student/student.module').then((m) => StudentModule),
+          },
+          {
+            path: 'score',
+            loadChildren: () =>
+              import('./score/score.module').then((m) => ScoreModule),
           },
           {
             path: 'user',
