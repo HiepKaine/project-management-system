@@ -1,0 +1,26 @@
+@import 'apps/frontend/src/styles/_mixin.scss';
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+.subject {
+  .sub-nav {
+    @include media-breakpoint-down(md) {
+      flex-direction: column-reverse;
+    }
+  }
+  .sub-nav-search {
+    width: 40%;
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    button {
+      margin-left: 16px;
+      @include media-breakpoint-down(md) {
+        margin: 0;
+      }
+    }
+  }
+}

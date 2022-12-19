@@ -72,7 +72,6 @@ export class StudentController {
     @Body() data: createStudentDto
   ): Promise<ApiItemResponse<Student>> {
     const result = await this.studentService.create(data);
-
     return this.reponse.item(result, StudentTransformer);
   }
 
@@ -83,7 +82,6 @@ export class StudentController {
     @Body() data: updateStudentDto
   ): Promise<ApiItemResponse<Student>> {
     const result = await this.studentService.update(studentId, data);
-
     return this.reponse.item(result, StudentTransformer);
   }
 

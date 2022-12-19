@@ -40,7 +40,7 @@ export class CreateStudentTable1670920432692 implements MigrationInterface {
           },
           {
             name: 'sex',
-            type: 'varchar',
+            type: 'int',
           },
           {
             name: 'date',
@@ -60,11 +60,11 @@ export class CreateStudentTable1670920432692 implements MigrationInterface {
           },
           {
             name: 'facultyId',
-            type: 'varchar',
+            type: 'int',
           },
           {
             name: 'classId',
-            type: 'varchar',
+            type: 'int',
           },
           {
             name: 'fatherName',

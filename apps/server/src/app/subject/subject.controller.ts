@@ -47,7 +47,9 @@ export class SubjectController {
       this.subjectService.repository.createQueryBuilder('subject');
 
     if (param.keyword) {
-      query = query.where(`subject.name LIKE "%${param.keyword}%"`)
+      query = query
+        .where(`subject.name LIKE "%${param.keyword}%"`)
+        .orWhere(`subject.subjectCode LIKE "%${param.keyword}%"`);
     }
 
     const result = await this.subjectService.paginate(query, { page, limit });
