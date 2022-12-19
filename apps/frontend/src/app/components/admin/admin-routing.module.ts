@@ -54,12 +54,12 @@ const routes: Routes = [
           {
             path: 'student',
             loadChildren: () =>
-              import('./student/student.module').then((m) => StudentModule),
+              import('./student/student.module').then((m) => m.StudentModule),
           },
           {
             path: 'score',
             loadChildren: () =>
-              import('./score/score.module').then((m) => ScoreModule),
+              import('./score/score.module').then((m) => m.ScoreModule),
           },
           {
             path: 'user',

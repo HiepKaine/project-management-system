@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { StudentRoutingModule } from './student-routing.module';
-import { ListStudentComponent } from './list-student/list-student.component';
-import { CreateStudentModalComponent } from './create-student-modal/create-student-modal.component';
-import { EditStudentModalComponent } from './edit-student-modal/edit-student-modal.component';
-import { DetailStudentComponent } from './detail-student/detail-student.component';
+import { ScoreRoutingModule } from './score-routing.module';
+import { ListScoreComponent } from './list-score/list-score.component';
+import { EditScoreModalComponent } from './edit-score-modal/edit-score-modal.component';
+import { CreateScoreModalComponent } from './create-score-modal/create-score-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxFormModule } from '@ngxform/platform';
 import { NzTableModule } from 'ng-zorro-antd/table';
@@ -22,8 +21,6 @@ import {
   DownloadOutline,
   PictureTwoTone,
   FileTwoTone,
-  ImportOutline,
-  ExportOutline,
 } from '@ant-design/icons-angular/icons';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -35,20 +32,17 @@ const icons: IconDefinition[] = [
   DownloadOutline,
   PictureTwoTone,
   FileTwoTone,
-  ImportOutline,
-  ExportOutline,
 ];
 
 @NgModule({
   declarations: [
-    ListStudentComponent,
-    CreateStudentModalComponent,
-    EditStudentModalComponent,
-    DetailStudentComponent,
+    ListScoreComponent,
+    EditScoreModalComponent,
+    CreateScoreModalComponent,
   ],
   imports: [
     CommonModule,
-    StudentRoutingModule,
+    ScoreRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     NgxFormModule,
@@ -61,4 +55,4 @@ const icons: IconDefinition[] = [
     NzIconModule.forChild(icons),
   ],
 })
-export class StudentModule {}
+export class ScoreModule {}
