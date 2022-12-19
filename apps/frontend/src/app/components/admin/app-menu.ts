@@ -17,29 +17,29 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/admin/class',
   },
   {
-    title: 'Quản lí sinh viên',
+    title: 'Quản lý sinh viên',
     icon: { icon: 'people-outline' },
     link: '/admin/student',
   },
   {
-    title: 'Quản lí giảng viên',
+    title: 'Quản lý giảng viên',
     icon: { icon: 'people-outline' },
     link: '/admin/teacher'
   },
   {
-    title: 'Quản lí môn học',
+    title: 'Quản lý môn học',
     icon: { icon: 'people-outline' },
     link: '/admin/subject',
   },
   {
-    title: 'Quản lí điểm',
+    title: 'Quản lý điểm',
     icon: { icon: 'people-outline' },
     link: '/admin/score',
   },
   {
-    title: 'Quản lí điểm danh',
+    title: 'Quản lý điểm danh',
     icon: { icon: 'email-outline' },
-    link: '/admin/contact',
+    link: '/admin/attendance',
   },
   {
     title: 'Danh sách bộ môn',

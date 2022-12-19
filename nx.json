@@ -11,7 +11,7 @@
       }
     }
   },
-  "defaultProject": "frontend",
+  "defaultProject": "server",
   "generators": {
     "@nrwl/angular:application": {
       "style": "scss",

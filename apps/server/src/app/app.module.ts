@@ -65,6 +65,8 @@ import { ScoreModule } from './score/score.module';
 import { Score } from './score/score.entity';
 import { StudentModule } from './student/student.module';
 import { Student } from './student/student.entity';
+import { AttendanceModule } from './attendance/attendance.module';
+import { Attendance } from './attendance/attendance.entity';
 
 @Module({
   imports: [
@@ -108,6 +110,7 @@ import { Student } from './student/student.entity';
         Division,
         Score,
         Student,
+        Attendance,
       ],
     }),
     AuthModule,
@@ -131,6 +134,7 @@ import { Student } from './student/student.entity';
     DivisionModule,
     ScoreModule,
     StudentModule,
+    AttendanceModule,
   ],
 
   controllers: [AppController],
