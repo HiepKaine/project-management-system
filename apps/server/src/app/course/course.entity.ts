@@ -7,7 +7,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm';
-import { UserCourse } from '../user/userCourse.entity';
 import { CourseChapter } from './course-chapter.entity';
 
 export enum CourseStatus {
@@ -90,9 +89,6 @@ export class Course {
     default: () => 'NOW()',
   })
   public updatedAt: Date;
-
-  @OneToMany(() => UserCourse, (userCourse) => userCourse.course)
-  userCourses: UserCourse[];
 
   @OneToMany(() => CourseChapter, (courseChapter) => courseChapter.course)
   courseChapters: CourseChapter[];

@@ -1,7 +1,7 @@
 <div class="user component">
   <div class="row">
     <div class="col">
-      <h1 class="title">Danh sách học viên</h1>
+      <h1 class="title">Danh sách người dùng</h1>
     </div>
   </div>
   <div class="sub-nav d-flex justify-content-between mb-4">
@@ -28,23 +28,13 @@
     <div class="navbar-with-action d-flex mb-2">
       <button
         nz-button
-        nzType="default"
-        nzSize="large"
-        class="navbar-with-action__export mb-2"
-      >
-        <i nz-icon nzType="export" nzTheme="outline"></i>
-        Xuất file
-      </button>
-
-      <button
-        nz-button
         nzType="primary"
         nzSize="large"
         class="navbar-with-action__add"
         (click)="openCreateUserModal()"
       >
         <i nz-icon nzType="plus"></i>
-        Thêm học viên
+        Thêm người dùng
       </button>
     </div>
   </div>
@@ -53,17 +43,18 @@
       <nz-table [nzData]="users" nzFrontPagination="false">
         <thead>
           <tr>
-            <th class="fw-bold d-none d-xl-table-cell">Học viên</th>
+            <th class="fw-bold d-none d-xl-table-cell">Người dùng</th>
             <th class="fw-bold">Email</th>
             <th class="fw-bold">Số điện thoại</th>
-            <th class="fw-bold d-none d-xl-table-cell">Vị trí ứng tuyển</th>
-            <th class="fw-bold d-none d-xl-table-cell">Cơ quan ứng tuyển</th>
             <th class="fw-bold">Kích hoạt</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let user of users">
+            <td class="user-list__email">
+              <p>{{ user.username }}</p>
+            </td>
             <td class="user-list__email">
               <p>{{ user.email }}</p>
             </td>
@@ -94,12 +85,6 @@
                   </li>
                   <li nz-menu-item [routerLink]="[user.id, 'user-activity']">
                     Lịch sử đăng nhập
-                  </li>
-                  <li nz-menu-item [routerLink]="[user.id, 'course']">
-                    Danh sách khoá học
-                  </li>
-                  <li nz-menu-item [routerLink]="[user.id, 'exam-pack']">
-                    Danh sách gói trắc nghiệm
                   </li>
                   <li nz-menu-item [routerLink]="[user.id, 'change-password']">
                     Đổi mật khẩu

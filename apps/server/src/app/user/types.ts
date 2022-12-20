@@ -33,17 +33,6 @@ export class AdminCreateAccountDto {
   phoneNumber: string;
 }
 
-export class AddUserCourseDto {
-  @ApiProperty()
-  courseId: number;
-}
-
-export class AddUserExamPackDto {
-  @ApiProperty()
-  examPackId: number;
-}
-
-
 export class UpdateUserDto {
   @ApiProperty({ required: false })
   @IsOptional()
@@ -57,19 +46,4 @@ export class UpdateUserDto {
   @IsString()
   @MaxLength(255)
   phoneNumber: string;
-}
-
-
-export class AddFreeCourseDto {
-  @ApiProperty()
-  @IsNumber()
-  @Type(() => Number)
-  courseId: number
-}
-
-export class AddFreeExamPackDto {
-  @ApiProperty()
-  @IsNumber()
-  @Type(() => Number)
-  examPackId: number
 }

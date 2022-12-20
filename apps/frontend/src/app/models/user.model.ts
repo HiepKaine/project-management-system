@@ -1,8 +1,4 @@
-import {
-  plainToInstance,
-  Transform,
-  Type,
-} from 'class-transformer';
+import { plainToInstance, Transform, Type } from 'class-transformer';
 
 import { Role } from './role.model';
 
@@ -11,6 +7,7 @@ export class User {
   email!: string | null;
   code!: string | null;
   status!: number;
+  image!: string;
   username!: string;
   password!: string;
   phoneNumber!: string;
@@ -19,11 +16,13 @@ export class User {
   createdAt!: string;
   updatedAt!: string;
 
-
   @Type(() => Role)
-  @Transform(({ value }) => Array.isArray(value.data) && value.data.length > 0 ? value.data.map((item: Role) => plainToInstance(Role, item)) : [])
+  @Transform(({ value }) =>
+    Array.isArray(value.data) && value.data.length > 0
+      ? value.data.map((item: Role) => plainToInstance(Role, item))
+      : []
+  )
   roles!: Role[];
-
 
   isAdmin(): boolean {
     if (
@@ -43,5 +42,4 @@ export class User {
       return false;
     }
   }
-
 }

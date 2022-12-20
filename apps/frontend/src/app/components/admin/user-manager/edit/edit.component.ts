@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { plainToInstance } from 'class-transformer';
@@ -52,6 +56,7 @@ export class EditComponent implements OnInit {
   public editUserForm: UntypedFormGroup = this.fb.group({
     email: new FormControl('', [Validators.required, Validators.email]),
     phoneNumber: new FormControl(null, [Validators.required]),
+    image: new FormControl(null),
   });
 
   constructor(
@@ -78,13 +83,37 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     this.init$.subscribe((data) => {
       if (data) {
+        console.log(data)
+        const image: ImageUploadValue[] = [
+          {
+            uid: '1',
+            name: data.user.image,
+            status: 'done',
+            url: data.user.image,
+          },
+        ];
+
         this.editUserForm.setValue({
           email: data.user.email,
           phoneNumber: data.user.phoneNumber,
+          image: image,
         });
 
-        this.ngxFormManager.watch('editUser', this.editUserForm);
-        this.ngxFormManager.cast('editUser', {
+        const ngxform = this.ngxFormManager.init(this.editUserForm, {
+          image: {
+            component: ImageUploadControlComponent,
+            option: {
+              NzSize: 'large',
+              type: 'image',
+              label: 'Ảnh',
+              nzMultiple: false,
+              queryParamKey: 'files',
+              apiEndPoint: `${environment.apiUrl}/file/upload`,
+              reponseHandler: (res: ApiCollectionResponse<{ url: string }>) =>
+                res.data[0].url,
+              className: ['col-12', 'p-1'],
+            },
+          },
           email: {
             component: TextControlComponent,
             option: {
@@ -103,29 +132,8 @@ export class EditComponent implements OnInit {
               className: ['col-12', 'p-1'],
             },
           },
-          position: {
-            component: TextControlComponent,
-            option: {
-              nzSize: 'large',
-              type: 'text',
-              label: 'Vị trí ứng tuyển:',
-              className: ['col-12', 'p-1'],
-            },
-          },
-          organization: {
-            component: TextControlComponent,
-            option: {
-              nzSize: 'large',
-              type: 'text',
-              label: 'Cơ quan ứng tuyển:',
-              className: ['col-12', 'p-1'],
-            },
-          },
         });
-        this.ngxFormManager.render(
-          'editUser',
-          this.formInputs.viewContainerRef
-        );
+        this.ngxFormManager.render(ngxform, this.formInputs.viewContainerRef);
       }
     });
   }
@@ -138,6 +146,7 @@ export class EditComponent implements OnInit {
       const data = {
         email: this.editUserForm.get('email')?.value,
         phoneNumber: this.editUserForm.get('phoneNumber')?.value,
+        image: imageUrl,
       };
       this.userService.update(this.userId, data).subscribe(() => {
         this.notificationService.success(

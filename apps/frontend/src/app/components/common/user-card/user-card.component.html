@@ -1,10 +1,7 @@
 <nz-card
   [nzActions]="[
     actionEdit,
-    listCourse,
-    listExamPack,
     listIp,
-    listExamResult,
     UserActivity
   ]"
 >
@@ -24,26 +21,6 @@
     <span>Chỉnh sửa thông tin</span></a
   >
 </ng-template>
-<ng-template #listCourse>
-  <a
-    nz-button
-    [routerLink]="['/', 'admin', 'user', user.id, 'course']"
-    nzType="link"
-  >
-    <i nz-icon nzType="play-square" nzTheme="fill"></i>
-    <span>Danh sách khóa học</span>
-  </a>
-</ng-template>
-<ng-template #listExamPack>
-  <a
-    nz-button
-    [routerLink]="['/', 'admin', 'user', user.id, 'exam-pack']"
-    nzType="link"
-  >
-    <i nz-icon nzType="file-excel" nzTheme="fill"></i>
-    <span>Danh sách gói trắc nhiệm</span>
-  </a>
-</ng-template>
 <ng-template #listIp>
   <a
     nz-button
@@ -52,16 +29,6 @@
   >
     <i nz-icon nzType="api" nzTheme="fill"></i>
     <span>Danh sách Ip</span>
-  </a>
-</ng-template>
-<ng-template #listExamResult>
-  <a
-    nz-button
-    [routerLink]="['/', 'admin', 'test-session-manager']"
-    nzType="link"
-  >
-    <i nz-icon nzType="profile" nzTheme="fill"></i>
-    <span>Danh sách kết quả bài thi</span>
   </a>
 </ng-template>
 <ng-template #UserActivity>

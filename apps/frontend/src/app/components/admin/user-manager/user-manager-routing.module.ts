@@ -1,5 +1,3 @@
-import { UserExamPackComponent } from './user-exam-pack/user-exam-pack.component';
-import { UserCourseComponent } from './user-course/user-course.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChangePasswordComponent } from './change-password/change-password.component';
@@ -11,8 +9,6 @@ import { UserActivityComponent } from './user-activity/user-activity.component';
 const routes: Routes = [
   { path: '', component: ListComponent },
   { path: ':id/edit', component: EditComponent },
-  { path: ':id/course', component: UserCourseComponent },
-  { path: ':id/exam-pack', component: UserExamPackComponent },
   { path: ':id/change-password', component: ChangePasswordComponent },
   { path: ':id/user-ip', component: UserIpComponent },
   { path: ':id/user-activity', component: UserActivityComponent }

@@ -43,8 +43,6 @@ import { SystemNotification } from './systemNotification/systemNotification.enti
 import { SystemNotificationModule } from './systemNotification/systemNotification.module';
 import { UserChannel } from './systemNotification/userChannel.entity';
 import { UserNotificationUnread } from './systemNotification/userNotificationUnread.entity';
-import { UserCourse } from './user/userCourse.entity';
-import { UserExamPack } from './user/userExamPack.entity';
 import { Email } from './mail-manager/email.entity';
 import { UserActivityManagerModule } from './user-activity-manager/user-activity-manager.module';
 import { Ip } from './user-activity-manager/ip.entity';
@@ -67,6 +65,7 @@ import { StudentModule } from './student/student.module';
 import { Student } from './student/student.entity';
 import { AttendanceModule } from './attendance/attendance.module';
 import { Attendance } from './attendance/attendance.entity';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -87,8 +86,6 @@ import { Attendance } from './attendance/attendance.entity';
         SystemNotification,
         UserChannel,
         UserNotificationUnread,
-        UserCourse,
-        UserExamPack,
         Exam,
         ExamPackExam,
         ExamQuestion,
@@ -115,6 +112,7 @@ import { Attendance } from './attendance/attendance.entity';
     }),
     AuthModule,
     ProfileModule,
+    UserModule,
     CourseModule,
     FileModule,
     DictionaryModule,

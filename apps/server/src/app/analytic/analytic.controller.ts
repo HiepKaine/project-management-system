@@ -5,7 +5,6 @@ import * as moment from 'moment-timezone';
 import { User } from '../auth/entity/user.entity';
 import { Course } from '../course/course.entity';
 import { Question } from '../exam/question.entity';
-import { UserCourse } from '../user/userCourse.entity';
 import { AnalyticService } from './analytic.service';
 import { GetUserReportQueryParam } from './types';
 @Controller('analytic')
@@ -86,14 +85,4 @@ export class AnalyticController {
     return this.response.object(result);
   }
 
-  @Get('course/user-count')
-  @Auth('admin')
-  async getUserCount(@Query('ids', new ParseArrayPipe({ items: Number, separator: ',' })) ids: number[]): Promise<ApiObjectResponse<Array<{ courseId: number, userCount: number }>>> {
-    const result: Array<{ courseId: number, userCount: number }> = [];
-    for (const courseId of ids) {
-      const userCount = await this.analyticService.getObjectCount<UserCourse>(UserCourse, { where: { courseId } });
-      result.push({ courseId, userCount });
-    }
-    return this.response.object(result);
-  }
 }

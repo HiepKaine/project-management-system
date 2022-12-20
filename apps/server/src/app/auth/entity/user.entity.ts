@@ -14,8 +14,6 @@ import {
 import { Role } from './role.entity';
 import { UserChannel } from '../../systemNotification/userChannel.entity';
 import { UserNotificationUnread } from '../../systemNotification/userNotificationUnread.entity';
-import { UserCourse } from '../../user/userCourse.entity';
-import { UserExamPack } from '../../user/userExamPack.entity';
 import { UserActivity } from '../../user-activity-manager/user-activity.entity';
 
 export enum UserStatus {
@@ -103,12 +101,6 @@ export class User {
 
   @OneToMany(() => UserActivity, (userActivity) => userActivity.user)
   activities: UserActivity[]
-
-  @OneToMany(() => UserCourse, (userCoure) => userCoure.user)
-  userCourses: UserCourse[]
-
-  @OneToMany(() => UserExamPack, (userExamPack) => userExamPack.user)
-  userExamPacks: UserExamPack[]
 
   @OneToMany(() => UserNotificationUnread, (userNotificationUnread) => userNotificationUnread.user)
   userNotificationUnreads: UserNotificationUnread[];

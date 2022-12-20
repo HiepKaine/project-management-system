@@ -47,23 +47,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/admin/division',
   },
   {
-    title: 'Thành viên',
+    title: 'Người dùng',
     icon: { icon: 'question-mark-circle-outline' },
-    link: '/admin/faq',
-  },
-  {
-    title: 'Vài trò thanh viên',
-    icon: { icon: 'menu-outline' },
-    link: '/admin/slider',
-  },
-  {
-    title: 'Bài viết điều khoản',
-    icon: { icon: 'menu-outline' },
-    link: '/admin/category',
-  },
-  {
-    title: 'Cấu hình',
-    icon: { icon: 'settings-2-outline' },
-    link: '/admin/option',
+    link: '/admin/user',
   },
 ];

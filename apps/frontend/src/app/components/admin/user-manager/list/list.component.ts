@@ -1,12 +1,9 @@
 import { Component, ViewContainerRef } from '@angular/core';
-import {
-  ActivatedRoute, NavigationExtras,
-  Router
-} from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import {
   ApiItemResponse,
   ApiPaginateResponse,
-  ApiResponsePagination
+  ApiResponsePagination,
 } from '@frontend/common';
 import { Option } from '@frontend/models/option.model';
 import { User } from '@frontend/models/user.model';
@@ -78,7 +75,7 @@ export class ListComponent {
 
   openCreateUserModal(): void {
     const modal = this.modal.create({
-      nzTitle: 'Thêm học viên',
+      nzTitle: 'Thêm người dùng',
       nzContent: CreateUserModalComponent,
       nzViewContainerRef: this.viewContainerRef,
       nzComponentParams: {},
@@ -89,6 +86,7 @@ export class ListComponent {
         } else {
           const imageUrl = form.get('image')?.value[0]?.url ?? null;
           const data = {
+            image: imageUrl,
             email: form.get('email')?.value,
             password: form.get('password')?.value,
             phoneNumber: form.get('phoneNumber')?.value,

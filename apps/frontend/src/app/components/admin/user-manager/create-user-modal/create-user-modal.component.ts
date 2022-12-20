@@ -28,6 +28,7 @@ export class CreateUserModalComponent implements OnInit {
       Validators.minLength(6),
     ]),
     phoneNumber: new FormControl(null, [Validators.required]),
+    image: new FormControl(''),
   });
 
   @ViewChild('formInputs', { static: true })
@@ -39,8 +40,21 @@ export class CreateUserModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ngxFormManager.watch('editUserForm', this.form);
-    this.ngxFormManager.cast('editUserForm', {
+    const ngxform = this.ngxFormManager.init(this.form, {
+      image: {
+        component: ImageUploadControlComponent,
+        option: {
+          NzSize: 'large',
+          type: 'image',
+          label: 'Ảnh',
+          nzMultiple: false,
+          queryParamKey: 'files',
+          apiEndPoint: `${environment.apiUrl}/file/upload`,
+          reponseHandler: (res: ApiCollectionResponse<{ url: string }>) =>
+            res.data[0].url,
+          className: ['col-12', 'p-1'],
+        },
+      },
       email: {
         component: TextControlComponent,
         option: {
@@ -68,9 +82,6 @@ export class CreateUserModalComponent implements OnInit {
         },
       },
     });
-    this.ngxFormManager.render(
-      'editUserForm',
-      this.formInputs.viewContainerRef
-    );
+    this.ngxFormManager.render(ngxform, this.formInputs.viewContainerRef);
   }
 }

@@ -10,7 +10,6 @@ import {
 } from 'typeorm';
 import { ExamPackExam } from '../exam/exam-pack-exam.entity';
 import { Exam } from '../exam/exam.entity';
-import { UserExamPack } from '../user/userExamPack.entity';
 
 export enum ExamPackStatus {
   active = 1,
@@ -74,9 +73,6 @@ export class ExamPack {
     default: () => 'NOW()',
   })
   public updatedAt: Date;
-
-  @OneToMany(() => UserExamPack, (userExamPack) => userExamPack.examPack)
-  userExamPacks: UserExamPack[]
 
   @OneToMany(() => ExamPackExam, (examPackExam) => examPackExam.examPack)
   examPackExams: ExamPackExam[]
