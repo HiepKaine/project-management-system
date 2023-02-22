@@ -41,11 +41,6 @@ const routes: Routes = [
               ),
           },
           {
-            path: 'teacher',
-            loadChildren: () =>
-              import('./teacher/teacher.module').then((m) => m.TeacherModule),
-          },
-          {
             path: 'exam-pack-manager',
             loadChildren: () =>
               import('./exam-pack-manager/exam-pack-manager.module').then(

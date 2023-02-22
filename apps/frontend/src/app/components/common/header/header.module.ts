@@ -6,8 +6,8 @@ import { HeaderComponent } from './header.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { IconDefinition } from '@ant-design/icons-angular';
-import { UserOutline } from '@ant-design/icons-angular/icons';
-const icons: IconDefinition[] = [UserOutline];
+import { UserOutline, BulbOutline } from '@ant-design/icons-angular/icons';
+const icons: IconDefinition[] = [UserOutline, BulbOutline];
 @NgModule({
   declarations: [HeaderComponent],
   imports: [

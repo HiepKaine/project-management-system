@@ -10,10 +10,11 @@ import { WebsiteRoutingModule } from './website-routing.module';
 import { WebsiteComponent } from './website.component';
 import { IconDefinition } from '@ant-design/icons-angular';
 import {
-  UserOutline
+  UserOutline, BulbOutline
 } from '@ant-design/icons-angular/icons';
 const icons: IconDefinition[] = [
-  UserOutline
+  UserOutline,
+  BulbOutline
 ];
 @NgModule({
   declarations: [WebsiteComponent],

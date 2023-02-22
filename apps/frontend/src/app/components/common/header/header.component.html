@@ -1,69 +1,65 @@
 <header>
-  <div class="header-content">
-    <div class="container">
-      <div class="wapper-menu-header d-flex align-items-center">
-        <button class="btn btn-toggler-mobi p-0" (click)="showMenuMobile = !showMenuMobile" #toggleBtn>
-          <i nz-icon nzType="bars" nzTheme="outline"></i>
-        </button>
-        <div class="header__logo d-flex align-items-center">
-          <a routerLink="/">
-            <img src="/assets/images/logoweb.png" class="w-100" />
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-header">
+        <div class="navbar-brand tet">
+          <a class="logo" href="/">
+            <img src="/assets/images/logo.png" class="w-100" />
           </a>
         </div>
-        <div class="navbar" [class.d-flex]="showMenuMobile" #menu>
-          <ul class="navbar__nav d-flex justify-content-center p-0 mb-0">
-            <li class="navbar__nav--item" routerLinkActive="active">
-              <a [routerLink]="['/', 'search', 'khoa-on-cong-chuc']" (click)="
-                  showMenuMobile = !showMenuMobile
-                ">Khóa ôn công chức</a>
-            </li>
-            <li class="navbar__nav--item" routerLinkActive="active">
-              <a [routerLink]="['/','search','khoa-on-vien-chuc']" (click)="
-                  showMenuMobile = !showMenuMobile
-                ">Khóa ôn viên chức</a>
-            </li>
-            <li class="navbar__nav--item" routerLinkActive="active">
-              <a [routerLink]="['/','search', 'phong-thi-trac-nghiem-online']" (click)="
-                  showMenuMobile = !showMenuMobile
-                ">Phòng thi trắc nghiệm online</a>
-            </li>
-          </ul>
-          <ul class="navbar__user d-flex mb-0 ps-0">
-            <div class="user d-flex justify-content-center align-items-center">
-              <ng-container *ngIf="!isLoggedIn; else authenticatedUser">
-                <div class="user__image">
-                  <nz-avatar nzIcon="user" nzSize="large"></nz-avatar>
-                </div>
-                <ul class="user__nav d-flex flex-column align-items-start ps-0 mb-0">
-                  <li>
-                    <a href="/auth/login">Đăng nhập</a>
-                  </li>
-                </ul>
-              </ng-container>
-              <ng-template #authenticatedUser>
-                <ng-container *ngIf="profile">
-                  
-                  <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'">
-                    <div class="user__username text-uppercase">
-                      
-                    </div>
-                  </a>
-                </ng-container>
-                <nz-dropdown-menu #menu="nzDropdownMenu">
-                  <ul nz-menu nzSelectable>
-                    <li nz-menu-item>
-                      <a href="/dashboard/course">Tài khoản của tôi</a>
-                    </li>
-                    <li nz-menu-item>
-                      <span (click)="logout()">Đăng xuất</span>
-                    </li>
-                  </ul>
-                </nz-dropdown-menu>
-              </ng-template>
-            </div>
-          </ul>
+        <div class="navbar-header-user">
+          <div class="user-login user-avatar" id="user-avatar">
+            <span nz-icon nzType="user" nzTheme="outline"></span>
+          </div>
+          <div class="user-theme hidden-320" id="user-theme">
+            <span nz-icon nzType="bulb" nzTheme="outline"></span>
+          </div>
+          <div class="user-tos" id="user-tos">
+            <a href="/">
+              <span nz-icon nzType="info-circle" nzTheme="fill"></span>
+            </a>
+          </div>
         </div>
       </div>
+      <div class="navbar-left" id="navbar-left">
+        <div class="navbar-search">
+          <div class="search-box">
+            <input
+              class="shadow-none ring-0 focus:shadow-none active:shadow-none focus:ring-0 active:ring-0"
+              type="text"
+              name="search-box"
+              placeholder="Tìm kiếm anime"
+              autocomplete="off"
+            />
+            <span nz-icon nzType="search" nzTheme="outline"></span>
+          </div>
+          <div class="search-result" id="search-result" [class.activated]="false">
+            <div
+              class="result-body ps-container ps-theme-default"
+              data-ps-id="8bdd9dde-c572-508c-4135-9dabf84f28fa"
+            >
+              <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px">
+                <div
+                  class="ps-scrollbar-x"
+                  tabindex="0"
+                  style="left: 0px; width: 0px"
+                ></div>
+              </div>
+              <div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px">
+                <div
+                  class="ps-scrollbar-y"
+                  tabindex="0"
+                  style="top: 0px; height: 0px"
+                ></div>
+              </div>
+            </div>
+            <div class="result-noitem text-center">Nhập tên anime để tìm kiếm</div>
+            <div class="loading d-none"></div>
+          </div>
+        </div>
+        <div class="navbar-menu"></div>
+      </div>
+      <div class="navbar-right" id="navbar-right"></div>
     </div>
-  </div>
+  </nav>
 </header>
