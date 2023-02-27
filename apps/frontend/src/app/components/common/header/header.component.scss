@@ -48,19 +48,6 @@ header {
             border-radius: 50%;
             cursor: pointer;
           }
-          .user-avatar {
-            position: relative;
-            float: right;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            color: #fff;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.25);
-            box-shadow: 0 0 5px #ccc;
-            transition: width 0.5s, height 0.5s, margin 0.5s;
-          }
           .user-theme {
             position: relative;
             float: right;
@@ -171,8 +158,284 @@ header {
             }
           }
         }
+
+        .navbar-menu {
+          height: 40px;
+          margin-left: 40px;
+          float: left;
+          .navbar-menu-item {
+            float: left;
+            margin: 5px;
+            padding: 0 15px;
+            border-radius: 15px;
+            height: 30px;
+            line-height: 28px;
+            border: solid 1px #ccc;
+            font-size: 14px;
+            transition: color 0.5s, background 0.5s;
+          }
+        }
+      }
+
+      .navbar-right {
+        &.activated {
+          right: 0;
+          box-shadow: 0 0 10px #999;
+          .big-avatar {
+            width: 80px;
+            height: 80px;
+            cursor: default;
+            text-align: center;
+            span {
+              font-size: 60px;
+              line-height: 70px;
+              text-align: center;
+            }
+          }
+        }
+
+        .loading {
+          top: 175px;
+        }
+
+        .navbar-close {
+          left: 10px;
+        }
       }
     }
+  }
+  .navbar-form-group {
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+
+    input[type='button'] {
+      background: #a0a0a0;
+      border-color: #a0a0a0;
+      color: #000;
+      font-weight: 600;
+    }
+
+    &.submit {
+      margin-top: 20px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 5px 5px 5px 25px;
+      border: dashed 1px rgba(217, 14, 22, 0.4);
+      list-style: none;
+      li {
+        font-size: 12px;
+        color: #d90e16;
+      }
+    }
+    .forgot-password {
+      position: absolute;
+      top: 5px;
+      right: 0;
+      font-size: 12px;
+      text-decoration: underline;
+      color: #888;
+      cursor: pointer;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+    }
+
+    input {
+      width: 100%;
+      height: 30px;
+      display: block;
+      padding-left: 30px;
+      padding-right: 15px;
+      font-size: 13px;
+      -webkit-appearance: none;
+      border: 1px solid;
+      border-color: #ddd;
+      border-radius: 2px;
+      outline: none;
+    }
+
+    span {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 30px;
+      font-size: 16px;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .tip {
+      position: absolute;
+      top: -15px;
+      right: 0;
+      font-size: 10px;
+      color: #d80f16;
+      transition: top 0.3s;
+    }
+  }
+
+  .navbar-form-radio input[type='radio'],
+  .navbar-form-radio input[type='checkbox'],
+  .navbar-form-checkbox input[type='radio'],
+  .navbar-form-checkbox input[type='checkbox'] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+  }
+
+  .navbar-form-radio input[type='radio']:checked + span:before,
+  .navbar-form-radio input[type='checkbox']:checked + span:before,
+  .navbar-form-checkbox input[type='radio']:checked + span:before,
+  .navbar-form-checkbox input[type='checkbox']:checked + span:before {
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    width: 6px;
+    height: 6px;
+    content: '';
+    background: #d80f16;
+  }
+
+  .navbar-form-radio span:after,
+  .navbar-form-checkbox span:after {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    content: '';
+    border: 1px solid;
+    border-radius: 2px;
+  }
+
+  .navbar-form-radio input[type='radio']:checked + span,
+  .navbar-form-radio input[type='checkbox']:checked + span,
+  .navbar-form-checkbox input[type='radio']:checked + span,
+  .navbar-form-checkbox input[type='checkbox']:checked + span {
+    color: #d80f16;
+  }
+
+  .navbar-form-radio,
+  .navbar-form-checkbox {
+    position: relative;
+    display: inline-block !important;
+    margin-top: 5px;
+    margin-right: 35px;
+    color: #888;
+    cursor: pointer;
+    font-size: 12px;
+    span {
+      font-size: 12px;
+      position: relative;
+      padding-left: 20px;
+    }
+  }
+
+  .navbar-user-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px 10px;
+  }
+
+  .navbar-user-tab {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    height: 30px;
+    line-height: 30px;
+    .navbar-user-tab-item {
+      float: left;
+      height: 100%;
+      margin-right: 30px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      &.activated {
+        border-bottom: solid 3px #d80f16;
+      }
+    }
+  }
+
+  .navbar-user-welcome {
+    position: absolute;
+    top: 55px;
+    transition: opacity 0.3s;
+    span {
+      width: 165px;
+      display: block;
+      font-weight: 600;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  .activated {
+    .navbar-close {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .navbar-user-header {
+    position: relative;
+    height: 120px;
+    padding: 10px;
+    background: url(/assets/images/navbar-user-header.jpg);
+    transition: height 0.3s;
+  }
+
+  .navbar-right {
+    float: right;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    bottom: 0;
+    width: 300px;
+    background: #fff;
+    z-index: 1070;
+    transition: right 0.3s, box-shadow 0.3s;
+  }
+
+  .navbar-close {
+    position: absolute;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.1s;
+  }
+
+  .user-avatar {
+    position: relative;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #fff;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 5px #ccc;
+    transition: width 0.5s, height 0.5s, margin 0.5s;
   }
 
   .ring-0 {

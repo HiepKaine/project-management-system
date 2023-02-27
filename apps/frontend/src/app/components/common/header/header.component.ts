@@ -1,10 +1,15 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { User } from '@frontend/models/user.model';
+import { Component } from '@angular/core';
 import * as ShellSelectors from '@frontend/shell/shell.selectors';
 import * as ShellActions from '@frontend/shell/shell.actions';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Store } from '@ngrx/store';
-import { plainToInstance } from 'class-transformer';
+import { TranslateService } from '@ngx-translate/core';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 
 @UntilDestroy()
 @Component({
@@ -13,40 +18,51 @@ import { plainToInstance } from 'class-transformer';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  public showMenuMobile = false;
   public isLoggedIn = false;
-  public profile!: User;
-
-  @ViewChild('toggleBtn') toggleBtn!: ElementRef;
-  @ViewChild('menu') menu!: ElementRef;
+  public active: boolean = false;
+  public show = false;
+  public isLogin = true;
+  public isSignUp = false;
+  public loginForm: UntypedFormGroup = this.fb.group({
+    user: new UntypedFormControl('', [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
+  });
 
   constructor(
     private store: Store,
-    private renderer: Renderer2
+    private fb: UntypedFormBuilder,
+    private translate: TranslateService
   ) {
-
-    this.renderer.listen('window', 'click', (e: Event) => {
-      if (!this.toggleBtn.nativeElement.contains(e.target) && !this.menu.nativeElement.contains(e.target)) {
-        this.showMenuMobile = false;
-      }
-    });
-
-
     this.store
       .select(ShellSelectors.getShellLoggedIn)
       .pipe(untilDestroyed(this))
       .subscribe((isLoggedIn: boolean) => {
         this.isLoggedIn = isLoggedIn;
       });
+  }
 
-    this.store
-      .select(ShellSelectors.getShellProfile)
-      .pipe(untilDestroyed(this))
-      .subscribe((data: User | undefined) => {
-        if (data) {
-          this.profile = plainToInstance(User, data);
-        }
-      });
+  onSubmit() {
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    const values = this.loginForm.value;
+    console.log(values);
+  }
+
+  isCheck(name: string) {
+    if (name === 'login') {
+      this.isLogin = true;
+      this.isSignUp = false;
+    }
+
+    if (name === 'signUp') {
+      this.isSignUp = true;
+      this.isLogin = false;
+    }
   }
 
   logout() {

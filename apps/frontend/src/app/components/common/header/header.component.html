@@ -8,7 +8,11 @@
           </a>
         </div>
         <div class="navbar-header-user">
-          <div class="user-login user-avatar" id="user-avatar">
+          <div
+            class="user-login user-avatar"
+            id="user-avatar"
+            (click)="show = !show"
+          >
             <span nz-icon nzType="user" nzTheme="outline"></span>
           </div>
           <div class="user-theme hidden-320" id="user-theme">
@@ -30,10 +34,16 @@
               name="search-box"
               placeholder="Tìm kiếm anime"
               autocomplete="off"
+              (focus)="active = true"
+              (blur)="active = false"
             />
             <span nz-icon nzType="search" nzTheme="outline"></span>
           </div>
-          <div class="search-result" id="search-result" [class.activated]="false">
+          <div
+            class="search-result"
+            id="search-result"
+            [class.activated]="active"
+          >
             <div
               class="result-body ps-container ps-theme-default"
               data-ps-id="8bdd9dde-c572-508c-4135-9dabf84f28fa"
@@ -53,13 +63,141 @@
                 ></div>
               </div>
             </div>
-            <div class="result-noitem text-center">Nhập tên anime để tìm kiếm</div>
+            <div class="result-noitem text-center">
+              Nhập tên anime để tìm kiếm
+            </div>
             <div class="loading d-none"></div>
           </div>
         </div>
-        <div class="navbar-menu"></div>
+        <div class="navbar-menu">
+          <div class="navbar-menu-item">
+            <a href="">Anime</a>
+          </div>
+          <div class="navbar-menu-item">
+            <a href="">Movie</a>
+          </div>
+          <div class="navbar-menu-item">
+            <a href="">Truyện</a>
+          </div>
+          <div class="navbar-menu-item">
+            <a href="">BXH</a>
+          </div>
+        </div>
       </div>
-      <div class="navbar-right" id="navbar-right"></div>
+      <div class="navbar-right" id="navbar-right" [class.activated]="show">
+        <div class="navbar-user navbar-user-header">
+          <div class="user-avatar big-avatar">
+            <span nz-icon nzType="user" nzTheme="outline"></span>
+          </div>
+          <div class="navbar-user-welcome">
+            <span>Chào khách!</span>
+          </div>
+          <div class="navbar-user-tab">
+            <div
+              class="navbar-user-tab-item navbar-tab-login"
+              [class.activated]="isLogin"
+              (click)="isCheck('login')"
+              data-tab="login"
+            >
+              Đăng nhập
+            </div>
+            <div
+              class="navbar-user-tab-item navbar-tab-signup"
+              [class.activated]="isSignUp"
+              (click)="isCheck('signUp')"
+              data-tab="signup"
+            >
+              Đăng ký
+            </div>
+          </div>
+        </div>
+        <div
+          class="navbar-user-body tab-login ps-container ps-theme-default ps-active-y"
+          [class.d-none]="false"
+          data-ps-id="0b76b8a8-b2cd-0410-e796-0b4c410b96b7"
+          style="max-height: 288px"
+        >
+          <div class="navbar-form-group">
+            <label>Tên đăng nhập</label>
+            <input type="text" name="username" />
+            <span nz-icon nzType="user" nzTheme="outline"></span>
+            <span class="tip"></span>
+          </div>
+          <div class="navbar-form-group">
+            <label>Mật khẩu</label>
+            <input type="password" name="password" />
+            <span nz-icon nzType="lock" nzTheme="outline"></span>
+            <span class="tip"></span>
+          </div>
+          <div class="navbar-form-group">
+            <label class="navbar-form-checkbox">
+              <input type="checkbox" name="remember" checked="" />
+              <span>Ghi nhớ</span>
+            </label>
+            <a href="/quen-mat-khau" class="forgot-password">Quên mật khẩu</a>
+          </div>
+          <div class="navbar-form-group d-none">
+            <ul id="form-login-warning">
+              <li>Thông tin đăng nhập không chính xác</li>
+            </ul>
+          </div>
+          <div class="navbar-form-group submit">
+            <input
+              class="vuighe"
+              id="login"
+              type="button"
+              name="submit"
+              value="Đăng nhập"
+              (click)="onSubmit()"
+            />
+          </div>
+          <!-- <hr />
+          <div class="navbar-form-group">
+            <a
+              class="social-login"
+              href="https://vuighe.net/dang-nhap-facebook"
+            >
+              <input
+                type="button"
+                class="facebook"
+                value="Đăng nhập với Facebook"
+              />
+              <i class="icon icon-facebook"></i>
+            </a>
+          </div>
+          <div class="navbar-form-group">
+            <a class="social-login" href="https://vuighe.net/dang-nhap-google">
+              <input
+                type="button"
+                class="google"
+                value="Đăng nhập với Google"
+              />
+              <i class="icon icon-google"></i>
+            </a>
+          </div>
+          <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px">
+            <div
+              class="ps-scrollbar-x"
+              tabindex="0"
+              style="left: 0px; width: 0px"
+            ></div>
+          </div>
+          <div
+            class="ps-scrollbar-y-rail"
+            style="top: 0px; right: 0px; height: 288px"
+          >
+            <div
+              class="ps-scrollbar-y"
+              tabindex="0"
+              style="top: 0px; height: 50px"
+            ></div>
+          </div> -->
+        </div>
+        <div class="loading d-none"></div>
+        <div class="navbar-close" (click)="show = false">
+          <span nz-icon nzType="close" nzTheme="outline"></span>
+        </div>
+      </div>
     </div>
   </nav>
 </header>
