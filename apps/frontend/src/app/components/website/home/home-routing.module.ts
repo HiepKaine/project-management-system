@@ -8,9 +8,6 @@ import { HomeComponent } from './home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'khoa-on-cong-chuc', component: HomeComponent },
-  { path: 'khoa-on-vien-chuc', component: HomeComponent },
-  { path: 'phong-thi-trac-nghiem-online', component: HomeComponent },
 ];
 
 @NgModule({

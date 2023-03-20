@@ -7,9 +7,6 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzRateModule } from 'ng-zorro-antd/rate';
-import { CourseItemModule } from '../../common/course-item/course-item.module';
-import { ExamPackItemModule } from '../../common/exam-pack-item/exam-pack-item.module';
-
 import { IconDefinition } from '@ant-design/icons-angular';
 import {
   CloseCircleOutline, MinusOutline, PlusOutline,
@@ -48,8 +45,6 @@ const NZ_MODULES = [
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    CourseItemModule,
-    ExamPackItemModule,
     NzBreadCrumbModule,
     ContactFormModule,
     NgxFormModule,

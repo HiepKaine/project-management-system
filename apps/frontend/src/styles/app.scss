@@ -3,12 +3,20 @@
 @import '~bootstrap/scss/_forms';
 @import '~bootstrap/scss/_buttons';
 
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .nb-theme-default {
   nb-layout {
     .layout {
       background-color: #fff;
     }
   }
+  p {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
   a {
     color: inherit;
     text-decoration: inherit;
@@ -36,4 +44,10 @@
 
 i[nztype='delete'] {
   color: #e74c3c;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

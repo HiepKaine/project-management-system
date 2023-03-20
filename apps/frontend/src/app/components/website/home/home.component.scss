@@ -7,257 +7,39 @@
 .home-page {
   .section-py {
     padding: 80px 0;
-    @include media-breakpoint-down(lg) {
-      padding: 50px 0;
-    }
+  }
+
+  .pt-12 {
+    padding-top: 12px;
   }
 
   ::ng-deep .ant-carousel {
     .slick-dots {
       li.slick-active {
-        width: 14px;
+        width: 16px;
         button {
-          background-color: $color-title;
+          background-color: #ccc;
         }
       }
       li {
-        @include media-breakpoint-down(lg) {
-          display: none;
-        }
+        margin: 0;
         button {
-          width: 14px;
-          height: 14px;
-          border-radius: 10px;
-          border: 1px solid $color-title;
+          width: 12px;
+          height: 3px;
+          border-radius: 5px;
         }
       }
+    }
+
+    .slick-dots-bottom {
+      bottom: -5px;
     }
   }
 
   .banner-home {
-    position: relative;
-    background: transparent url(/assets/images/banner-bg.png) no-repeat center;
-    background-size: cover;
-    min-height: 37rem;
-    @include media-breakpoint-down(sm) {
-      min-height: 30rem;
-    }
-    @include media-breakpoint-down(sm) {
-      min-height: 30rem;
-    }
-    .container {
-      position: absolute;
-      top: 9rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      @include media-breakpoint-down(xxl) {
-        top: 4rem;
-      }
-      @include media-breakpoint-down(lg) {
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
-    }
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: rgb(31 14 0 / 92%);
-      @include box(100%);
-      z-index: 1;
-    }
-    &__title {
-      font-size: 48px;
-      font-family: $font-bold;
-      line-height: 1.25;
-      color: $white;
-      margin-bottom: 28px;
-      word-spacing: -2px;
-      @include media-breakpoint-down(lg) {
-        word-spacing: 0;
-      }
-      strong {
-        color: $primary-color;
-      }
-      @include media-breakpoint-down(sm) {
-        font-size: 30px;
-      }
-    }
-    .search-form {
-      display: flex;
-      margin-bottom: 80px;
-      @include media-breakpoint-down(sm) {
-        margin-bottom: 30px;
-      }
-
-      &__input {
-        flex: 1;
-        border: 2px solid $white;
-        border-right: 0;
-        border-radius: 6px 0 0 6px;
-        background: transparent;
-        padding: 12px;
-        font-size: $font-medium;
-        color: $white;
-        @include color-placeholder($white);
-        @include media-breakpoint-down(sm) {
-          font-size: $font-smallest;
-        }
-      }
-      &__button {
-        @include media-breakpoint-down(sm) {
-          font-size: $font-smallest;
-          width: 80px;
-        }
-        flex-shrink: 0;
-        color: $color-title;
-        font-size: $font-medium;
-        border: 2px solid $white;
-        outline: none;
-        background: $white;
-        width: 100px;
-        height: 48px;
-        border-radius: 0 6px 6px 0;
-      }
-    }
-    &-desc {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 20px;
-      @include media-breakpoint-down(sm) {
-        grid-template-columns: repeat(1, 1fr);
-      }
-      .banner-desc-item {
-        h3 {
-          font-size: $font-medium;
-          line-height: 1.25;
-          font-weight: bold;
-          color: $white;
-          margin-bottom: 10px;
-          color: $primary-color;
-          @include media-breakpoint-down(xl) {
-            font-size: $font-small;
-          }
-        }
-        p {
-          color: $white;
-          font-size: $font-small;
-          font-family: $font-regular;
-          line-height: 1.25;
-          @include line-clamp(1);
-        }
-      }
-    }
-  }
-
-  .course {
-    .content {
-      &__title {
-        font-size: $largeTitleSize;
-        font-family: $font-bold;
-        color: $black;
-        margin-bottom: 20px;
-        @include media-breakpoint-down(sm) {
-          font-size: $mediumTitleSize;
-        }
-        span {
-          color: $primary-color;
-          font-size: $largeTitleSize;
-          font-family: $font-bold;
-          @include media-breakpoint-down(sm) {
-            font-size: $mediumTitleSize;
-          }
-        }
-      }
-    }
-  }
-
-  .exam {
-    position: relative;
-    background: transparent url(/assets/images/banner-bg.png) no-repeat center;
-    background-size: cover;
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: rgb(31 14 0 / 92%);
-      @include box(100%);
-      z-index: 1;
-    }
-    [class*='col'] {
-      z-index: 2;
-    }
-    .content {
-      &__title {
-        font-size: $largeTitleSize;
-        font-family: $font-bold;
-        color: $white;
-        margin-bottom: 20px;
-        @include media-breakpoint-down(sm) {
-          font-size: $mediumTitleSize;
-        }
-        span {
-          font-size: $largeTitleSize;
-          font-family: $font-bold;
-          color: $primary-color;
-          @include media-breakpoint-down(sm) {
-            font-size: $mediumTitleSize;
-          }
-        }
-      }
-    }
-  }
-
-  .aboutus {
-    position: relative;
-    background: transparent url(/assets/images/banner-bg.png) no-repeat center;
-    background-size: cover;
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: rgb(31 14 0 / 92%);
-      @include box(100%);
-      z-index: 1;
-    }
-    [class*='col-'] {
-      z-index: 2;
-    }
-    &__heading {
-      font-size: $largeTitleSize;
-      font-family: $font-bold;
-      color: $white;
-      margin-bottom: 40px;
-      @include media-breakpoint-down(sm) {
-        font-size: $mediumTitleSize;
-      }
-      span {
-        font-size: $largeTitleSize;
-        font-family: $font-bold;
-        color: $primary-color;
-        @include media-breakpoint-down(sm) {
-          font-size: $mediumTitleSize;
-        }
-      }
-    }
-    &--left {
-      p {
-        color: $white;
-        font-size: $font-small;
-        font-family: $font-regular;
-        text-align: justify;
-      }
-    }
-    &--description {
-      margin-bottom: 40px;
-    }
     .carousel {
       position: relative;
-      padding-top: calc(50% - 20px);
+      padding-top: calc(27% + 22px);
       &__container {
         position: absolute;
         top: 0;
@@ -265,344 +47,59 @@
         right: 0;
         bottom: 0;
       }
-    }
 
-    ::ng-deep .ant-carousel {
-      .slick-dots-bottom {
-        bottom: 2px;
-      }
-    }
-
-    .course-item {
-      height: 100%;
-      &__image {
+      .slide-item {
         height: 100%;
-        img {
-          width: 100%;
+        &__image {
           height: 100%;
-          border-radius: 6px;
-        }
-      }
-    }
-  }
-
-  .review {
-    position: relative;
-    background: transparent url(/assets/images/banner-bg.png) no-repeat center;
-    background-size: cover;
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: rgb(31 14 0 / 92%);
-      @include box(100%);
-      z-index: 1;
-    }
-    [class*='col-'] {
-      z-index: 2;
-    }
-    &__heading {
-      color: $white;
-      font-size: $largeTitleSize;
-      font-family: $font-bold;
-      line-height: 1.25;
-      @include media-breakpoint-down(sm) {
-        font-size: $mediumTitleSize;
-      }
-      span {
-        color: $primary-color;
-        font-size: $largeTitleSize;
-        font-family: $font-bold;
-        @include media-breakpoint-down(sm) {
-          font-size: $mediumTitleSize;
-        }
-      }
-    }
-    .review-list {
-      .review-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        &-content {
-          box-shadow: 0px 3px 6px #00000029;
-          background: $white;
-          border-radius: 6px;
-          margin-bottom: 45px;
-          padding: 30px 35px;
-          position: relative;
-          min-height: 250px;
-          @include media-breakpoint-down(lg) {
-            padding: 20px;
-            min-height: unset;
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            @include box(0);
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
-            border-top: 15px solid $white;
-          }
-          p {
-            text-align: justify;
-            color: $color-title;
-            font-size: $font-small;
-            font-family: $font-regular;
-            margin: 0;
-            @include line-clamp(6);
-            @include media-breakpoint-down(sm) {
-              -webkit-line-clamp: 13;
-              min-height: 150px;
-              font-size: $font-medium;
-            }
-          }
-        }
-        &__avatar {
-          width: 70px;
-          height: 70px;
-          margin: 0 auto;
-          margin-bottom: 10px;
           img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: block;
           }
         }
+      }
+
+      .sub-carousel {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        &__view {
+          color: $white;
+          font-size: 12px;
+        }
+
         &__name {
+          color: $white;
           font-size: 18px;
-          font-family: $font-bold;
-          margin-bottom: 0.5rem;
-          color: $white;
-        }
-        &__info {
-          color: $white;
-          font-family: $font-regular;
-        }
-        &__icon {
-          @include media-breakpoint-down(sm) {
-            display: none;
-          }
-          margin-bottom: 20px;
-          position: relative;
-          z-index: 1;
-          &::before {
-            content: '';
-            @include box(100%, 0);
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            border: 1px solid #e5e5e5;
-            z-index: -1;
-          }
-          span {
-            margin: 0 auto;
-            width: 134px;
-            display: block;
-            background: $white;
-            z-index: 2;
-          }
-          img {
-            width: 54px;
-            height: 54px;
-            margin: 0 auto;
-          }
         }
       }
     }
-    .carousel {
+
+    .sub-slide {
       position: relative;
-      padding-top: calc(45% - 20px);
-      @include media-breakpoint-down(xl) {
-        padding-top: calc(55%);
+      height: 88px;
+      &__title {
+        color: $white;
+        font-size: 18px;
+        text-transform: capitalize;
+        text-shadow: 0.6px 0 0 $white;
       }
-      @include media-breakpoint-down(lg) {
-        padding-top: calc(75%);
+
+      &__desc {
+        color: $white;
+        font-size: 13px;
+        text-transform: capitalize;
+        font-weight: 100;
+        margin-top: 5px;
       }
-      @include media-breakpoint-down(md) {
-        padding-top: calc(100% + 100px);
-      }
-      &__container {
+
+      svg {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        color: rgb(255 255 255/0.25);
       }
-    }
-
-    ::ng-deep .ant-carousel {
-      .slick-dots {
-        li.slick-active {
-          width: 14px;
-          button {
-            background-color: $white;
-          }
-        }
-        li {
-          button {
-            border: 2px solid $white;
-            background-color: transparent;
-          }
-        }
-      }
-    }
-  }
-
-  .teacher {
-    &__heading {
-      color: $color-title;
-      font-size: $largeTitleSize;
-      font-family: $font-bold;
-      line-height: 1.25;
-      @include media-breakpoint-down(sm) {
-        font-size: $mediumTitleSize;
-      }
-      span {
-        color: $primary-color;
-        font-size: $largeTitleSize;
-        font-family: $font-bold;
-        @include media-breakpoint-down(sm) {
-          display: none;
-        }
-      }
-      strong {
-        @include media-breakpoint-down(sm) {
-          color: $primary-color;
-        }
-      }
-    }
-    .teacher-item {
-      box-shadow: 0px 3px 6px #00000029;
-      border-radius: 6px;
-      padding: 20px;
-      margin: 10px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      @include media-breakpoint-down(lg) {
-        padding: 25px;
-      }
-      @include media-breakpoint-down(sm) {
-        padding: 16px;
-      }
-      &__avatar {
-        width: 200px;
-        height: 200px;
-        margin-bottom: 27px;
-        @include media-breakpoint-down(lg) {
-          width: 150px;
-          height: 150px;
-        }
-        @include media-breakpoint-down(sm) {
-          width: 100px;
-          height: 100px;
-        }
-        img {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-        }
-      }
-      &__name {
-        font-family: $font-bold;
-        color: $color-title;
-        margin-bottom: 10px;
-        font-size: $font-medium;
-      }
-      &__position {
-        color: $primary-color;
-        @include media-breakpoint-down(sm) {
-          font-size: $font-small;
-        }
-      }
-    }
-    .carousel {
-      position: relative;
-      padding-top: calc(30%);
-      @include media-breakpoint-down(xl) {
-        padding-top: calc(40%);
-      }
-      @include media-breakpoint-down(lg) {
-        padding-top: calc(45%);
-      }
-      @include media-breakpoint-down(sm) {
-        padding-top: calc(75%);
-      }
-      &__container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-      }
-    }
-  }
-
-  .join-group {
-    position: relative;
-    background: transparent url(/assets/images/join-group.jpg) no-repeat center;
-    background-size: cover;
-    text-align: center;
-    p {
-      color: $color-title;
-      font-size: $largeTitleSize;
-      font-family: $font-bold;
-      line-height: 1.25;
-      @include media-breakpoint-down(lg) {
-        font-size: $fontSizeTitleTablet;
-      }
-      @include media-breakpoint-down(sm) {
-        font-size: $mediumTitleSize;
-        word-spacing: -2px;
-      }
-      strong {
-        text-transform: uppercase;
-        color: $primary-color;
-        font-size: $largeTitleSize;
-        font-family: $font-bold;
-        @include media-breakpoint-down(lg) {
-          font-size: $fontSizeTitleTablet;
-        }
-        @include media-breakpoint-down(sm) {
-          font-size: $mediumTitleSize;
-        }
-      }
-    }
-
-    a {
-      font-size: $font-medium;
-      font-family: $font-bold;
-      background-color: $primary-color;
-      color: $white;
-      border-radius: 6px;
-      height: 44px;
-      padding: 12px 20px;
-      &:hover {
-        background-color: $white;
-        color: $primary-color;
-        border: 1px solid $primary-color;
-      }
-    }
-  }
-
-  .btn {
-    font-size: $font-medium;
-    font-family: $font-bold;
-    background-color: transparent;
-    color: $primary-color;
-    border-radius: 6px;
-    height: 44px;
-    min-width: 170px;
-    border: 1px solid $primary-color;
-    &:hover {
-      color: $white;
-      background-color: $primary-color;
     }
   }
 }

@@ -17,6 +17,7 @@ import { plainToInstance } from 'class-transformer';
 export class FooterComponent {
   public options: Option[] = [];
   public dictionary!: Dictionary;
+
   constructor(private store: Store) {
     this.store.dispatch(ShellActions.fetchDictionaryRequested());
     this.store
@@ -28,11 +29,6 @@ export class FooterComponent {
           this.options = dictionary.option;
         }
       });
-  }
-
-  getOptionValueByKey(key: string): string {
-    const item = this.options.find((item) => item.key === key);
-    return item ? item.value : '';
   }
 
   logout() {

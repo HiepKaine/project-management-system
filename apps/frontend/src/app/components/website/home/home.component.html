@@ -1,230 +1,103 @@
 <div class="home-page">
-  <section class="banner-home">
+  <section class="banner-home section-py">
     <div class="container">
       <div class="row">
-        <div class="col-xl-6 col-lg-8">
-          <h1 class="banner-home__title">
-            Học kiến thức <strong>tinh gọn</strong>
-            để <strong>kiến tạo</strong> thành công!
-          </h1>
-          <div class="search-form">
-            <input type="search" name="" class="search-form__input" [(ngModel)]="keyword"
-              placeholder="Bạn đang muốn tìm kiếm thông tin gì?" />
-            <button type="submit" value="Tìm kiếm" class="search-form__button" >
-              Tìm kiếm
-            </button>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="banner-home-desc">
-            <div class="banner-desc-item">
-              <h3>
-                Cập nhật tin tức tuyển dụng nhanh, chính xác nhất trên cả
-                nước
-              </h3>
-              <p>
-                Bạn sẽ nắm rõ ở đâu đang tuyển, chỉ tiêu bao nhiêu, điều
-                kiện nộp hồ sơ như nào.....
-              </p>
-            </div>
-            <div class="banner-desc-item">
-              <h3>Tổng hợp đầy đủ đề thi các năm trên cả nước</h3>
-              <p>
-                Tải miễn phí tài liệu ôn thi và đề thi các năm trên cả
-                nước
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="course section-py">
-    <div class="container">
-      <div class="row content">
-        <h1 class="content__title">
-          Khóa học <span>nổi bật</span>
-        </h1>
-      </div>
-      <div class="course">
-        <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-3 pb-4" *ngFor="let course of courses">
-            <a [routerLink]="['/', 'khoa-hoc', course.id]">
-              <app-course-item [item]="course"></app-course-item>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="aboutus section-py">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 mb-5">
-          <div class="aboutus--left">
-            <h2 class="aboutus__heading">Kỳ thi <span>nổi bật</span></h2>
-            <p>
-              Đừng bỏ lỡ cơ hội chinh phục kỳ thi này.
-            </p>
-            <p class="aboutus--description"> Công chức 247 có đầy đủ tài liệu, đề thi thử, khóa học online
-              giúp bạn có thể tiếp cận kì thi một cách nhanh chóng và hiệu quả nhất.
-            </p>
-            <div class="d-flex w-75">
-              <app-contact-form btnText="đăng ký học ngay" [type]="1" content=""></app-contact-form>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-8">
+        <div class="col-md-9 p-0">
           <div class="carousel">
             <div class="carousel__container">
-              <nz-carousel nzEffect="scrollx" nzAutoPlay="true" nzAutoPlaySpeed="10000">
+              <nz-carousel
+                nzEffect="scrollx"
+                nzAutoPlay="true"
+                nzAutoPlaySpeed="3000"
+              >
                 <div nz-carousel-content *ngFor="let item of slides">
-                  <div class="course-item">
-                    <div class="course-item__image">
-                      <a [href]="item.url">
+                  <div class="slide-item">
+                    <div class="slide-item__image">
+                      <a href="/">
                         <img [src]="item.image" [alt]="item.alt" />
                       </a>
                     </div>
                   </div>
                 </div>
               </nz-carousel>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="course section-py">
-    <div class="container">
-      <div class="row">
-        <div class=" col content">
-          <h1 class="content__title">
-            Khóa học ôn thi <span>viên chức</span>
-          </h1>
-        </div>
-        <div class="course">
-          <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-3 pb-4" *ngFor="let exam of officialCourse">
-              <a [routerLink]="['/', 'khoa-hoc', exam.id]">
-                <app-course-item [item]="exam"></app-course-item>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="d-flex justify-content-center align-item-center mt-3">
-            <button class="btn btn-primary text-uppercase" [routerLink]="[ '/', 'search', 'khoa-on-vien-chuc' ]">Xem
-              thêm</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="exam section-py">
-    <div class="container">
-      <div class="row content">
-        <div class="col-12">
-          <h1 class="content__title">
-            Khóa học ôn thi <span>công chức</span>
-          </h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-3 pb-4" *ngFor="let exam of officerCourse">
-          <a [routerLink]="['/', 'khoa-hoc', exam.id]">
-            <app-course-item [item]="exam"></app-course-item>
-          </a>
-        </div>
-        <div class="col-12">
-          <div class="d-flex justify-content-center align-item-center mt-3">
-            <button class="btn btn-primary text-uppercase" [routerLink]="[ '/', 'search', 'khoa-on-cong-chuc' ]">Xem
-              thêm</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="course section-py">
-    <div class="container">
-      <div class="row">
-        <div class=" col content">
-          <h1 class="content__title">
-            Khóa học trải nghiệm <span>miễn phí</span>
-          </h1>
-        </div>
-        <div class="course">
-          <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-3 pb-4" *ngFor="let exam of courseFree">
-              <a [routerLink]="['/', 'khoa-hoc', exam.id]">
-                <app-course-item [item]="exam"></app-course-item>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="d-flex justify-content-center align-item-center mt-3">
-            <button class="btn btn-primary text-uppercase" [routerLink]="[ '/', 'search' ]">Xem thêm</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="review section-py pb-0">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <h2 class="review__heading">Cảm nhận của <span>học viên</span></h2>
-          <div class="review-list">
-            <div class="carousel">
-              <div class="carousel__container d-none d-md-block">
-                <nz-carousel nzEffect="scrollx" nzAutoPlay="true" nzAutoPlaySpeed="10000">
-                  <div nz-carousel-content *ngFor="let feedback of chunkedFeedbacks">
-                    <div class="row">
-                      <div class="col-4" *ngFor="let item of feedback">
-                        <div class="review-item-content">
-                          <div class="review-item__icon">
-                            <span>
-                              <img [src]="item.icon" alt="" />
-                            </span>
-                          </div>
-                          <p> {{item.description}}</p>
-                        </div>
-                        <div class="review-item__avatar">
-                          <img [src]="item.avatar" alt="" />
-                        </div>
-                        <div class="review-item__name text-center">{{item.name}}</div>
-                        <div class="review-item__info text-center">
-                          {{item.info}}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </nz-carousel>
+              <div class="sub-carousel">
+                <div class="sub-carousel__view">3,456,765 lượt xem</div>
+                <div class="sub-carousel__name">Tokyo Ghost</div>
               </div>
-              <div class="carousel__container d-sm-block d-md-none">
-                <nz-carousel nzEffect="scrollx" nzAutoPlaySpeed="10000">
-                  <div nz-carousel-content *ngFor="let item of feedbacks">
-                    <div class="row">
-                      <div class="col-12 p-4">
-                        <div class="review-item-content">
-                          <div class="review-item__icon">
-                            <span>
-                              <img [src]="item.icon" alt="" />
-                            </span>
-                          </div>
-                          <p> {{item.description}}</p>
-                        </div>
-                        <div class="review-item__avatar">
-                          <img [src]="item.avatar" alt="" />
-                        </div>
-                        <div class="review-item__name text-center">{{item.name}}</div>
-                        <div class="review-item__info text-center">
-                          {{item.info}}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </nz-carousel>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 pe-0">
+          <div class="row flex-column">
+            <div class="col-md-12">
+              <div
+                class="sub-slide d-flex flex-column justify-content-center p-3"
+                style="background: linear-gradient(273deg, #6366f1, #0ea5e9)"
+              >
+                <div class="sub-slide__title">Bảng xếp hạng</div>
+                <div class="sub-slide__desc">Anime được xem nhiều nhất</div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            <div class="col-md-12 pt-12">
+              <div
+                class="sub-slide d-flex flex-column justify-content-center p-3"
+                style="background: linear-gradient(273deg, #d946ef, #8b5cf6)"
+              >
+                <div class="sub-slide__title">Bộ sưu tập</div>
+                <div class="sub-slide__desc">Anime theo các chủ đề</div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            <div class="col-md-12 pt-12">
+              <div
+                class="sub-slide d-flex flex-column justify-content-center p-3"
+                style="background: linear-gradient(273deg, #d946ef, #8b5cf6)"
+              >
+                <div class="sub-slide__title">Bộ sưu tập</div>
+                <div class="sub-slide__desc">Anime theo các chủ đề</div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"
+                  ></path>
+                </svg>
               </div>
             </div>
           </div>
@@ -232,71 +105,7 @@
       </div>
     </div>
   </section>
-  <section class="teacher section-py">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h2 class="teacher__heading">
-            Đội ngũ <strong>giảng viên </strong><span>giàu kinh nghiệm</span>
-          </h2>
-        </div>
-        <div class="teacher-list">
-          <div class="carousel">
-            <div class="carousel__container d-none d-md-block">
-              <nz-carousel nzEffect="scrollx" nzAutoPlay="true" nzAutoPlaySpeed="5000">
-                <div nz-carousel-content *ngFor="let teachers of chunkedTeachers">
-                  <div class="row p-1">
-                    <div class="col-4" *ngFor="let item of teachers">
-                      <div class="teacher-item">
-                        <div class="teacher-item__avatar">
-                          <img [src]="item.image" alt="" />
-                        </div>
-                        <div class="teacher-item__name text-center">{{item.name}}</div>
-                        <div class="teacher-item__position text-center">{{item.position}}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </nz-carousel>
-            </div>
-            <div class="carousel__container d-sm-block d-md-none">
-              <nz-carousel nzEffect="scrollx" nzAutoPlay="true" nzAutoPlaySpeed="5000">
-                <div nz-carousel-content *ngFor="let item of teachers">
-                  <div class="row">
-                    <div class="col-12 p-4">
-                      <div class="teacher-item">
-                        <div class="teacher-item__avatar">
-                          <img [src]="item.image" alt="" />
-                        </div>
-                        <div class="teacher-item__name text-center">{{item.name}}</div>
-                        <div class="teacher-item__position text-center">{{item.position}}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </nz-carousel>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="join-group section-py">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <p>
-            Đừng <strong>NGỦ</strong> khi đứa
-            <strong>CẠNH TRANH</strong> với bạn còn đang
-            <strong>THỨC</strong>, hãy tham gia ngay Cộng đồng ôn thi Công chức lớn nhất Việt Nam để thu
-            thập thêm <strong>kinh nghiệm</strong> và xây dựng kế
-            hoạch ôn tập <strong>hiệu quả</strong>
-          </p>
-          <div class="d-flex justify-content-center align-item-center">
-            <app-contact-form btnText="đăng ký ngay" [type]="1" content=""></app-contact-form>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section class="course section-py">
+    <div class="container">abc</div>
   </section>
 </div>

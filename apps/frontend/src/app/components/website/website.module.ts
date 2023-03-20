@@ -14,12 +14,22 @@ import {
   BulbOutline,
   CloseOutline,
   LockOutline,
+  CopyrightOutline,
+  FacebookFill,
+  YoutubeFill,
+  LinkedinFill,
+  InstagramFill,
 } from '@ant-design/icons-angular/icons';
 const icons: IconDefinition[] = [
   UserOutline,
   BulbOutline,
   CloseOutline,
   LockOutline,
+  CopyrightOutline,
+  FacebookFill,
+  YoutubeFill,
+  LinkedinFill,
+  InstagramFill,
 ];
 @NgModule({
   declarations: [WebsiteComponent],
