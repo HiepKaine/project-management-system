@@ -1,8 +1,8 @@
 <div class="home-page">
-  <section class="banner-home section-py">
+  <section class="banner-home">
     <div class="container">
       <div class="row">
-        <div class="col-md-9 p-0">
+        <div class="col-md-9">
           <div class="carousel">
             <div class="carousel__container">
               <nz-carousel
@@ -27,11 +27,11 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3 pe-0">
-          <div class="row flex-column">
+        <div class="col-md-3">
+          <div class="flex-column">
             <div class="col-md-12">
               <div
-                class="sub-slide d-flex flex-column justify-content-center p-3"
+                class="sub-slide flex align-items-start flex-column p-3"
                 style="background: linear-gradient(273deg, #6366f1, #0ea5e9)"
               >
                 <div class="sub-slide__title">Bảng xếp hạng</div>
@@ -58,7 +58,7 @@
             </div>
             <div class="col-md-12 pt-12">
               <div
-                class="sub-slide d-flex flex-column justify-content-center p-3"
+                class="sub-slide align-items-start flex-column p-3"
                 style="background: linear-gradient(273deg, #d946ef, #8b5cf6)"
               >
                 <div class="sub-slide__title">Bộ sưu tập</div>
@@ -80,7 +80,7 @@
             </div>
             <div class="col-md-12 pt-12">
               <div
-                class="sub-slide d-flex flex-column justify-content-center p-3"
+                class="sub-slide align-items-start flex-column p-3"
                 style="background: linear-gradient(273deg, #d946ef, #8b5cf6)"
               >
                 <div class="sub-slide__title">Bộ sưu tập</div>
@@ -105,7 +105,31 @@
       </div>
     </div>
   </section>
-  <section class="course section-py">
-    <div class="container">abc</div>
+  <section class="latest-episode section-py">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="heading">Tập mới nhất</div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="content">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let item of array">
+              <app-film-item></app-film-item>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="collection section-py">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="heading">Bộ sưu tập</div>
+        </div>
+      </div>
+    </div>
   </section>
 </div>

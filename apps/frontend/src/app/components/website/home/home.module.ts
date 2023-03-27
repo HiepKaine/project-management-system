@@ -22,6 +22,7 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NgxFormModule } from '@ngxform/platform';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { FilmItemModule } from '../../common/film-item/film-item.module';
 const icons: IconDefinition[] = [
   QuestionCircleFill,
   CloseCircleOutline,
@@ -50,6 +51,7 @@ const NZ_MODULES = [
     NgxFormModule,
     ...NZ_MODULES,
     NzIconModule.forChild(icons),
+    FilmItemModule
   ],
   providers: [HomeService],
 })
