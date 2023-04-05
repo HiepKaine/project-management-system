@@ -6,7 +6,7 @@
       (mouseout)="isHover = false"
     >
       <div
-        class="bg-ranking"
+        [class.bg-ranking]="type === 'ranking'"
         [style.background-image]="
           isHover
             ? 'linear-gradient(to top left,transparent,rgb(0 0 0/0.5))'
@@ -19,7 +19,7 @@
           class="w-100"
         />
       </a>
-      <span class="number" [style.top.px]="isHover ? '25' : '35'">1</span>
+      <span *ngIf="type === 'ranking'" class="number" [style.top.px]="isHover ? '25' : '35'">1</span>
     </div>
   </div>
   <div class="collection-item__seasonal">
@@ -31,7 +31,7 @@
           (mouseout)="isHover = false"
         >
           <div
-            class="bg-ranking"
+            [class.bg-ranking]="type === 'ranking'"
             [style.background-image]="
               isHover
                 ? 'linear-gradient(to top left,transparent,rgb(0 0 0/0.5))'
@@ -44,7 +44,7 @@
               class="w-100"
             />
           </a>
-          <span class="number" [style.top.px]="isHover ? '25' : '35'">{{
+          <span *ngIf="type === 'ranking'" class="number" [style.top.px]="isHover ? '25' : '35'">{{
             idx + 1
           }}</span>
         </div>
