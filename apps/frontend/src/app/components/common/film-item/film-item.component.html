@@ -1,17 +1,25 @@
-<div class="film-item" (mouseover)="isHover = true" (mouseout)="isHover = false">
+<div
+  class="film-item"
+  (mouseover)="isHover = true"
+  (mouseout)="isHover = false"
+>
   <div class="film-item__link">
     <a href="">
-      <img src="/assets/images/slide/spykyou.jpg" alt="" class="w-100" />
+      <img
+        src="/assets/images/slide/spykyou.jpg"
+        class="w-100"
+        [class.hoverImage]="isHover"
+      />
     </a>
-    <div class="film-item__link--desc" [ngClass]="{hover: isHover}">
+    <div class="film-item__link--desc" [ngClass]="isHover ? 'hover' : ''">
       <div class="name">High Card High Card High Card High Card High Card</div>
       <div class="info d-flex justify-content-between align-items-center">
         <div class="episode">Tập 11 - chris</div>
         <div class="view">781 lượt xem</div>
       </div>
     </div>
-    <div class="film-item__success">
-      <span>Hoàn thành</span>
+    <div class="film-item__status">
+      <span class="coming-soon">Sắp chiếu</span>
     </div>
   </div>
 </div>

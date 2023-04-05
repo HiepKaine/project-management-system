@@ -12,11 +12,6 @@ const routes: Routes = [
         path: '',
         children: [
           {
-            path: 'faculty',
-            loadChildren: () =>
-              import('./faculty/faculty.module').then((m) => m.FacultyModule),
-          },
-          {
             path: 'profile',
             loadChildren: () =>
               import('./profile/profile.module').then((m) => m.ProfileModule),
@@ -26,18 +21,6 @@ const routes: Routes = [
             loadChildren: () =>
               import('./dashboard/dashboard.module').then(
                 (m) => m.DashboardModule
-              ),
-          },
-          {
-            path: 'class',
-            loadChildren: () =>
-              import('./class/class.module').then((m) => m.ClassModule),
-          },
-          {
-            path: 'division',
-            loadChildren: () =>
-              import('./division/division.module').then(
-                (m) => m.DivisionModule
               ),
           },
           {

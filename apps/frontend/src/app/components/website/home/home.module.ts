@@ -23,6 +23,8 @@ import { NgxFormModule } from '@ngxform/platform';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { FilmItemModule } from '../../common/film-item/film-item.module';
+import { CollectionItemModule } from '../../common/collection-item/collection-item.module';
+import { AnimeMovieModule } from '../../common/anime-movie/anime-movie.module';
 const icons: IconDefinition[] = [
   QuestionCircleFill,
   CloseCircleOutline,
@@ -51,7 +53,9 @@ const NZ_MODULES = [
     NgxFormModule,
     ...NZ_MODULES,
     NzIconModule.forChild(icons),
-    FilmItemModule
+    FilmItemModule,
+    CollectionItemModule,
+    AnimeMovieModule,
   ],
   providers: [HomeService],
 })

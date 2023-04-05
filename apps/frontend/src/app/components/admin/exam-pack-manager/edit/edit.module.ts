@@ -38,7 +38,6 @@ import {
 } from '@ant-design/icons-angular/icons';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { AddExamModalComponent } from './add-exam-modal/add-exam-modal.component';
-import { EditExamPackRelatedComponent } from './edit-exam-pack-related/edit-exam-pack-related.component';
 import { EditExamPackReviewComponent } from './edit-exam-pack-review/edit-exam-pack-review.component';
 import { AddExamPackReviewComponent } from './add-exam-pack-review/add-exam-pack-review.component';
 import { NzRateModule } from 'ng-zorro-antd/rate';
@@ -82,7 +81,6 @@ const NZ_MODULES = [
     EditExamPackExamComponent,
     EditExamPackHighlightComponent,
     AddExamModalComponent,
-    EditExamPackRelatedComponent,
     EditExamPackReviewComponent,
     AddExamPackReviewComponent,
     ListExamPackReviewComponent,

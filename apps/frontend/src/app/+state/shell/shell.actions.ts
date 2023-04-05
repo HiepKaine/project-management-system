@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { Dictionary } from '@frontend/models/dictionary.model';
 import {
   createAction,
   props,
@@ -13,7 +12,6 @@ import { State } from './shell.reducer';
 export const init = createAction('[Shell] init', props<{ payload: State }>());
 
 export const fetchDictionaryRequested = createAction('[Shell] fetch dictionary requested');
-export const fetchDictionarySuccessed = createAction('[Shell] fetch dictionary successed', props<{ payload: Dictionary }>());
 
 export const fetchProfileRequested = createAction('[Shell] fetch profile requested');
 export const fetchProfileSuccessed = createAction('[Shell] fetch profile successed', props<{ payload: User }>());

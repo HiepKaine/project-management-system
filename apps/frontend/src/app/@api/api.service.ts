@@ -9,8 +9,6 @@ import {
 
 import { ApiItemResponse } from '@frontend/common';
 import { environment } from '@frontend/env/environment';
-import { Dictionary } from '@frontend/models/dictionary.model';
-
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -31,10 +29,6 @@ export class ApiService {
     } else {
       return `${this.apiUrl}/${path}`;
     }
-  }
-
-  dictionary(): Observable<ApiItemResponse<Dictionary>> {
-    return this.http.get<ApiItemResponse<Dictionary>>(this.getApiUrl('/dictionary'));
   }
 
   profile(): Observable<User> {

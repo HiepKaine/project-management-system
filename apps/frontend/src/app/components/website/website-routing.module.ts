@@ -13,7 +13,6 @@ const routes: Routes = [
     component: WebsiteComponent,
     children: [
       { path: 'khoa-hoc', loadChildren: () => import('./course/course.module').then(m => m.CourseModule) },
-      { path: 'de-thi', loadChildren: () => import('./exam-pack/exam-pack.module').then(m => m.ExamPackModule) },
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),

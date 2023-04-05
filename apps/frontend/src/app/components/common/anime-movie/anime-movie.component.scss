@@ -1,0 +1,69 @@
+@import 'apps/frontend/src/styles/_variables.scss';
+@import 'apps/frontend/src/styles/_mixin.scss';
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+.movie {
+  cursor: pointer;
+  overflow: hidden;
+
+  .hover {
+    background-image: linear-gradient(
+      to bottom,
+      transparent,
+      #7c2d12
+    ) !important;
+  }
+
+  .hoverImage {
+    transform: scale(1.1) !important;
+  }
+
+  &__content {
+    position: relative;
+    img {
+      transform: scale(1);
+      transition-duration: 0.3s;
+    }
+    .status {
+      position: absolute;
+      font-size: 14px;
+      color: $white;
+      text-transform: uppercase;
+      top: 12px;
+      left: 10px;
+      border-radius: 15px;
+      padding: 4px 12px;
+      &.success {
+        background-color: #166534bf;
+      }
+
+      &.coming-soon {
+        background-color: rgb(220 38 38/0.5);
+      }
+    }
+
+    .information {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px;
+      background-image: linear-gradient(to bottom, transparent, #000000bf);
+      &__view {
+        color: $white;
+        font-size: 12px;
+      }
+
+      &__name {
+        color: $white;
+        font-size: 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  }
+}

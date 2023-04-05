@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiCollectionResponse, ApiItemResponse } from '@frontend/common';
-import { CompletedLesson } from '@frontend/models/completed-lesson.model';
-import { CourseChapter } from '@frontend/models/course-chapter.model';
-import { Course } from '@frontend/models/course.model';
-import { Lesson } from '@frontend/models/lesson.model';
 import { User } from '@frontend/models/user.model';
 import * as ShellSelectors from '@frontend/shell/shell.selectors';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -27,12 +23,12 @@ export class PlayerComponent {
   public isBoughtCourse = false;
   public courseId!: number;
   public lessonId!: number | null;
-  public course!: Course;
-  public lessons: Lesson[] = [];
-  public activatedLesson!: Lesson;
-  public activeLesson$: BehaviorSubject<Lesson | null> = new BehaviorSubject<Lesson | null>(null);
+  public course!: any;
+  public lessons: any[] = [];
+  public activatedLesson!: any;
+  public activeLesson$: BehaviorSubject<any | null> = new BehaviorSubject<any | null>(null);
   public lessonCount!: number;
-  public completedLessons: CompletedLesson[] = [];
+  public completedLessons: any[] = [];
 
   constructor(
     private courseSerive: CourseService,
@@ -45,12 +41,12 @@ export class PlayerComponent {
     this.activatedRoute.params.subscribe(({ id, lessonId }) => {
       this.lessonId = lessonId && Number(lessonId) > 0 ? Number(lessonId) : null;
       this.courseId = Number(id);
-      this.getCourseDetail(this.courseId);
-      this.courseSerive.checkCompletedStatusOfCourse(id)
-        .pipe(untilDestroyed(this))
-        .subscribe((result: ApiCollectionResponse<CompletedLesson>) => {
-          this.completedLessons = result.data.map(item => plainToInstance(CompletedLesson, item));
-        });
+      // this.getCourseDetail(this.courseId);
+      // this.courseSerive.checkCompletedStatusOfCourse(id)
+      //   .pipe(untilDestroyed(this))
+      //   .subscribe((result: ApiCollectionResponse<any>) => {
+      //     this.completedLessons = result.data.map(item => item);
+      //   });
       this.store.select(ShellSelectors.getShellProfile)
         .pipe(
           filter((user: User | undefined) => user !== undefined) as OperatorFunction<User | undefined, User>,
@@ -68,65 +64,65 @@ export class PlayerComponent {
     })
     this.activeLesson$.pipe(
       untilDestroyed(this),
-      filter((lesson: Lesson | null) => lesson !== null) as OperatorFunction<Lesson | null, Lesson>,
+      filter((lesson: any | null) => lesson !== null) as OperatorFunction<any | null, any>,
     )
-      .subscribe((lesson: Lesson) => {
+      .subscribe((lesson: any) => {
         this.activatedLesson = lesson;
       })
   }
 
-  private getCourseDetail(id: number) {
-    this.courseSerive.show(id).subscribe((result: ApiItemResponse<Course>) => {
-      this.course = plainToInstance(Course, result.data);
-      this.lessonCount = this.course.getLessonCount();
-      if (this.course && Array.isArray(this.course.courseChapters)) {
-        this.lessons = flatMap(this.course.courseChapters, item => item.lessons);
-        const lesson = this.lessons.find(i => i.id === this.lessonId);
-        if (lesson) {
-          this.activeLesson$.next(lesson);
-        } else {
-          this.activeLesson$.next(this.lessons[0]);
-        }
-      } else {
-        this.lessons = [];
-      }
-    });
-  }
+  // private getCourseDetail(id: number) {
+  //   this.courseSerive.show(id).subscribe((result: ApiItemResponse<any>) => {
+  //     this.course = result.data;
+  //     this.lessonCount = this.course.getLessonCount();
+  //     if (this.course && Array.isArray(this.course.courseChapters)) {
+  //       this.lessons = flatMap(this.course.courseChapters, item => item.lessons);
+  //       const lesson = this.lessons.find(i => i.id === this.lessonId);
+  //       if (lesson) {
+  //         this.activeLesson$.next(lesson);
+  //       } else {
+  //         this.activeLesson$.next(this.lessons[0]);
+  //       }
+  //     } else {
+  //       this.lessons = [];
+  //     }
+  //   });
+  // }
 
-  play(lesson: Lesson) {
-    this.activeLesson$.next(lesson);
-  }
+  // play(lesson: any) {
+  //   this.activeLesson$.next(lesson);
+  // }
 
-  isActiveChapter(chapter: CourseChapter): boolean {
-    return this.activatedLesson && chapter.lessons.find(item => item.id === this.activatedLesson.id) !== undefined;
-  }
+  // isActiveChapter(chapter: any): boolean {
+  //   return this.activatedLesson && chapter.lessons.find(item => item.id === this.activatedLesson.id) !== undefined;
+  // }
 
-  complete(lesson: Lesson) {
-    const chapter = this.course.courseChapters.find(item => item.lessons.find(i => i.id === lesson.id) !== undefined);
-    if (chapter) {
-      this.courseSerive.completedLesson(chapter.id, lesson.id)
-        .pipe(untilDestroyed(this))
-        .subscribe((result: ApiItemResponse<CompletedLesson>) => {
-          this.completedLessons.push(plainToInstance(CompletedLesson, result.data));
-          console.log(this.completedLessons);
-        });
-    }
+  // complete(lesson: any) {
+  //   const chapter = this.course.courseChapters.find(item => item.lessons.find(i => i.id === lesson.id) !== undefined);
+  //   if (chapter) {
+  //     this.courseSerive.completedLesson(chapter.id, lesson.id)
+  //       .pipe(untilDestroyed(this))
+  //       .subscribe((result: ApiItemResponse<any>) => {
+  //         this.completedLessons.push(result.data);
+  //         console.log(this.completedLessons);
+  //       });
+  //   }
 
-  }
+  // }
 
-  next(): void {
-    const currentLessonIndex = findIndex(this.lessons, i => i.id === this.activatedLesson.id);
-    if (currentLessonIndex < this.lessons.length - 1) {
-      const nextLesson = this.lessons[currentLessonIndex + 1];
-      this.router.navigate([nextLesson.id], { relativeTo: this.activatedRoute.parent });
-    }
-  }
+  // next(): void {
+  //   const currentLessonIndex = findIndex(this.lessons, i => i.id === this.activatedLesson.id);
+  //   if (currentLessonIndex < this.lessons.length - 1) {
+  //     const nextLesson = this.lessons[currentLessonIndex + 1];
+  //     this.router.navigate([nextLesson.id], { relativeTo: this.activatedRoute.parent });
+  //   }
+  // }
 
-  prev(): void {
-    const currentLessonIndex = findIndex(this.lessons, i => i.id === this.activatedLesson.id);
-    if (currentLessonIndex > 0) {
-      const nextLesson = this.lessons[currentLessonIndex - 1];
-      this.router.navigate([nextLesson.id], { relativeTo: this.activatedRoute.parent });
-    }
-  }
+  // prev(): void {
+  //   const currentLessonIndex = findIndex(this.lessons, i => i.id === this.activatedLesson.id);
+  //   if (currentLessonIndex > 0) {
+  //     const nextLesson = this.lessons[currentLessonIndex - 1];
+  //     this.router.navigate([nextLesson.id], { relativeTo: this.activatedRoute.parent });
+  //   }
+  // }
 }

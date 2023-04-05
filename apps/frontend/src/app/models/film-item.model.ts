@@ -6,7 +6,7 @@ export class FilmItem {
   nameEpisode!: string;
   view!: number;
   type!: number;
-  isSuccess!: boolean;
+  status!: boolean;
   deletedAt!: Date;
   createdAt!: Date;
   updatedAt!: Date;

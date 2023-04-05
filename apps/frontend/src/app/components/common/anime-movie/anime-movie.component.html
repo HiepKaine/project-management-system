@@ -1,0 +1,16 @@
+<div class="movie" (mouseover)="isHover = true" (mouseout)="isHover = false">
+  <div class="movie__content">
+    <a href="/">
+      <img
+        src="/assets/images/movie/6fb3119fba55f0e8_5fd3815fda1ec635_36597168025872533.jpg"
+        class="w-100"
+        [class.hoverImage]="isHover"
+      />
+    </a>
+    <div class="status coming-soon">Sắp chiếu</div>
+    <div class="information" [ngClass]="isHover ? 'hover' : ''">
+      <div class="information__name">Spy x Family Moive: Code: White</div>
+      <div class="information__view">289 lượt xem</div>
+    </div>
+  </div>
+</div>

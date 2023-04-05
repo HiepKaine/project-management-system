@@ -5,21 +5,14 @@ import {
   ApiPaginateResponse,
   BaseService,
 } from '@frontend/common';
-import { ExamPack } from '@frontend/models/exam-pack.model';
 import { environment } from '@frontend/env/environment';
-import { User } from '@sentry/types';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DashBoardService extends BaseService<ExamPack> {
-  public override url = '/exam-pack';
-
-  getMyExamPack(): Observable<ApiPaginateResponse<ExamPack>> {
-    return this.http.get<ApiPaginateResponse<ExamPack>>(
-      this.getApiUrl('/user/my-exam-pack')
-    );
-  }
+export class DashBoardService {
+  constructor(private http: HttpClient) {}
 
   updateProfile<User>(data: User): Observable<User> {
     return this.http

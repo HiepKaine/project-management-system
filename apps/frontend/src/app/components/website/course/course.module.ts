@@ -17,8 +17,6 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { LockOutline, UserOutline } from '@ant-design/icons-angular/icons';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { CourseItemModule } from '../../common/course-item/course-item.module';
-import { ExamPackItemModule } from '../../common/exam-pack-item/exam-pack-item.module';
 import { ContactFormModule } from '../../common/contact-form/contact-form.module';
 const icons: IconDefinition[] = [LockOutline, UserOutline];
 
@@ -37,8 +35,6 @@ const icons: IconDefinition[] = [LockOutline, UserOutline];
     NzCollapseModule,
     YouTubePlayerModule,
     NzAvatarModule,
-    CourseItemModule,
-    ExamPackItemModule,
     ContactFormModule,
     NzModalModule,
     NzIconModule.forChild(icons),

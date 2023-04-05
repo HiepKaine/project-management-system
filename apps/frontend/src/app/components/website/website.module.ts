@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { ContactAdminModule } from '../common/contact-admin/contact-admin.module';
 
 import { FaqModule } from '../common/faq/faq.module';
 import { FooterModule } from '../common/footer/footer.module';
@@ -39,7 +38,6 @@ const icons: IconDefinition[] = [
     HeaderModule,
     FooterModule,
     FaqModule,
-    ContactAdminModule,
     NzIconModule.forChild(icons),
   ],
   providers: [],

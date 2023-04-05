@@ -1,14 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-
 import { plainToInstance } from 'class-transformer';
 
 import { BehaviorSubject } from 'rxjs';
-
-import { environment } from '@frontend/env/environment';
-
-import { Dictionary } from '@frontend/models/dictionary.model';
 
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
@@ -45,7 +44,6 @@ export class EditComponent implements OnInit {
 
   public userId!: number;
   public user!: User;
-  public dictionary!: Dictionary;
   public init$: BehaviorSubject<{ user: User } | undefined> =
     new BehaviorSubject<{ user: User } | undefined>(undefined);
 

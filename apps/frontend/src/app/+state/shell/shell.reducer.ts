@@ -1,4 +1,3 @@
-import { Dictionary } from '@frontend/models/dictionary.model';
 import {
   Action,
   createReducer,
@@ -14,7 +13,6 @@ export interface State {
   loggedIn: boolean;
   loaded: boolean;
   profile?: User;
-  dictionary?: Dictionary;
   error?: string | null;
 }
 
@@ -34,7 +32,6 @@ const shellReducer = createReducer(
   on(ShellActions.logoutSuccessed, () => initialState),
   on(ShellActions.fetchProfileSuccessed, (state, { payload }) => ({ ...state, ...{ loggedIn: true, profile: payload, loaded: true } })),
   on(ShellActions.fetchProfileFailed, (state) => ({ ...state, ...{ profile: undefined, loaded: false, loggedIn: false } })),
-  on(ShellActions.fetchDictionarySuccessed, (state, { payload }) => ({ ...state, ...{ dictionary: payload } })),
 );
 
 export function reducer(state: State | undefined, action: Action) {

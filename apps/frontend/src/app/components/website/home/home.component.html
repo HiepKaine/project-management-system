@@ -1,34 +1,32 @@
 <div class="home-page">
-  <section class="banner-home">
-    <div class="container">
+  <div class="container">
+    <section class="banner-home">
       <div class="row">
         <div class="col-md-9">
           <div class="carousel">
             <div class="carousel__container">
-              <nz-carousel
-                nzEffect="scrollx"
-                nzAutoPlay="true"
-                nzAutoPlaySpeed="3000"
-              >
+              <nz-carousel nzEffect="scrollx">
                 <div nz-carousel-content *ngFor="let item of slides">
                   <div class="slide-item">
                     <div class="slide-item__image">
                       <a href="/">
-                        <img [src]="item.image" [alt]="item.alt" />
+                        <img [src]="item.image" class="w-100" />
                       </a>
                     </div>
                   </div>
+                  <div class="sub-carousel">
+                    <div class="sub-carousel__view">
+                      {{ item.view }} lượt xem
+                    </div>
+                    <div class="sub-carousel__name">{{ item.name }}</div>
+                  </div>
                 </div>
               </nz-carousel>
-              <div class="sub-carousel">
-                <div class="sub-carousel__view">3,456,765 lượt xem</div>
-                <div class="sub-carousel__name">Tokyo Ghost</div>
-              </div>
             </div>
           </div>
         </div>
         <div class="col-md-3">
-          <div class="flex-column">
+          <div class="flex-column" style="cursor: pointer">
             <div class="col-md-12">
               <div
                 class="sub-slide flex align-items-start flex-column p-3"
@@ -103,33 +101,78 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="latest-episode section-py">
-    <div class="container">
+    </section>
+    <section class="latest-episode section-py">
       <div class="row">
         <div class="col-md-12">
           <div class="heading">Tập mới nhất</div>
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="content">
-          <div class="row">
-            <div class="col-md-3" *ngFor="let item of array">
-              <app-film-item></app-film-item>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col-md-3" *ngFor="let item of array">
+          <app-film-item></app-film-item>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="collection section-py">
-    <div class="container">
+    </section>
+    <section class="collection section-py">
       <div class="row">
         <div class="col-md-12">
           <div class="heading">Bộ sưu tập</div>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="row">
+        <div class="col-md-12">
+          <app-collection-item></app-collection-item>
+        </div>
+      </div>
+    </section>
+    <section class="ranking section-py">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="heading">Bảng xếp hạng</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <app-collection-item></app-collection-item>
+        </div>
+      </div>
+    </section>
+    <section class="movie section-py">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="heading">ANIME MOVIE</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2" *ngFor="let item of arr">
+          <app-anime-movie></app-anime-movie>
+        </div>
+      </div>
+    </section>
+    <section class="film-random section-py">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="heading">HÔM NAY XEM GÌ</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2" *ngFor="let item of arr">
+          <app-anime-movie></app-anime-movie>
+        </div>
+      </div>
+    </section>
+    <section class="all section-py mb-5">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="heading">Tất cả anime</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3" *ngFor="let item of array">
+          <app-film-item></app-film-item>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>

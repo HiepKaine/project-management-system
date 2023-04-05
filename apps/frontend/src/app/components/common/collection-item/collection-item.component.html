@@ -1,0 +1,54 @@
+<div class="collection-item">
+  <div class="collection-item__present">
+    <div
+      class="collection-item__present--image"
+      (mouseover)="isHover = true"
+      (mouseout)="isHover = false"
+    >
+      <div
+        class="bg-ranking"
+        [style.background-image]="
+          isHover
+            ? 'linear-gradient(to top left,transparent,rgb(0 0 0/0.5))'
+            : 'linear-gradient(to top left, transparent, #000)'
+        "
+      ></div>
+      <a href="/">
+        <img
+          src="/assets/images/collection/d66102b20c0df87d_9d5a343f6acdf971_10896816777495647185710.jpg"
+          class="w-100"
+        />
+      </a>
+      <span class="number" [style.top.px]="isHover ? '25' : '35'">1</span>
+    </div>
+  </div>
+  <div class="collection-item__seasonal">
+    <div class="element">
+      <div class="element__item" *ngFor="let item of arr; index as idx">
+        <div
+          class="element__item--image"
+          (mouseover)="isHover = true"
+          (mouseout)="isHover = false"
+        >
+          <div
+            class="bg-ranking"
+            [style.background-image]="
+              isHover
+                ? 'linear-gradient(to top left,transparent,rgb(0 0 0/0.5))'
+                : 'linear-gradient(to top left, transparent, #000)'
+            "
+          ></div>
+          <a href="/">
+            <img
+              src="/assets/images/collection/68fa82b22b9d4965_d66e4431ce224ac7_2698216750634546118684.jpg"
+              class="w-100"
+            />
+          </a>
+          <span class="number" [style.top.px]="isHover ? '25' : '35'">{{
+            idx + 1
+          }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

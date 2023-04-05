@@ -35,9 +35,5 @@ export const updateShellProfile = createSelector(
   (state: State) => state.profile
 );
 
-export const getDictionary = createSelector(
-  getShellState,
-  (state: State) => state.dictionary
-);
 
 

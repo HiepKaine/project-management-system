@@ -1,0 +1,70 @@
+@import 'apps/frontend/src/styles/_variables.scss';
+@import 'apps/frontend/src/styles/_mixin.scss';
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+.collection-item {
+  display: flex;
+  height: 210px;
+  &__present {
+    width: 33.33333%;
+    padding-right: 6px;
+    &--image {
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      img {
+        height: 100%;
+        transform: scale(1);
+        transition-duration: 0.3s;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  &__seasonal {
+    width: 66.66667%;
+    .element {
+      display: flex;
+      flex-wrap: wrap;
+      &__item {
+        width: 25%;
+        padding: 0 6px;
+        padding-bottom: 12px;
+        &--image {
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          img {
+            transform: scale(1);
+            transition-duration: 0.3s;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .bg-ranking {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .number {
+    position: absolute;
+    left: 15px;
+    z-index: 1;
+    font-size: 50px;
+    color: goldenrod;
+  }
+}

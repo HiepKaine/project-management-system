@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Lesson } from '@frontend/models/lesson.model';
 
 @Component({
   selector: 'app-lesson',
@@ -8,7 +7,7 @@ import { Lesson } from '@frontend/models/lesson.model';
   styleUrls: ['./lesson.component.scss'],
 })
 export class LessonComponent implements OnChanges {
-  @Input() lesson!: Lesson;
+  @Input() lesson!: any;
   public src!: SafeUrl;
 
   constructor(

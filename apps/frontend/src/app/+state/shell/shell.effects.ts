@@ -13,7 +13,6 @@ import {
 
 import { ApiItemResponse } from '@frontend/common';
 import { environment } from '@frontend/env/environment';
-import { Dictionary } from '@frontend/models/dictionary.model';
 import {
   Actions,
   createEffect,
@@ -30,18 +29,6 @@ import * as ShellActions from './shell.actions';
 
 @Injectable()
 export class ShellEffects {
-
-  fetchDictionaryRequested$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ShellActions.fetchDictionaryRequested),
-      switchMap(() =>
-        this.apiService.dictionary().pipe(
-          map((result: ApiItemResponse<Dictionary>) => ShellActions.fetchDictionarySuccessed({ payload: result.data })),
-          catchError((error) => of(ShellActions.fetchProfileFailed({ payload: error })))
-        )
-      )
-    )
-  );
 
   fetchProfileRequested$ = createEffect(() =>
     this.actions$.pipe(

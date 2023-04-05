@@ -1,6 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Lesson } from '@frontend/models/lesson.model';
-import { CompletedLesson } from '@frontend/models/completed-lesson.model';
 
 @Pipe({
   name: 'completedLesson',
@@ -8,7 +6,7 @@ import { CompletedLesson } from '@frontend/models/completed-lesson.model';
 })
 export class CompletedLessonPipe implements PipeTransform {
 
-  transform(value: CompletedLesson[], lesson: Lesson): boolean {
+  transform(value: any[], lesson: any): boolean {
     return value.some(item => item.lessonId === lesson.id);
   }
 

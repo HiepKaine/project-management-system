@@ -8,7 +8,6 @@ import {
   ApiPaginateResponse,
   ApiResponsePagination
 } from '@frontend/common';
-import { Option } from '@frontend/models/option.model';
 import { User } from '@frontend/models/user.model';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { TranslateService } from '@ngx-translate/core';
@@ -29,7 +28,6 @@ import { pageParser } from './../../../../@core/utils/query-parser';
 export class ListComponent {
   public users: User[] = [];
   public keyword!: string;
-  public option!: Option;
   public pagination!: ApiResponsePagination;
 
   constructor(
