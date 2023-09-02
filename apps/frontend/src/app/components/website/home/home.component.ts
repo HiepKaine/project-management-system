@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  public array = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
+  public array = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4];
   public arr = [1, 2, 3, 4, 5, 6];
   ngOnInit(): void {}
 }

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CourseRoutingModule } from './course-routing.module';
-import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -21,7 +20,7 @@ import { ContactFormModule } from '../../common/contact-form/contact-form.module
 const icons: IconDefinition[] = [LockOutline, UserOutline];
 
 @NgModule({
-  declarations: [ListComponent, DetailComponent],
+  declarations: [ DetailComponent],
   imports: [
     CommonModule,
     CourseRoutingModule,
